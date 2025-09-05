@@ -2,9 +2,16 @@
   "name": "project",
   "version": "1.0.0",
   "description": "project",
-  "main": "index.js",
+  "type": "module",
+  "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext js --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "pnpm lint --fix",
+    "format": "pnpm prettier --check --debug-check \"src/**/*.{js,html}\"",
+    "format:fix": "pnpm prettier --write \"src/**/*.{js,html}\""
   },
   "repository": {
     "type": "git",
@@ -17,30 +24,14 @@
   },
   "homepage": "url",
   "devDependencies": {
-    "autoprefixer": "^10.3.3",
-    "browser-sync": "^2.27.5",
-    "del": "^6.0.0",
-    "glob-stream": "^6.1.0",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^8.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-include": "^2.4.1",
-    "gulp-index": "^0.2.0",
-    "gulp-jshint": "^2.1.0",
-    "gulp-minify": "^3.1.0",
-    "gulp-prettier": "^4.0.0",
-    "gulp-purifycss": "^0.2.0",
-    "gulp-sass": "^5.0.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify": "^3.0.2",
-    "gulp-watch": "^5.0.1",
-    "jshint": "^2.13.1",
-    "prettier": "^2.7.1",
-    "purify": "^3.4.0",
-    "sass": "^1.38.2"
-  },
-  "dependencies": {
-    "golden-layout": "^2.3.0"
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "postcss": "^8.4.49",
+    "prettier": "^3.3.0",
+    "sass": "^1.80.0",
+    "terser": "^5.44.0",
+    "vite": "^6.0.0",
+    "vite-plugin-include-html": "^1.0.0"
   }
 }
