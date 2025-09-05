@@ -1,0 +1,1089 @@
+html {
+    font-size: 62.5%;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    overflow-style: -ms-autohiding-scrollbar;
+}
+
+:root {
+    --full-height: calc(var(--vh, 1vh) * 100);
+}
+
+
+@keyframes bounce {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(0, -5px, 0);
+    }
+}
+
+.ypfi {
+
+    * {
+        font-family: 'GmarketSansMedium', 'Noto Sans KR', '맑은고딕', sans-serif;
+    }
+
+    .letter-tit {
+        font-family: 'SSRONETHandwritten';
+
+        em,
+        small,
+        b {
+            font-family: 'SSRONETHandwritten';
+        }
+    }
+
+    p {
+        color: #362e2b;
+    }
+
+    b,
+    strong {
+        font-weight: 700;
+        font-family: 'GmarketSansBold', 'Noto Sans KR', '맑은고딕', sans-serif;
+
+        em {
+            font-weight: 700;
+            font-family: 'GmarketSansBold', 'Noto Sans KR', '맑은고딕', sans-serif;
+        }
+    }
+
+    em {
+        // color: #eb711d;
+        color: #d15a08;
+    }
+
+    .only-mo {
+        display: none;
+    }
+
+    .only-pc {
+        display: block;
+    }
+
+    .floating-button {
+        filter: drop-shadow(20px 4px 24px rgba(0, 0, 0, 0.3));
+        text-indent: -999rem;
+        position: fixed;
+        right: 40px;
+        top: 154px;
+        height: 242px;
+        width: 162px;
+        z-index: 11;
+
+        transition: all 0.2s;
+
+        &.position {
+            top: 30px;
+        }
+
+        &:hover {
+            animation: bounce 0.35s ease-out alternate infinite;
+
+            a {
+                &:before {
+                    opacity: 1;
+                    z-index: 2;
+                }
+            }
+        }
+
+        a {
+            display: block;
+            background: url('/static/campaign/2025/ypfi/images/button-floating-img.png') no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-align: center;
+            transition: all 0.4s;
+            font-size: 1.9rem;
+            line-height: 26px;
+            color: #fff;
+            border: 4px solid #de6817;
+            border-radius: 10px;
+            overflow: hidden;
+
+            &:after {
+                content: '';
+                position: absolute;
+                display: block;
+                left: -10%;
+                bottom: -10%;
+                width: 120%;
+                height: 110px;
+                filter: blur(10px);
+                background-color: #f56400;
+                transition: all .4s;
+                background: linear-gradient(90deg, #f56400 0%, #f2934d 50%, #f2904d 100%);
+
+            }
+
+            &:before {
+                opacity: 0;
+                content: '';
+                position: absolute;
+                display: block;
+                left: -10%;
+                bottom: -10%;
+                width: 120%;
+                height: 110px;
+                filter: blur(10px);
+                background-color: #f56400;
+                transition: all .4s;
+                background: linear-gradient(90deg, #e55022 0%, #f0643a 50%, #f0643a 100%);
+            }
+
+            img {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 16px;
+                z-index: 2;
+                margin: auto;
+            }
+
+            b,
+            em {
+                display: block;
+            }
+
+            em {
+                color: #fff193;
+            }
+        }
+    }
+
+    .section-group {
+        height: 500vh;
+        // width: 100vw;
+    }
+
+    .app-section {
+        overflow: hidden;
+
+        .app-inner {
+            max-width: 1260px;
+            width: 100%;
+            padding: 0 5%;
+            margin: auto;
+            position: relative;
+        }
+
+
+        .btn {
+            background-color: #f56400;
+            background: linear-gradient(90deg, #f56400 0%, #f2934d 50%, #f2904d 100%);
+            border: 1px solid #ee7000;
+            padding: 0 26px 0 30px;
+            min-width: 420px;
+            height: 80px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.4s, -webkit-transform 0.4s;
+            box-shadow: 13px 1px 21px rgba(67, 30, 3, 0.22);
+            position: relative;
+            // overflow: hidden;
+
+            span {
+                color: #fff;
+                font-size: clamp(2.2rem, 2vw, 2.7rem);
+                font-weight: 700;
+                line-height: 1;
+                z-index: 2;
+                flex: none;
+                position: relative;
+                bottom: -2px;
+
+                em {
+                    color: #fff193;
+                }
+
+
+            }
+
+            .btn-inner {
+
+                &:before {
+                    opacity: 0;
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    background: linear-gradient(90deg, #e55022 0%, #f0643a 50%, #f0643a 100%);
+                    transition: all .4s;
+                    border-radius: 7px;
+                    z-index: 1;
+                }
+
+            }
+
+
+            &:after {
+                content: '';
+                display: block;
+                width: clamp(35px, 2vw, 30px);
+                height: 15px;
+                background: url('/static/campaign/2025/ypfi/images/button-arrow-right.png') no-repeat;
+                background-size: contain;
+                transition: transform 0.4s, -webkit-transform 0.4s;
+                z-index: 3;
+                flex: none;
+
+            }
+
+            &:before {
+                content: '';
+                border: 6px solid transparent;
+                position: absolute;
+                top: 0;
+                left: -3px;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                width: 416px;
+                height: 80px;
+                border-radius: 6px;
+                // transition: all 1s;
+                // z-index: 1;
+
+            }
+
+
+
+            &:hover {
+                transform: scale(1.025);
+                background-color: #ff5200;
+
+                &:after {
+                    transform: translate(10px, 0);
+                }
+
+                &:before {
+                    animation-duration: 1s;
+                    animation-name: ripppleOut;
+                }
+
+                .btn-inner {
+                    &:before {
+                        opacity: 1;
+                    }
+
+                    &:after {}
+                }
+            }
+        }
+
+        &.section01 {
+            background: url('/static/campaign/2025/ypfi/images/section01-bg01.jpg') center;
+            background-size: cover;
+            min-height: 1516px;
+            animation: bgChange 1s infinite steps(1);
+            padding-top: 160px;
+            position: relative;
+
+            .app-inner {
+                display: flex;
+                justify-content: flex-end;
+
+            }
+
+            .copy {
+                text-align: center;
+
+                .btn-about {
+                    position: relative;
+
+                    a {
+                        display: inline-flex;
+                        gap: 6px;
+                        align-items: center;
+                        background-color: #fff;
+                        border-radius: 100px;
+                        font-size: clamp(1.3rem, 2vw, 2rem);
+                        padding: 12px 20px 10px;
+                        line-height: 1;
+
+
+                        &:after {
+                            content: '';
+                            display: block;
+                            width: 19px;
+                            height: 19px;
+                            background: url('/static/campaign/2025/ypfi/images/ico-help.png') center;
+                            background-size: contain;
+                            position: relative;
+                            bottom: 1px;
+                        }
+                    }
+
+
+
+                    &:hover {
+                        .tooltip {
+                            opacity: 1;
+                        }
+                    }
+
+                    .tooltip {
+                        transition: all .3s;
+                        opacity: 0;
+                        max-width: 420px;
+                        background-color: #fff;
+                        border-radius: 8px;
+                        padding: 10px 12px;
+                        font-size: clamp(1.3rem, 2vw, 1.6rem);
+                        line-height: clamp(1.9rem, 3vw, 2.3rem);
+                        text-align: left;
+                        position: absolute;
+                        bottom: calc(100% + 20px);
+                        left: 0;
+                        right: 0;
+                        margin: auto;
+                        filter: drop-shadow(11px 0px 20px rgba(0, 0, 0, 0.1));
+
+                        &:after {
+                            content: '';
+                            display: block;
+                            width: 0;
+                            height: 0;
+                            border-left: 8px solid transparent;
+                            /* 왼쪽 투명 */
+                            border-right: 8px solid transparent;
+                            /* 오른쪽 투명 */
+                            border-top: 10px solid #fff;
+                            /* 위쪽이 색상 → 아래 화살표 모양 */
+                            position: absolute;
+                            bottom: -10px;
+                            left: 0;
+                            right: 0;
+                            margin: auto;
+                        }
+
+                        // display: none;
+                    }
+                }
+
+                h2 {
+                    margin: 44px 0 55px 0;
+
+                    img {
+                        width: clamp(340px, 50vw, 639px);
+                    }
+                }
+
+                p {
+                    color: #1a1310;
+                    font-size: clamp(1.8rem, 2vw, 2.4rem);
+                    line-height: clamp(2.7rem, 3vw, 4rem);
+
+                }
+
+                .btn {
+                    margin-top: 56px;
+                }
+            }
+
+            em {
+                color: #eb711d;
+            }
+
+            .question {
+                width: 100%;
+                position: absolute;
+                bottom: 160px;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                color: #fff;
+                font-size: clamp(1.8rem, 2vw, 3rem);
+                line-height: clamp(2.8rem, 3vw, 5.4rem);
+
+
+
+                span {
+                    position: relative;
+                    // margin: 0px;
+
+                    img {
+                        position: relative;
+                        bottom: 10px;
+
+                    }
+
+                    b {
+                        color: #1a1310;
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    &:after {
+                        // content: '';
+                        // display: block;
+                        // position: absolute;
+                        // left: 50%;
+                        // top: 50%;
+                        // transform: translate(-50%, -50%);
+                        // z-index: 0;
+                    }
+
+                    &.paper01 {
+
+                        // &:after {
+                        //     width: clamp(116px, 14vw, 192px);
+                        //     height: 70px;
+                        //     background: url('/static/campaign/2025/ypfi/images/section01-paper01.png') center no-repeat;
+                        //     background-size: contain;
+                        // }
+                        img {
+                            width: clamp(116px, 14vw, 192px);
+                        }
+
+                    }
+
+                    &.paper02 {
+
+                        // &:after {
+                        //     width: clamp(87px, 14vw, 151px);
+                        //     height: 60px;
+                        //     background: url('/static/campaign/2025/ypfi/images/section01-paper02.png') center no-repeat;
+                        //     background-size: contain;
+                        // }
+                        img {
+                            width: clamp(87px, 11vw, 151px);
+                        }
+                    }
+                }
+
+                strong {
+                    margin-top: 30px;
+                    display: block;
+                    font-size: clamp(2.4rem, 2vw, 4rem);
+                    line-height: 1;
+                }
+            }
+
+
+
+        }
+
+        &.section02 {
+            background: url('/static/campaign/2025/ypfi/images/section02-bg.jpg') center;
+            background-size: cover;
+            padding-top: clamp(5%, 14vw, 226px);
+            padding-bottom: clamp(5%, 14vw, 226px);
+            height: 1017px;
+            text-align: right;
+
+            .letter-tit {
+                letter-spacing: -1.5px;
+                font-size: clamp(3.3rem, 6vw, 6.5rem);
+                line-height: clamp(42px, 6vw, 76px);
+                margin-bottom: clamp(33px, 40vw, 40px);
+            }
+
+            p {
+                font-size: clamp(1.8rem, 2vw, 2.4rem);
+                line-height: clamp(27px, 3vw, 40px);
+
+                &+p {
+                    margin-top: 30px;
+                }
+            }
+        }
+
+        &.section03 {
+            background: url('/static/campaign/2025/ypfi/images/section-bgPaper.jpg') center left;
+            background-size: cover;
+            padding-top: clamp(5%, 14vw, 70px);
+            padding-bottom: clamp(5%, 14vw, 70px);
+
+            .app-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            h2 {
+                font-size: clamp(2.8rem, 4vw, 4.5rem);
+                line-height: clamp(auto, 3vw, 6.2rem);
+            }
+
+            p {
+                margin-top: 40px;
+                font-size: clamp(1.8rem, 2vw, 2.4rem);
+                line-height: clamp(2.3rem, 3vw, 3.2rem);
+
+                small {
+                    font-size: clamp(1.4rem, 2vw, 1.8rem);
+                    line-height: clamp(2.3rem, 3vw, 3.2rem);
+                }
+
+            }
+
+            .chart-pie {
+                text-align: center;
+
+                .caption {
+                    margin-top: 30px;
+                    font-size: clamp(1.8rem, 2vw, 2.2rem);
+                    line-height: auto;
+                }
+
+                .chart {
+                    width: 340px;
+                    height: 340px;
+                    position: relative;
+                    background: url('/static/campaign/2025/ypfi/images/pie-bg.png') center;
+                    background-size: cover;
+
+                    .pie {
+                        position: absolute;
+                        cursor: pointer;
+                        transition: all .4s;
+
+                        &:hover {
+                            transform: scale(1.2);
+                            z-index: 1;
+                            filter: drop-shadow(10px 0 20px rgba(64, 54, 47, 0.3));
+                        }
+                    }
+
+                    .pie01 {
+                        width: 170px;
+                        right: 0.5px;
+                        top: 0;
+
+                        &:hover {
+                            right: -28px;
+                            top: -24px;
+                        }
+                    }
+
+                    .pie02 {
+                        width: 190px;
+                        right: 3px;
+                        bottom: 1px;
+                        pointer-events: none;
+                        cursor: default;
+
+                        &:hover {
+                            right: -20px;
+                            bottom: -30px;
+
+                        }
+                    }
+
+                    .pie03 {
+                        width: 164px;
+                        left: 5px;
+                        bottom: 2px;
+                        pointer-events: none;
+                        cursor: default;
+
+                        &:hover {
+                            left: -25px;
+                            bottom: -30px;
+
+                        }
+                    }
+
+                    .pie04 {
+                        display: none;
+                        opacity: 0;
+                    }
+
+
+                }
+            }
+
+        }
+
+        &.section04 {
+            background: url('/static/campaign/2025/ypfi/images/section04-bg.jpg') center;
+            background-size: cover;
+            padding-top: clamp(5%, 14vw, 226px);
+            padding-bottom: clamp(5%, 14vw, 226px);
+            height: 1017px;
+            text-align: left;
+
+            .letter-tit {
+                letter-spacing: -1.5px;
+                font-size: clamp(3.3rem, 6vw, 6rem);
+                line-height: clamp(44px, 6vw, 76px);
+                margin-bottom: clamp(33px, 40vw, 40px);
+                position: relative;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    width: 12px;
+                    height: 12px;
+                    background: url('/static/campaign/2025/ypfi/images/ico-quotes.png') no-repeat center;
+                    background-size: contain;
+                    position: absolute;
+                    left: -12px;
+                    top: 14px;
+                }
+            }
+
+            p {
+                font-size: clamp(1.8rem, 2vw, 2.4rem);
+                line-height: clamp(27px, 3vw, 40px);
+            }
+        }
+
+        &.section05 {
+            background: url('/static/campaign/2025/ypfi/images/section-bgPaper.jpg') center left;
+            background-size: cover;
+            padding-top: clamp(5%, 14vw, 70px);
+            padding-bottom: clamp(5%, 14vw, 70px);
+
+            .app-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 60px;
+            }
+
+            h2 {
+                font-size: clamp(2.8rem, 4vw, 4.5rem);
+                line-height: clamp(auto, 3vw, 6.2rem);
+            }
+
+            p {
+                letter-spacing: -0.5px;
+                margin-top: 40px;
+                font-size: clamp(1.8rem, 2vw, 2.4rem);
+                line-height: clamp(2.7rem, 3vw, 4rem);
+            }
+
+            .chart-progress {
+                text-align: center;
+
+                .caption {
+                    margin-top: 50px;
+                    font-size: clamp(1.2rem, 2vw, 1.4rem);
+                    line-height: auto;
+                }
+
+            }
+
+        }
+
+        &.section06 {
+            background: #f6f2eb url('/static/campaign/2025/ypfi/images/section06-bg.jpg') center no-repeat;
+            background-size: cover;
+
+            // height: 1122px;
+            overflow: hidden;
+
+            .app-inner {
+                max-width: 1540px;
+                height: 100%;
+                padding-top: 100px;
+            }
+
+            .letter-tit {
+                text-align: center;
+                font-size: clamp(3rem, 4vw, 5.7rem);
+                line-height: clamp(3.2rem, 4vw, 7rem);
+
+                small {
+                    font-size: clamp(2rem, 3vw, 4rem);
+                }
+            }
+
+            .illust {
+                margin-top: 5%;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                bottom: 0;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+
+
+                img {
+                    position: absolute;
+
+                    &.obj {
+                        top: -50%;
+                        opacity: 0;
+                        transition: all 1s;
+
+                        max-width: 100%;
+                        height: auto;
+
+                        &.on {
+                            opacity: 1;
+                        }
+                    }
+
+                    &.item01 {
+                        left: 0%;
+                        max-width: clamp(138px, 30vw, 506px);
+
+                        &.on {
+                            top: 20%;
+                        }
+
+                    }
+
+                    &.item02 {
+
+                        right: 17%;
+                        max-width: clamp(94px, 20vw, 253px);
+
+                        &.on {
+                            top: 36%;
+                        }
+                    }
+
+                    &.item03 {
+                        right: 15%;
+                        max-width: clamp(94px, 24vw, 393px);
+
+                        &.on {
+                            top: 10%;
+                        }
+
+                    }
+
+                    &.item04 {
+                        right: -3%;
+                        max-width: clamp(94px, 20vw, 265px);
+
+                        &.on {
+                            top: 22%;
+                        }
+
+
+                    }
+
+                    &.item05 {
+
+                        left: 20%;
+                        max-width: clamp(94px, 20vw, 320px);
+
+                        &.on {
+                            top: 0%;
+                        }
+
+                    }
+
+                    &.obj-human {
+                        position: relative;
+                        margin-left: 10%;
+                        max-width: 100%;
+
+                    }
+                }
+            }
+
+
+
+        }
+
+        &.section07 {
+            position: sticky;
+            top: 0;
+            padding-top: clamp(5%, 14vw, 140px);
+            padding-bottom: clamp(5%, 14vw, 140px);
+            height: var(--full-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: var(--full-height);
+                background: url('/static/campaign/2025/ypfi/images/section07-bg.jpg') center left;
+                background-size: cover;
+                // transition: background .4s;
+            }
+
+            .app-inner {
+                z-index: 1;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+
+            p {
+                &+p {
+                    margin-top: 40px;
+                }
+
+                font-size: clamp(1.7rem, 2vw, 2.4rem);
+                line-height: clamp(2.7rem, 3vw, 4rem);
+                color: #fff;
+
+                em {
+                    color: #f5c19d;
+                }
+            }
+
+            .chart-progress {
+                text-align: center;
+                flex: 1;
+
+                img {
+                    margin: 0;
+                    width: 100%;
+                }
+
+                .caption {
+                    margin-top: 50px;
+                    font-size: clamp(1.2rem, 2vw, 1.4rem);
+                    line-height: auto;
+                }
+
+            }
+
+            .article01 {
+                gap: 30px;
+            }
+
+            .article02 {
+                display: none;
+            }
+
+            &.section09 {
+                &:after {
+                    background: url('/static/campaign/2025/ypfi/images/section09-bg.jpg') center;
+                    background-size: cover;
+                }
+
+
+
+                .article01 {
+                    display: none;
+                }
+
+                .article02 {
+                    display: flex;
+                }
+            }
+
+        }
+
+        &.section08 {
+            background: url('/static/campaign/2025/ypfi/images/section08-bg.png') center;
+            background-size: cover;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200vh;
+            z-index: 1;
+            position: relative;
+
+            .letter-tit {
+                color: #fff;
+                font-size: clamp(2.6rem, 2vw, 4.8rem);
+                line-height: clamp(2.9rem, 3vw, 6em);
+
+                em {
+                    color: #f7cab3;
+                }
+            }
+
+            .caption {
+                display: block;
+                color: #fff;
+                font-size: clamp(1.6rem, 2vw, 2.2rem);
+                margin-top: 64px;
+            }
+
+        }
+
+        &.section09 {
+            .app-inner {
+                justify-content: flex-end;
+                text-align: right;
+            }
+
+            p {
+                font-size: clamp(1.8rem, 2vw, 2.4rem);
+                line-height: clamp(2.7rem, 3vw, 4rem);
+                color: #26221c;
+
+                em {
+                    color: #9c470d;
+                }
+
+                strong {
+                    font-size: clamp(2.4rem, 2vw, 3.4rem);
+                    line-height: clamp(3.4rem, 3vw, 4.8rem);
+                }
+            }
+
+            .btn {
+                margin-top: 60px;
+            }
+        }
+
+        &.section10 {
+            background: url('/static/campaign/2025/ypfi/images/section10-bg.jpg') center;
+            background-size: cover;
+            text-align: center;
+            padding-top: clamp(5%, 14vw, 144px);
+            padding-bottom: clamp(5%, 14vw, 144px);
+
+            h2 {
+                font-size: clamp(2.4rem, 4vw, 4.8rem);
+                line-height: clamp(3.3rem, 5vw, 6.2rem);
+                margin-bottom: 60px;
+                color: #1a1310;
+            }
+
+
+
+            .tit {
+                font-size: clamp(3rem, 2vw, 3.6rem);
+                line-height: clamp(3.8rem, 3vw, 4.2rem);
+                color: #fff;
+
+                em {
+                    color: #ffd5c0;
+                }
+            }
+
+            p {
+                margin-top: clamp(30px, 2vw, 52px);
+                font-size: clamp(1.8rem, 2vw, 2.2rem);
+                line-height: clamp(3rem, 3vw, 3.6rem);
+                color: #fff;
+            }
+
+            .box-tab {
+
+
+                .list-tab {
+                    display: flex;
+                    align-items: center;
+                    gap: 14px;
+
+                    li {
+
+                        flex: 1;
+                        border-radius: 20px 20px 0 0;
+                        background-color: orange;
+                        box-shadow: 6px 2px 0 rgba(0, 0, 0, 1);
+
+                        background: url('/static/campaign/2025/ypfi/images/tabitem-bg.jpg') center;
+                        background-size: cover;
+
+                        &.on {
+                            background: url('/static/campaign/2025/ypfi/images/tabitem-bg-on.jpg') center;
+                            background-size: cover;
+
+
+                        }
+
+                        a {
+                            height: 80px;
+                            color: #fff;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 2.4rem;
+                            line-height: 1;
+                        }
+                    }
+                }
+
+                .tab-component {
+                    background: url('/static/campaign/2025/ypfi/images/tab-bg.jpg') center;
+                    background-size: cover;
+                    border-radius: 0 0 20px 20px;
+                    padding: 96px 65px 65px;
+                    position: relative;
+                    z-index: 2;
+                    box-shadow: 6px 0px 0 rgba(0, 0, 0, 1);
+
+                    .cont {
+                        display: flex;
+                        align-items: center;
+                        gap: 62px;
+                        text-align: left;
+
+                        img {
+                            width: clamp(400px, 40vw, 600px);
+                        }
+                    }
+                }
+            }
+
+            .box-slide {
+                .slideSection10 {
+
+                    .swiper-container,
+                    .swiper,
+                    .swiper-wrapper {
+                        overflow: hidden;
+                    }
+
+                    li {
+                        // flex: 1 1 0;
+                        background: url('/static/campaign/2025/ypfi/images/slide-bg.jpg') center;
+                        background-size: cover;
+                        border-radius: 13px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 33px;
+                        text-align: left;
+                        padding: 36px 36px 60px;
+
+                        img {
+                            border-radius: 10px;
+                        }
+
+                        .tit {
+                            font-size: 2.2rem;
+                            line-height: 27px;
+                        }
+
+                        p {
+                            font-size: 1.8rem;
+                            line-height: 26px;
+                            margin-top: 0;
+
+                        }
+                    }
+
+                    .swiper-pagination {
+                        margin-top: 24px;
+                        position: static;
+                    }
+                }
+            }
+
+        }
+
+
+
+
+    }
+
+
+}

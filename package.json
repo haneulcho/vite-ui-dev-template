@@ -1,0 +1,46 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "url"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "url"
+  },
+  "homepage": "url",
+  "devDependencies": {
+    "autoprefixer": "^10.3.3",
+    "browser-sync": "^2.27.5",
+    "del": "^6.0.0",
+    "glob-stream": "^6.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-include": "^2.4.1",
+    "gulp-index": "^0.2.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-prettier": "^4.0.0",
+    "gulp-purifycss": "^0.2.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
+    "jshint": "^2.13.1",
+    "prettier": "^2.7.1",
+    "purify": "^3.4.0",
+    "sass": "^1.38.2"
+  },
+  "dependencies": {
+    "golden-layout": "^2.3.0"
+  }
+}
