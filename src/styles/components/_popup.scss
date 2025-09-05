@@ -1,0 +1,242 @@
+// .pop-backdrop {
+//   display: none;
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: $popup-overlay-color;
+//   z-index: 50;
+// }
+
+// .pop-certify {
+//   $certify: &;
+//   @include flex-only-center;
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   outline: 0;
+//   overflow: auto;
+//   z-index: 99;
+//   overflow: auto;
+//   pointer-events: none;
+//   @at-root {
+//     &__container {
+//       position: relative;
+//       width: $popup-width;
+//       min-width: $min-width;
+//       min-height: 80px;
+//       padding: 20px;
+//       overflow: hidden;
+//       color: #fff;
+//       border-radius: $popup-border-radius;
+//       background-color: $popup-background-color;
+//       background-repeat: no-repeat;
+//       background-position: 50% 60px;
+//       box-shadow: $popup-box-shadow;
+//       border: 1px solid $popup-border-color;
+//       z-index: 999;
+//     }
+//     &__body {
+//       @include flex-column-center-h;
+//       @at-root {
+//         #{$certify}__title {
+//           @include sr-only;
+//         }
+//         #{$certify}__image {
+//           display: block;
+//           margin: 40px auto 0;
+//         }
+//         #{$certify}__message {
+//           margin: 20px auto;
+//           font-size: 18px;
+//           font-weight: 400;
+//           font-stretch: normal;
+//           line-height: 1.33;
+//           text-align: center;
+//           color: #fff;
+//         }
+//         #{$certify}__timeout {
+//           height: 40px;
+//           margin: 0 auto 10px;
+//           font-size: 24px;
+//           font-weight: 400;
+//           font-stretch: normal;
+//           text-align: center;
+//           color: #80a5ef;
+//           &.disabled {
+//             font-size: 14px;
+//             line-height: 1.43;
+//             color: #b94444;
+//           }
+//         }
+//         #{$certify}__retry {
+//           @include flex-row-center-h;
+//           margin: 0 auto 20px;
+//           .txt-help {
+//             flex: 1 0 100%;
+//             margin: 10px auto;
+//             font-size: 14px;
+//             font-weight: 400;
+//             line-height: 1.43;
+//             text-align: center;
+//             color: rgba(255, 255, 255, 0.6);
+//             > a {
+//               position: relative;
+//               color: inherit;
+//               &::after {
+//                 position: absolute;
+//                 @include pseudo(100%, 1px);
+//                 left: 0;
+//                 bottom: -1px;
+//                 opacity: 0;
+//                 background-color: rgba(255, 255, 255, 0.6);
+//                 transition: all ease 300ms;
+//               }
+//               &:hover::after {
+//                 opacity: 1;
+//               }
+//             }
+//           }
+//           > button,
+//           .btn-retry {
+//             @include flex-only-center;
+//             min-width: 200px;
+//             height: 40px;
+//             margin: 0 8px;
+//             font-size: 13px;
+//             font-weight: 400;
+//             font-stretch: normal;
+//             border-radius: 4px;
+//             color: rgba(255, 255, 255, 0.83);
+//             border: 1px solid rgba(255, 255, 255, 0.18);
+//             transition: all ease 300ms;
+//             &:hover:not(.disabled) {
+//               color: $color-white;
+//               border-color: rgba(255, 255, 255, 0.28);
+//               background-color: rgba(255, 255, 255, 0.04);
+//             }
+//             &:disabled,
+//             &.disabled {
+//               cursor: no-drop;
+//               color: rgba(255, 255, 255, 0.38);
+//               border-color: rgba(255, 255, 255, 0.08);
+//             }
+//           }
+//         }
+//         #{$certify}__form {
+//           @include flex-column-center-h;
+//           position: relative;
+//           min-height: 72px;
+//         }
+//         #{$certify}__input {
+//           @include input-common;
+//           width: 220px;
+//           margin-bottom: 32px;
+//           &.error {
+//             margin-bottom: 10px;
+//             + .btn-clear-input + #{$certify}__input-message {
+//               opacity: 1;
+//               height: auto;
+//             }
+//           }
+//         }
+//         #{$certify}__input-message {
+//           opacity: 0;
+//           overflow: hidden;
+//           height: 0;
+//           font-size: 13px;
+//           font-weight: 400;
+//           line-height: 1.38;
+//           color: #b94444;
+//           transition: opacity ease 400ms;
+//         }
+//         #{$certify}__confirm {
+//           margin: 20px auto 10px;
+//           > button,
+//           .btn-confirm {
+//             @include btn-medium;
+//             @include btn-style-default;
+//             @include btn-style-primary;
+//             min-width: 260px;
+//             min-height: 40px;
+//           }
+//         }
+//       }
+//     }
+//     &__footer {
+//       @include flex-row-center-h;
+//       padding: 16px;
+//       font-stretch: normal;
+//       border-radius: 2px;
+//       background: rgba(255, 255, 255, 0.1);
+//       .txt-help {
+//         flex: 1 0 100%;
+//         margin-bottom: 10px;
+//         font-size: 13px;
+//         font-weight: normal;
+//         line-height: 1.38;
+//         text-align: center;
+//         & + .btn-medium {
+//           margin-left: 0;
+//         }
+//       }
+//       .btn-medium {
+//         min-width: 140px;
+//         min-height: 40px;
+//         margin-left: 16px;
+//       }
+//       [class^="btn-store"] {
+//         @include image-button;
+//         width: 130px;
+//         height: 40px;
+//         margin-left: 16px;
+//         object-fit: contain;
+//         background-repeat: no-repeat;
+//         background-position: 0 0;
+//         background-size: contain;
+//       }
+//       .btn-store-google {
+//         margin-left: 0;
+//         background-image: url(images/btn-store-google@3x.png);
+//       }
+//       .btn-store-apple {
+//         background-image: url(images/btn-store-apple@3x.png);
+//       }
+//     }
+//     &__close {
+//       position: absolute;
+//       top: 0;
+//       right: 0;
+//       width: 60px;
+//       height: 60px;
+//       @include hide-text;
+//       background: url(images/ico-close.png) no-repeat 50% 50%;
+//     }
+//   }
+//   &--purple &__container {
+//     min-height: 660px;
+//   }
+//   &--purple &__retry .txt-help,
+//   &--nc &__retry {
+//     margin-bottom: 0;
+//   }
+//   &--google &__container,
+//   &--nc &__container {
+//     min-height: 560px;
+//   }
+// }
+
+// body.locked-scroll {
+//   .pop-backdrop {
+//     display: block;
+//   }
+//   .pop-certify {
+//     pointer-events: auto;
+//     cursor: auto;
+//   }
+// }

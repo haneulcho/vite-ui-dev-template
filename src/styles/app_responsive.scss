@@ -1,30 +1,30 @@
 @media (max-width: 1600px) {
-	.chosen .app-section.section01 .app-inner {
+	.#{$app-name} .app-section.section01 .app-inner {
 		padding-right: 10%;
 	}
 }
 
 @media (max-width: 1440px) {
-	.chosen .app-section.section01 .app-inner {
+	.#{$app-name} .app-section.section01 .app-inner {
 		padding-right: 15%;
 	}
 }
 
 @media (max-width: 1530px) {
-	.chosen .floating-button {
+	.#{$app-name} .floating-button {
 		transform: scale(0.8);
 		transform-origin: top right;
 	}
 }
 
 @media (max-width: 1280px) {
-	.chosen .app-section.section01 .app-inner {
+	.#{$app-name} .app-section.section01 .app-inner {
 		padding-right: 20%;
 	}
 }
 
 @media (max-width: 1024px) {
-	.chosen {
+	.#{$app-name} {
 		.floating-button {
 			filter: drop-shadow(8px 0 20px rgba(128, 55, 5, 0.44));
 			text-indent: -999rem;
@@ -53,8 +53,7 @@
 			}
 
 			a {
-				background: url("/images/button-floating-mo.png")
-					no-repeat center;
+				background: url("/images/button-floating-mo.png") no-repeat center;
 				background-size: contain;
 				max-width: 500px;
 				position: relative;
@@ -94,8 +93,7 @@
 
 				&:after {
 					width: 30px;
-					background: url("/images/button-arrow-right-mo.png")
-						no-repeat;
+					background: url("/images/button-arrow-right-mo.png") no-repeat;
 					background-size: contain;
 				}
 
@@ -113,8 +111,7 @@
 			}
 
 			&.section01 {
-				background: url("/images/section01-bg01-mo.jpg")
-					center top;
+				background: url("/images/section01-bg01-mo.jpg") center top;
 				background-size: cover;
 				min-height: inherit;
 				animation: none;
@@ -151,8 +148,7 @@
 							&:after {
 								width: 13px;
 								height: 13px;
-								background: url("/images/ico-help-mo.png")
-									center;
+								background: url("/images/ico-help-mo.png") center;
 								background-size: contain;
 								position: relative;
 							}
@@ -223,8 +219,7 @@
 			}
 
 			&.section03 {
-				background: url("/images/section-bgPaper-mo.jpg")
-					center;
+				background: url("/images/section-bgPaper-mo.jpg") center;
 				background-size: cover;
 
 				.app-inner {
@@ -264,8 +259,7 @@
 			}
 
 			&.section05 {
-				background: url("/images/section-bgPaper-mo.jpg")
-					center;
+				background: url("/images/section-bgPaper-mo.jpg") center;
 
 				.app-inner {
 					flex-direction: column;
@@ -309,8 +303,7 @@
 				}
 
 				&:after {
-					background: url("/images/section07-bg-mo.jpg")
-						center left;
+					background: url("/images/section07-bg-mo.jpg") center left;
 					background-size: cover;
 				}
 
@@ -356,8 +349,7 @@
 
 				&.section09 {
 					&:after {
-						background: url("/images/section09-bg-tb.jpg")
-							center top;
+						background: url("/images/section09-bg-tb.jpg") center top;
 						// background: url('/images/section09-bg-mo.jpg') center top;
 						background-size: cover;
 					}
@@ -365,8 +357,7 @@
 			}
 
 			&.section08 {
-				background: url("/images/section08-bg-mo.png")
-					center;
+				background: url("/images/section08-bg-mo.png") center;
 				background-size: cover;
 
 				.caption {
@@ -389,8 +380,7 @@
 			}
 
 			&.section10 {
-				background: url("/images/section10-bg-mo.jpg")
-					center top;
+				background: url("/images/section10-bg-mo.jpg") center top;
 				background-size: cover;
 
 				h2 {
@@ -418,11 +408,10 @@
 }
 
 @media (max-width: 750px) {
-	.chosen {
+	.#{$app-name} {
 		.app-section {
 			&.section02 {
-				background: url("/images/section02-bg-mo.jpg")
-					right bottom;
+				background: url("/images/section02-bg-mo.jpg") right bottom;
 				background-size: cover;
 				height: auto;
 				text-align: left;
@@ -449,8 +438,7 @@
 			}
 
 			&.section04 {
-				background: url("/images/section04-bg-mo.jpg")
-					center bottom;
+				background: url("/images/section04-bg-mo.jpg") center bottom;
 				background-size: cover;
 				height: auto;
 				padding-bottom: 50vh;
@@ -479,9 +467,7 @@
 			}
 
 			&.section06 {
-				background: #f6f2eb
-					url("/images/section06-bg-mo.jpg") center
-					no-repeat;
+				background: #f6f2eb url("/images/section06-bg-mo.jpg") center no-repeat;
 				background-size: cover;
 				// height: 680px;
 
@@ -538,34 +524,33 @@
 }
 
 @media (max-width: 375px) {
-	.chosen .app-section.section07 .article02 p:first-child {
+	.#{$app-name} .app-section.section07 .article02 p:first-child {
 		br {
 			display: none;
 		}
 	}
 
-	.chosen .app-section.section01 .question strong {
+	.#{$app-name} .app-section.section01 .question strong {
 		font-size: 2rem;
 	}
 }
 
 @media (max-height: 670px) {
-	.chosen .app-section.section02 {
+	.#{$app-name} .app-section.section02 {
 		padding-bottom: 60vh;
 	}
 
-	.chosen .app-section.section04 {
+	.#{$app-name} .app-section.section04 {
 		padding-bottom: 70vh;
 	}
 
-	.chosen .app-section.section07.section09 {
+	.#{$app-name} .app-section.section07.section09 {
 		.app-inner {
 			padding-top: 44vh;
 		}
 
 		&:after {
-			background: url("/images/section09-bg-mo.jpg")
-				center top;
+			background: url("/images/section09-bg-mo.jpg") center top;
 			background-size: cover;
 		}
 	}
