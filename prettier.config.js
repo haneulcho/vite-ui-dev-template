@@ -21,8 +21,8 @@ export default {
       files: '*.scss',
       options: {
         singleQuote: false,
-        tabWidth: 1,
-        useTabs: true,
+        tabWidth: 2,
+        useTabs: false,
       },
     },
     {

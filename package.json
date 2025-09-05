@@ -10,8 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint src --ext js --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "pnpm lint --fix",
-    "format": "pnpm prettier --check --debug-check \"src/**/*.{js,html}\"",
-    "format:fix": "pnpm prettier --write \"src/**/*.{js,html}\""
+    "format": "pnpm prettier --check --debug-check \"./src/**/*.{js,scss,html}\"",
+    "format:fix": "pnpm prettier --write \"./src/**/*.{js,scss,html}\""
   },
   "repository": {
     "type": "git",
