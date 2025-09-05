@@ -44,25 +44,25 @@ $base-font-size: 16px !default;
 $base-letter-spacing: 0;
 
 $base-font-system:
-	-apple-system, BlinkMacSystemFont, Roboto, "Apple SD Gothic Neo",
-	"Helvetica Neue", Helvetica, Arial, "Malgun Gothic", "맑은 고딕", Dotum,
-	"돋움", sans-serif !default;
+  -apple-system, BlinkMacSystemFont, Roboto, "Apple SD Gothic Neo",
+  "Helvetica Neue", Helvetica, Arial, "Malgun Gothic", "맑은 고딕", Dotum,
+  "돋움", sans-serif !default;
 
 $base-font-stack: (
-	spoqa: (
-		regular: (
-			family: $base-font-system,
-			weight: 400,
-		),
-		medium: (
-			family: $base-font-system,
-			weight: 500,
-		),
-		bold: (
-			family: $base-font-system,
-			weight: 700,
-		),
-	),
+  spoqa: (
+    regular: (
+      family: $base-font-system,
+      weight: 400,
+    ),
+    medium: (
+      family: $base-font-system,
+      weight: 500,
+    ),
+    bold: (
+      family: $base-font-system,
+      weight: 700,
+    ),
+  ),
 );
 
 $rem-baseline: $base-font-size;
