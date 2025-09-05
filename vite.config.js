@@ -3,24 +3,54 @@ import { defineConfig } from 'vite';
 import includeHtml from 'vite-plugin-include-html';
 import { fileURLToPath, URL } from 'url';
 
-const serverUrl = `static/campaign/2025/chosen`;
+const appPath = `static/campaign/2025/chosen`;
+
+function getVersionDate() {
+  const now = new Date();
+  const yy = now.getFullYear().toString().slice(2);
+  const mm = (now.getMonth() + 1).toString().padStart(2, '0');
+  const dd = now.getDate().toString().padStart(2, '0');
+  return `${yy}${mm}${dd}`;
+}
+
+// 빌드된 index.html 내 js/css 경로에 ?ver=YYMMDD 쿼리를 추가하는 플러그인
+function appendVer(html, prefix) {
+  const version = getVersionDate();
+
+  const resolvedPrefix = !prefix.startsWith('/') ? '/' + prefix : prefix;
+  const escaped = resolvedPrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(
+    `(href|src)=(["'])(${escaped}[^"'?#]+\\.(?:css|js))(\\2)`,
+    'g'
+  );
+
+  return html.replace(regex, (_m, attr, quote, url) => {
+    // 이미 query/hash 있으면 패스
+    if (/[?#]/.test(url)) return `${attr}=${quote}${url}${quote}`;
+    return `${attr}=${quote}${url}?ver=${version}${quote}`;
+  });
+}
 
 // HTML 파일의 이미지 경로를 자동으로 변환하는 플러그인
-function htmlImagePathTransform(mode) {
+function replaceImagePath(html, prefix) {
+  return html.replace(/src="\/images\//g, `src="/${prefix}/images/`);
+}
+
+function htmlTransform(mode) {
   return {
     name: 'html-image-path-transform',
     transformIndexHtml(html) {
       if (mode !== 'production') return html;
 
-      return html.replace(/src="\/images\//g, `src="/${serverUrl}/images/`);
+      return appendVer(replaceImagePath(html, appPath), appPath);
     },
   };
 }
 
 export default defineConfig(({ _command, mode }) => {
   return {
-    plugins: [includeHtml(), htmlImagePathTransform(mode)],
-    base: mode === 'production' ? `/${serverUrl}/` : '/',
+    plugins: [includeHtml(), htmlTransform(mode)],
+    base: mode === 'production' ? `/${appPath}/` : '/',
     css: {
       preprocessorOptions: {
         scss: {
@@ -39,7 +69,7 @@ export default defineConfig(({ _command, mode }) => {
       target: 'es2015',
       minify: 'terser',
       emptyOutDir: true,
-      outDir: `dist/${serverUrl}`,
+      outDir: `dist/${appPath}`,
       // assetsDir: 'assets',
       sourcemap: true,
       // 빌드 최적화 설정
@@ -81,7 +111,7 @@ export default defineConfig(({ _command, mode }) => {
             return 'js/[name]-[hash].js';
           },
           entryFileNames(_chunkInfo) {
-            return 'js/app-[hash].js';
+            return 'js/script-[hash].js';
           },
         },
       },
