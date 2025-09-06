@@ -132,7 +132,7 @@
 @mixin font(
   $size,
   $variant: regular,
-  $group: spoqa,
+  $group: base,
   $important: false,
   $properties: family weight,
   $font-stack: $base-font-stack
@@ -153,7 +153,7 @@
       }
     }
     @if ($size) {
-      font-size: $size;
+      font-size: rem($size);
     }
   }
 }
