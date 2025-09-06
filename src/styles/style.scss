@@ -8,7 +8,6 @@ $app-name: "chosen" !default;
 @import "abstracts/mixins";
 
 @import "vendors/font";
-@import "vendors/reset";
 
 @import "base/base";
 @import "base/helpers";
@@ -16,3 +15,5 @@ $app-name: "chosen" !default;
 
 @import "app";
 @import "app_responsive";
+@import "contents/section1";
+@import "contents/section2";

@@ -51,32 +51,4 @@
     margin: 0;
     border: 0;
   }
-
-  // TODO: 가이드에 따른 내용으로 수정 필요
-  .video_bg {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-  }
-
-  .video_bg iframe {
-    position: absolute;
-    top: -60px;
-    bottom: -60px;
-    left: 0;
-    width: 100%;
-    height: calc(100% + 120px);
-    border: none;
-  }
-
-  video_bg::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
 }
