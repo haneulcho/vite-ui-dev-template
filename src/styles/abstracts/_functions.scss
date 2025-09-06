@@ -7,15 +7,29 @@
 }
 
 @function vw($n) {
-  @return ($n / $artboard-width) * 100vw;
+  @return ($n / $width) * 100vw;
 }
 
-@function percent($n) {
-  @return ($n / $artboard-width) * 100%;
+@function percent($value, $width) {
+  @return ($value / $width) * 100%;
 }
 
 @function parse-int($n) {
   @return $n / ($n * 0 + 1);
+}
+
+@function fluid-font($target, $min: null, $max: null, $base: 1920) {
+  $vw-value: calc(100vw * #{parse-int($target)} / #{$base});
+
+  @if $min != null and $max != null {
+    @return clamp($min, #{$vw-value}, $max);
+  } @else if $min != null and $max == null {
+    @return clamp($min, #{$vw-value}, #{$target});
+  } @else if $min == null and $max != null {
+    @return clamp(#{$target}, #{$vw-value}, $max);
+  } @else {
+    @return $vw-value;
+  }
 }
 
 @function text-contrast(

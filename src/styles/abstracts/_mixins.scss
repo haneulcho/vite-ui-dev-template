@@ -60,6 +60,21 @@
   }
 }
 
+@mixin to-percent($parent-h, $w: null, $h: null, $top: null, $left: null) {
+  @if $w != null {
+    width: percent($w, parse-int($max-width));
+  }
+  @if $h != null {
+    height: percent($h, $parent-h);
+  }
+  @if $top != null {
+    top: percent($top, $parent-h);
+  }
+  @if $left != null {
+    left: percent($left, parse-int($max-width));
+  }
+}
+
 @mixin sr-only($focusable: false) {
   position: absolute;
   overflow: hidden;
@@ -295,4 +310,10 @@
 @mixin flex-column-center-h {
   @include flex-column;
   align-items: center;
+}
+
+@mixin res-bg {
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
 }
