@@ -31,6 +31,70 @@ $(document).on('ready', function () {
   });
 
   AOS.init();
+
+  // Section3 Swiper 초기화
+  const section3Swiper = new Swiper('.section3 .slider-wrapper', {
+    slidesPerView: 'auto',
+    spaceBetween: 104,
+    slidesOffsetAfter: 500,
+    speed: 600,
+    autoHeight: true,
+    navigation: false,
+    pagination: {
+      el: '.section3 .swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      720: {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        slidesOffsetAfter: 0,
+      },
+      768: {
+        spaceBetween: 30,
+        slidesOffsetAfter: 340,
+      },
+      1024: {
+        spaceBetween: 50,
+        slidesOffsetAfter: 240,
+      },
+      1500: {
+        spaceBetween: 80,
+        slidesOffsetAfter: 340,
+      },
+    },
+  });
+
+  // Section5 Swiper 초기화
+  const section5Swiper = new Swiper('.section5 .slider-wrapper', {
+    slidesPerView: 'auto',
+    slidesOffsetBefore: 370,
+    slidesOffsetAfter: 120,
+    spaceBetween: 5,
+    loop: false,
+    speed: 800,
+    autoHeight: true,
+    pagination: false,
+    navigation: false,
+    breakpoints: {
+      1024: {
+        slidesOffsetBefore: 20,
+        slidesOffsetAfter: 30,
+      },
+      1400: {
+        slidesOffsetBefore: 200,
+        slidesOffsetAfter: 120,
+      },
+      1600: {
+        slidesOffsetBefore: 270,
+        slidesOffsetAfter: 120,
+      },
+      1800: {
+        slidesOffsetBefore: 310,
+        slidesOffsetAfter: 120,
+      },
+    },
+  });
 });
 
 $window.on('resize', function () {});

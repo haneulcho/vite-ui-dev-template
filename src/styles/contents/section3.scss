@@ -44,11 +44,32 @@
     position: absolute;
     top: 11.99%;
     left: 38.5%;
+    width: 61.5%;
+    padding-bottom: vw(51px);
+
+    .swiper-pagination {
+      display: none;
+    }
+
+    .swiper-pagination-bullet {
+      border-radius: 50%;
+      background: #5b6f6d;
+      opacity: 1;
+      width: vw(7px);
+      height: vw(7px);
+      margin: 0 vw(3.5px);
+      &.swiper-pagination-bullet-active {
+        border-radius: 50px;
+        background: #ef4d9f !important;
+        width: vw(24px);
+        height: vw(7px);
+      }
+    }
 
     .swiper-slide {
       position: relative;
-      width: 640px;
-      margin-right: 104px;
+      width: vw(640px, 1920);
+      max-width: 640px;
 
       .slide-image {
         position: relative;
@@ -75,9 +96,14 @@
     @include screen("mobile") {
       top: 31.8%;
       left: 1%;
+      width: 99%;
+
+      .swiper-pagination {
+        display: block;
+      }
 
       .swiper-slide {
-        width: 339px;
+        width: vw(339px);
         margin-right: 0;
 
         .slide-txt {
