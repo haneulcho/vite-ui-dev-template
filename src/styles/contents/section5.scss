@@ -34,36 +34,37 @@
   .slider-wrapper {
     position: absolute;
     top: 27.8%;
-    left: 18.9%;
+    left: 0;
+    width: 100%;
 
     .swiper-slide {
       display: flex;
       flex-direction: column;
-      gap: 23px;
-      width: 568px;
+      gap: 1.19vw;
+      width: 29.5vw;
+      max-width: 568px;
 
       > p {
-        padding-left: 52px;
+        padding: 0 vw(40px, 1920) 0 vw(52px, 1920);
         font-size: fluid-font(21px, $min: 14px);
         line-height: 1.476;
         color: #222;
-        word-break: keep-all;
       }
     }
 
-    // FIXME: 모바일 처리 필요
     @include screen("mobile") {
       top: 32.5%;
-      left: 5.6%;
 
       .swiper-slide {
         display: flex;
         flex-direction: column;
-        gap: 23px;
-        width: 370px;
+        gap: vw(10px);
+        width: vw(285px);
 
         > p {
-          display: none;
+          padding: 0 vw(20px) 0 vw(22px);
+          font-size: vw(14px);
+          line-height: 1.714;
         }
       }
     }
