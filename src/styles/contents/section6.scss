@@ -209,12 +209,15 @@
     @include to-percent($sec-height, $w: 85, $h: 52, $left: 774);
     background-image: url(images/sec06-line1.png);
     bottom: 14.25%;
+    animation: line1-sway 1s ease-in-out infinite;
+    transform-origin: center bottom;
   }
 
   .line2 {
     @include to-percent($sec-height, $w: 380, $h: 25, $left: 630);
     background-image: url(images/sec06-line2.png);
     bottom: 6.091%;
+    animation: line2-draw 1s ease-in-out infinite;
   }
 
   @include screen("mobile") {
@@ -240,5 +243,29 @@
       background-image: url(images/sec06-line2-m.png);
       bottom: 5.091%;
     }
+  }
+}
+
+@keyframes line1-sway {
+  0% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes line2-draw {
+  0% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(2px);
   }
 }
