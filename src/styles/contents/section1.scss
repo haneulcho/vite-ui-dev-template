@@ -123,7 +123,12 @@
 
 .section1-2 {
   $sec-height: 958;
-  $sec-height-m: 682;
+  $sec-height-m: 664;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 
   .sub-title {
     position: absolute;
@@ -138,7 +143,7 @@
     @include to-percent($sec-height, $w: 264, $top: 488, $left: 1293);
 
     @include screen("mobile") {
-      @include to-percent-m($sec-height-m, $w: 107, $top: 209, $left: 246);
+      @include to-percent-m($sec-height-m, $w: 106, $top: 219, $left: 246);
     }
   }
 
@@ -176,7 +181,7 @@
     }
 
     @include screen("mobile") {
-      @include to-percent-m($sec-height-m, $w: 70, $h: 120, $top: 79);
+      @include to-percent-m($sec-height-m, $w: 70, $h: 120, $top: 92);
       &.title1 {
         @include to-percent-m($sec-height-m, $left: 6);
         background-image: url(images/sec01-2-title1-m.png);
