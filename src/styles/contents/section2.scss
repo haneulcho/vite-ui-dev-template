@@ -21,14 +21,14 @@
       &::after {
         @include pseudo(12%, 19%);
         bottom: 24%;
-        right: 15%;
+        right: 16%;
         background: url(images/sec02-quot2.png) no-repeat top center;
         background-size: contain;
       }
     }
     p {
       margin-top: 8%;
-      font-size: fluid-font(23px);
+      font-size: fluid-font(23px, $max: 23px, $min: 11px);
       color: #000;
       line-height: 1.522;
       strong {
@@ -58,7 +58,7 @@
         div {
           display: inline-block;
           margin: 0 0.6%;
-          padding: 0.8% 4.5%;
+          padding: 0 4.5%;
           background-color: #fb48a3;
         }
         em {
