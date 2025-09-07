@@ -6,16 +6,16 @@
   @return url($base + "fonts/" + $path);
 }
 
-@function vw($n) {
-  @return ($n / $width) * 100vw;
-}
-
 @function percent($value, $width) {
   @return ($value / $width) * 100%;
 }
 
 @function parse-int($n) {
   @return $n / ($n * 0 + 1);
+}
+
+@function vw($px, $base: 360) {
+  @return (parse-int($px) / $base) * 100vw;
 }
 
 @function fluid-font($target, $min: null, $max: null, $base: 1920) {
@@ -32,22 +32,14 @@
   }
 }
 
-@function text-contrast(
-  $color,
-  $color-light: $color-white,
-  $color-dark: $color-black
-) {
+@function text-contrast($color, $color-light: $color-white, $color-dark: $color-black) {
   @if (type-of($color) != "color") {
     @warn '존재하지 않는 색상입니다.';
     @return null;
   }
 
-  $brightness: round(
-    (red($color) * 299) + (green($color) * 587) + (blue($color) * 114) / 1000
-  );
-  $light: round(
-    (red(white) * 299) + (green(white) * 587) + (blue(white) * 114) / 1000
-  );
+  $brightness: round((red($color) * 299) + (green($color) * 587) + (blue($color) * 114) / 1000);
+  $light: round((red(white) * 299) + (green(white) * 587) + (blue(white) * 114) / 1000);
 
   @if (abs($brightness) < ($light / 2)) {
     @return $color-light;
@@ -79,13 +71,9 @@
   $separator: rem-separator($values);
 
   @each $value in $values {
-    @if (
-      type-of($value) == "number" and unit($value) == "rem" and $to == "px"
-    ) {
+    @if (type-of($value) == "number" and unit($value) == "rem" and $to == "px") {
       $result: append($result, $value / 1rem * $rem-baseline, $separator);
-    } @else if
-      (type-of($value) == "number" and unit($value) == "px" and $to == "rem")
-    {
+    } @else if (type-of($value) == "number" and unit($value) == "px" and $to == "rem") {
       $result: append($result, $value / $rem-baseline * 1rem, $separator);
     } @else if (type-of($value) == "list") {
       $value-separator: rem-separator($value);
