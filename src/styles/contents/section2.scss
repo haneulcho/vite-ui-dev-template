@@ -12,14 +12,14 @@
       line-height: 1.2;
       &::before {
         @include pseudo(12%, 19%);
-        top: 5%;
+        top: 3.5%;
         left: -13%;
         background: url(images/sec02-quot1.png) no-repeat top center;
         background-size: contain;
       }
       &::after {
-        @include pseudo(12%, 20%);
-        bottom: 23%;
+        @include pseudo(12%, 19%);
+        bottom: 24%;
         right: 15%;
         background: url(images/sec02-quot2.png) no-repeat top center;
         background-size: contain;

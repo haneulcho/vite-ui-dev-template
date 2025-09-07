@@ -1,0 +1,98 @@
+.section8 {
+  $section-height: 1003;
+
+  .bubble {
+    position: absolute;
+    &.bubble1 {
+      @include to-percent($section-height, $w: 394, $top: 102, $left: 509);
+      z-index: 1;
+    }
+    &.bubble2 {
+      @include to-percent($section-height, $w: 511, $top: 230, $left: 416);
+    }
+    &.bubble3 {
+      @include to-percent($section-height, $w: 441, $top: 509, $left: 512);
+    }
+  }
+  .gabee {
+    position: absolute;
+    @include to-percent($section-height, $w: 650, $left: 924);
+    bottom: 0;
+  }
+
+  .button-group {
+    position: absolute;
+    @include to-percent($section-height, $w: 710, $top: 692, $left: 415);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.9%;
+
+    a {
+      flex: 1 0 0%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 50px 20px 48px 60px;
+      padding: min(2.3vw, 50px) min(2.85vw, 20px) min(2.4vw, 48px) min(2.85vw, 60px);
+      font-size: fluid-font(25px, $min: 13px);
+      font-weight: bold;
+      line-height: 1;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 20px;
+      transition: transform 300ms;
+
+      &:hover {
+        transform: translate(2px, 2px);
+
+        .button-inner > span:last-child::after {
+          transform: translateX(4px);
+        }
+      }
+
+      &.--outline {
+        color: #ef4d9f;
+        border-color: #ef4d9e;
+        background-color: #fff7fb;
+        box-shadow: 7.986px 6.018px 24px 0px rgba(72, 56, 71, 0.15);
+
+        .button-inner > span:last-child::after {
+          background-image: url(images/sec08-arrow1.png);
+        }
+      }
+
+      &.--filled {
+        color: #fff;
+        border-color: #ef4d9f;
+        background-color: #ef4d9f;
+        box-shadow: 4.663px 3.776px 24px 0px rgba(72, 56, 71, 0.25);
+
+        .button-inner > span:last-child::after {
+          background-image: url(images/sec08-arrow2.png);
+        }
+      }
+    }
+
+    .button-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+
+      > span {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &:last-child::after {
+          @include pseudo(1.3rem, 1.9rem, relative);
+          margin: 0.1rem 0 0 0.8rem;
+          transition: all 300ms;
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+}

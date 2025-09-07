@@ -1,0 +1,79 @@
+.section3 {
+  $section-height: 917;
+
+  .title-wrapper {
+    position: absolute;
+    top: 37.7%;
+    left: 8.3%;
+
+    h2 {
+      font-size: fluid-font(47.5px, $min: 24px);
+      line-height: 1.341;
+      color: #111;
+      font-weight: 500 !important;
+      letter-spacing: -0.2rem;
+      em {
+        font-weight: bolder !important;
+      }
+    }
+    p {
+      margin-top: 6%;
+      letter-spacing: 0rem;
+      color: #333;
+      font-size: fluid-font(22px, $min: 14px);
+      line-height: 1.2;
+    }
+  }
+
+  .slider-wrapper {
+    position: absolute;
+    top: 11.99%;
+    left: 38.5%;
+
+    .swiper-slide {
+      position: relative;
+      width: 640px;
+      margin-right: 104px;
+
+      .slide-image {
+        position: relative;
+        z-index: 0;
+      }
+      .slide-txt {
+        position: absolute;
+        bottom: 24.84%;
+        z-index: 1;
+        width: 23.4%;
+
+        &.slide-txt1 {
+          right: 6.05%;
+        }
+        &.slide-txt2 {
+          right: 0;
+        }
+        &.slide-txt3 {
+          right: 11.09%;
+        }
+      }
+    }
+  }
+
+  .bubble {
+    position: absolute;
+    &.bubble1 {
+      @include to-percent($section-height, $w: 394, $top: 102, $left: 509);
+      z-index: 1;
+    }
+    &.bubble2 {
+      @include to-percent($section-height, $w: 511, $top: 230, $left: 416);
+    }
+    &.bubble3 {
+      @include to-percent($section-height, $w: 441, $top: 509, $left: 512);
+    }
+  }
+  .gabee {
+    position: absolute;
+    @include to-percent($section-height, $w: 650, $left: 924);
+    bottom: 0;
+  }
+}

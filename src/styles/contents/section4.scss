@@ -1,0 +1,113 @@
+.section4 {
+  $section-height: 960;
+
+  .card {
+    position: absolute;
+    &.only-pc {
+      @include to-percent($section-height, $w: 370, $left: 519);
+      bottom: 0;
+    }
+    &.only-mo {
+      @include to-percent($section-height, $w: 360, $left: 744);
+      bottom: 0;
+    }
+  }
+
+  h2 {
+    position: absolute;
+    display: block;
+    @include res-bg;
+    @include to-percent(
+      $section-height,
+      $w: 199,
+      $h: 93,
+      $top: 141,
+      $left: 915
+    );
+    background-image: url(images/sec04-says.png);
+    > span {
+      @include sr-only;
+    }
+  }
+
+  .message-wrapper {
+    position: absolute;
+    @include to-percent(
+      $section-height,
+      $w: 600,
+      $h: 500,
+      $top: 266,
+      $left: 923
+    );
+    p {
+      margin-left: 2.6%;
+    }
+    p,
+    p > strong {
+      font-family:
+        "Gaemittongkkumeong",
+        Pretendard,
+        Noto Sans KR,
+        Noto Sans,
+        -apple-system,
+        BlinkMacSystemFont,
+        Roboto,
+        "Apple SD Gothic Neo",
+        "Helvetica Neue",
+        Helvetica,
+        Arial,
+        "Malgun Gothic",
+        "맑은 고딕",
+        Dotum,
+        "돋움",
+        sans-serif;
+      color: #272424;
+    }
+    strong {
+      font-weight: 700 !important;
+    }
+    .letter {
+      font-size: fluid-font(46px, $min: 20px);
+      line-height: 1;
+    }
+    .main-message {
+      margin-top: 3.6%;
+      margin-bottom: 7.8%;
+      font-size: fluid-font(56.5px, $min: 24px);
+      font-weight: bold;
+      line-height: 0.92;
+    }
+    a {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      width: 82.4%;
+      height: 18%;
+      padding: 0 7.3% 0 8%;
+      color: #ffffff;
+      font-size: fluid-font(27px, $min: 10px);
+      line-height: 1;
+      border-radius: 5px;
+      background-color: #d11875;
+      box-shadow: 4.663px 3.776px 24px 0px rgba(72, 56, 71, 0.2);
+      .arrow {
+        display: block;
+        @include res-bg;
+        width: 3.2%;
+        height: 27%;
+        margin-top: 1%;
+        background-image: url(images/sec04-arrow.png);
+      }
+    }
+  }
+  .bg-txt {
+    position: absolute;
+    display: block;
+    @include res-bg;
+    @include to-percent($section-height, $w: 1901, $h: 659, $left: 12);
+    bottom: 0;
+    background-image: url(images/sec04-bg-txt.png);
+  }
+}

@@ -110,19 +110,28 @@
       </h2>
       <p>두근두근! 아이의 선택을 받아보세요!</p>
     </div>
+
     <div class="slider-wrapper swiper-container">
       <ol class="swiper-wrapper">
         <li class="swiper-slide">
-          <span>STEP 01. 아이에게 보낼 사진을 골라요</span>
-          <img src="/images/sec03-step1.png" alt="가비: I LIKE IT!" />
+          <img class="slide-image" src="/images/sec03-step1.png" alt="가비: I LIKE IT!" />
+          <img
+            class="slide-txt slide-txt1"
+            src="/images/sec03-step1-txt.png"
+            alt="STEP 01. 아이에게 보낼 사진을 골라요"
+          />
         </li>
         <li class="swiper-slide">
-          <span>STEP 02. 후원신청 후 사진을 보내요</span>
-          <img src="/images/sec03-step2.png" alt="가비: 신청 완료!" />
+          <img class="slide-image" src="/images/sec03-step2.png" alt="가비: 신청 완료!" />
+          <img
+            class="slide-txt slide-txt2"
+            src="/images/sec03-step2-txt.png"
+            alt="STEP 02. 후원신청 후 사진을 보내요"
+          />
         </li>
         <li class="swiper-slide">
-          <span>STEP 03. 아이의 선택을 기다려요</span>
-          <img src="/images/sec03-step3.png" alt="가비: 너무 설레요!" />
+          <img class="slide-image" src="/images/sec03-step3.png" alt="가비: 너무 설레요!" />
+          <img class="slide-txt slide-txt3" src="/images/sec03-step3-txt.png" alt="STEP 03. 아이의 선택을 기다려요" />
         </li>
       </ol>
       <div class="swiper-pagination"></div>
@@ -133,10 +142,15 @@
 
 <section class="app-section section4">
   <div class="app-inner">
-    <img class="card only-pc" src="/images/sec04-says.png" alt="Gabee X Chosen" />
-    <img class="card only-mo" src="/images/sec04-says-m.png" alt="Gabee X Chosen" />
+    <span class="bg-txt"></span>
+    <span class="card only-pc">
+      <img src="/images/sec04-photo.png" alt="Gabee X Chosen" />
+    </span>
+    <span class="card only-mo">
+      <img src="/images/sec04-photo-m.png" alt="Gabee X Chosen" />
+    </span>
+    <h2><span>Gabee Says -</span></h2>
     <div class="message-wrapper">
-      <h2>Gabee Says -</h2>
       <p class="letter">
         내가 후원할 아동에게 선택을 받는다는 것,
         <br />
@@ -152,13 +166,14 @@
         <strong>함께 만들어가는 후원이에요</strong>
       </p>
       <a id="section4-btn" href="#">
-        내 사진 보내고
-        <b>아이의 선택</b>
-        받기
+        <span>
+          내 사진 보내고
+          <strong>아이의 선택</strong>
+          받기
+        </span>
+        <span class="arrow"></span>
       </a>
     </div>
-
-    <span class="bg-txt"></span>
   </div>
   <img class="section-bg" src="/images/sec04-bg.jpg" alt="배경" />
 </section>
@@ -168,11 +183,8 @@
     <!-- TODO: 텍스트 각각 fade-up -->
     <div class="title-wrapper">
       <h2>
-        <span>
-          <strong>아이의 선택</strong>
-          은
-        </span>
-        <span>이렇게 진행됩니다</span>
+        <span><strong>아이의 선택</strong>은 </span>
+        <span>이렇게 진행됩니다 </span>
       </h2>
     </div>
     <!-- TODO: 슬라이더 -->
@@ -197,71 +209,63 @@
       </ul>
     </div>
   </div>
+  <img class="section-bg" src="/images/sec05-bg.jpg" alt="배경" />
 </section>
 
 <section class="app-section section6">
   <div class="app-inner">
-    <h2>YOU ARE CHOSEN!</h2>
-    <p>
-      아이들이
-      <strong>나를 선택한 귀여운 이유,</strong>
-      <br />
-      궁금하지 않나요?
-    </p>
+    <h2><img src="/images/sec06-title.png" alt="YOU ARE CHOSEN!" /></h2>
+    <p class="sub-title"
+      ><img src="/images/sec06-sub-title.png" alt="아이들이 나를 선택한 귀여운 이유, 궁금하지 않나요?"
+    /></p>
 
     <div class="sketch-book">
-      <ul class="sticky-images">
-        <li>
-          <img src="/images/sec06-sticky1.png" alt="YOU ARE CHOSEN! 1" />
-        </li>
-        <li>
-          <img src="/images/sec06-sticky2.png" alt="YOU ARE CHOSEN! 2" />
-        </li>
-        <li>
-          <img src="/images/sec06-sticky3.png" alt="YOU ARE CHOSEN! 3" />
-        </li>
-      </ul>
-
+      <div class="sketch-book-bg">
+        <img class="only-pc" src="/images/sec06-bg-sketchbook.jpg" alt="배경" />
+        <img class="only-mo" src="/images/sec06-bg-sketchbook-m.jpg" alt="배경" />
+      </div>
+      <div class="sticky-images">
+        <!-- TODO: <li class="active"> -->
+        <ul>
+          <li>
+            <img src="/images/sec06-photo1.png" alt="YOU ARE CHOSEN! 1" />
+          </li>
+          <li>
+            <img src="/images/sec06-photo2.png" alt="YOU ARE CHOSEN! 2" />
+          </li>
+          <li>
+            <img src="/images/sec06-photo3.png" alt="YOU ARE CHOSEN! 3" />
+          </li>
+        </ul>
+      </div>
       <!-- TODO: 한 단계씩 fade-up -->
       <ul class="why-chosen">
-        <li>
-          <img src="/images/sec06-why1.jpg" alt="후원자님이 웃어서 선택했어요" />
+        <li class="why1">
+          <p>후원자님이 웃어서 선택했어요</p>
         </li>
-        <li>
-          <img src="/images/sec06-why2.jpg" alt="후원자님이 입은 파란 재킷이 마음에 들어요" />
+        <li class="why2">
+          <p>후원자님이 입은 파란 재킷이 마음에 들어요</p>
         </li>
-        <li>
-          <img src="/images/sec06-why3.jpg" alt="저와 같은 어린이에요" />
+        <li class="why3">
+          <p>저와 같은 어린이에요</p>
         </li>
-        <li>
-          <img src="/images/sec06-why4.jpg" alt="후원자님이 어린이를 좋아해서 선택했어요" />
+        <li class="why4">
+          <p>후원자님이 어린이를 좋아해서 선택했어요</p>
         </li>
-        <li>
-          <img src="/images/sec06-why5.jpg" alt="머리가 길고 검은색이라 멋져요" />
+        <li class="why5">
+          <p>머리가 길고 검은색이라 멋져요</p>
         </li>
-        <li>
-          <img src="/images/sec06-why6.jpg" alt="강아지가 있어서 좋아요. 저도 강아지 좋아해요" />
+        <li class="why6">
+          <p>강아지가 있어서 좋아요. 저도 강아지 좋아해요</p>
         </li>
       </ul>
     </div>
 
-    <div class="recommend-message">
-      <p>
-        <span class="line1">
-          <strong>지금 참여</strong>
-          하고
-        </span>
-        <br />
-        <span class="line2">
-          <strong>귀여운 손글씨 편지</strong>
-          도 받아보세요!
-        </span>
-      </p>
-    </div>
-
-    <span class="obj obj1"></span>
-    <span class="obj obj2"></span>
-    <span class="obj obj3"></span>
+    <p class="recommend-message"
+      ><img src="/images/sec06-recommend-txt.png" alt="지금 참여하고 귀여운 손글씨 편지도 받아보세요!"
+    /></p>
+    <span class="line1"></span>
+    <span class="line2"></span>
   </div>
   <img class="section-bg" src="/images/sec06-bg.jpg" alt="배경" />
 </section>
@@ -278,22 +282,22 @@
       <li>
         <img src="/images/sec07-story1.png" alt="배고프지 않고, 아프지 않게" />
         <p>
-          깨끗한 물, 충분한 영양 섭취를 도와 영양실조를 겪지 않도록 지원합니다. 손 씻기와 같은 위생교육을 통해 질병을
-          예방합니다.
+          깨끗한 물, 충분한 영양 섭취를 도와 영양실조를 <br />겪지 않도록 지원합니다. 손 씻기와 같은 <br />위생교육을
+          통해 질병을 예방합니다.
         </p>
       </li>
       <li>
         <img src="/images/sec07-story2.png" alt="배우고 꿈을 꾸도록" />
         <p>
-          학교를 짓고, 교구재를 지원하며 교육을 방해하는 근본적 문제를 파악하고 해결합니다. 아동 권리의 중요성을 알고
-          지키는 법을 배웁니다.
+          학교를 짓고, 교구재를 지원하며 교육을 <br />방해하는 근본적 문제를 파악하고 해결합니다. <br />아동 권리의
+          중요성을 알고 지키는 법을 배웁니다.
         </p>
       </li>
       <li>
         <img src="/images/sec07-story3.png" alt="지속가능한 변화를 위해" />
         <p>
-          환경에 맞는 다양한 방법으로 소득을 창출하기 위해 교육을 진행합니다. 이를 통해 내일을 준비하는 경제적 기반을
-          만들어 갑니다.
+          환경에 맞는 다양한 방법으로 소득을 창출하기 <br />위해 교육을 진행합니다. 이를 통해 내일을 <br />준비하는
+          경제적 기반을 만들어 갑니다.
         </p>
       </li>
     </ul>
@@ -303,32 +307,32 @@
 
 <section class="app-section section8">
   <div class="app-inner">
-    <div class="bubbles">
-      <h2 class="bubble">
-        <img src="/images/sec08-bubble1.png" alt="잠깐, 사진 없이도 후원할 수 있어요!" />
-      </h2>
-      <p class="bubble">
-        <img
-          src="/images/sec08-bubble2.png"
-          alt="하지만 사진을 보내면, 아이의 ‘첫 선택’을 기다리는 설렘이 시작돼요. 아이들은 있는 모습 그대로의 후원자님을 기쁘게 선택할 거예요."
-        />
-      </p>
-      <p class="bubble">
-        <img src="/images/sec08-bubble3.png" alt="그래도 여전히 망설여지신다면 괜찮아요. 그 마음만으로도 충분해요!" />
-      </p>
-    </div>
+    <h2 class="bubble bubble1">
+      <img src="/images/sec08-bubble1.png" alt="잠깐, 사진 없이도 후원할 수 있어요!" />
+    </h2>
+    <p class="bubble bubble2">
+      <img
+        src="/images/sec08-bubble2.png"
+        alt="하지만 사진을 보내면, 아이의 ‘첫 선택’을 기다리는 설렘이 시작돼요. 아이들은 있는 모습 그대로의 후원자님을 기쁘게 선택할 거예요."
+      />
+    </p>
+    <p class="bubble bubble3">
+      <img src="/images/sec08-bubble3.png" alt="그래도 여전히 망설여지신다면 괜찮아요. 그 마음만으로도 충분해요!" />
+    </p>
 
-    <img class="gabee" src="/images/sec08-gabee.png" alt="초즌 후원자 가비" />
+    <span class="gabee">
+      <img src="/images/sec08-gabee.png" alt="초즌 후원자 가비" />
+    </span>
 
     <div class="button-group">
-      <a href="#" id="section8-cta01" class="btn">
+      <a href="#" id="section8-cta01" class="--outline">
         <div class="button-inner">
           <span>Umm...</span>
           <span>사진없이 아이를</span>
           <span>후원하고 싶어요</span>
         </div>
       </a>
-      <a href="#" id="section8-cta02" class="btn btn--filled">
+      <a href="#" id="section8-cta02" class="--filled">
         <div class="button-inner">
           <span>오 한번 해볼게요!</span>
           <span>사진 보내고 아이의 선택</span>

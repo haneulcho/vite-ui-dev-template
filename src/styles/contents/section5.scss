@@ -1,0 +1,39 @@
+.section5 {
+  $section-height: 865;
+
+  .title-wrapper {
+    position: absolute;
+    top: 15.8%;
+    left: 20.8%;
+    color: #111111;
+
+    h2 {
+      strong {
+        font-weight: bold !important;
+      }
+      font-size: fluid-font(44px, $min: 20px);
+      line-height: 1.2;
+    }
+  }
+
+  .slider-wrapper {
+    position: absolute;
+    top: 27.8%;
+    left: 18.9%;
+
+    .swiper-slide {
+      display: flex;
+      flex-direction: column;
+      gap: 23px;
+      width: 568px;
+
+      > p {
+        padding-left: 52px;
+        font-size: fluid-font(21px, $min: 14px);
+        line-height: 1.476;
+        color: #222;
+        word-break: keep-all;
+      }
+    }
+  }
+}

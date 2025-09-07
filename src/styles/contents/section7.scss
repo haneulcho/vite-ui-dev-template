@@ -1,0 +1,39 @@
+.section7 {
+  $section-height: 974;
+
+  .title-wrapper {
+    padding-top: 7.5%;
+    width: 100%;
+    color: #111111;
+
+    h2 {
+      strong {
+        font-weight: bold !important;
+      }
+      text-align: center;
+      font-size: fluid-font(44px, $min: 20px);
+      line-height: 1.2;
+    }
+  }
+
+  .stories {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 3%;
+    width: 65%;
+    margin: 0 17.5%;
+    padding-top: 3.8%;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      p {
+        margin: 4.7% 0 0 10.2%;
+        font-size: fluid-font(19px, $min: 12px);
+        line-height: 1.579;
+        color: #333;
+      }
+    }
+  }
+}
