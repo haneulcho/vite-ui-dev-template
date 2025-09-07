@@ -1,5 +1,6 @@
 .section3 {
-  $section-height: 917;
+  $sec-height: 917;
+  $sec-height-m: 655;
 
   .title-wrapper {
     position: absolute;
@@ -22,6 +23,20 @@
       color: #333;
       font-size: fluid-font(22px, $min: 14px);
       line-height: 1.2;
+    }
+
+    @include screen("mobile") {
+      top: 8.3%;
+      left: 8.5%;
+
+      h2 {
+        font-size: vw(27px);
+        line-height: 1.333;
+      }
+      p {
+        font-size: vw(16px);
+        line-height: 1.2;
+      }
     }
   }
 
@@ -56,24 +71,30 @@
         }
       }
     }
-  }
 
-  .bubble {
-    position: absolute;
-    &.bubble1 {
-      @include to-percent($section-height, $w: 394, $top: 102, $left: 509);
-      z-index: 1;
+    @include screen("mobile") {
+      top: 31.8%;
+      left: 1%;
+
+      .swiper-slide {
+        width: 339px;
+        margin-right: 0;
+
+        .slide-txt {
+          bottom: 21.3%;
+          width: 27.8%;
+
+          &.slide-txt1 {
+            right: 2.05%;
+          }
+          &.slide-txt2 {
+            right: 0;
+          }
+          &.slide-txt3 {
+            right: 5%;
+          }
+        }
+      }
     }
-    &.bubble2 {
-      @include to-percent($section-height, $w: 511, $top: 230, $left: 416);
-    }
-    &.bubble3 {
-      @include to-percent($section-height, $w: 441, $top: 509, $left: 512);
-    }
-  }
-  .gabee {
-    position: absolute;
-    @include to-percent($section-height, $w: 650, $left: 924);
-    bottom: 0;
   }
 }

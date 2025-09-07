@@ -1,14 +1,25 @@
 .section6 {
-  $section-height: 1740;
+  $sec-height: 1740;
+  $sec-height-m: 1170;
 
   h2 {
     position: absolute;
-    @include to-percent($section-height, $w: 867, $top: 114, $left: 523);
+    @include to-percent($sec-height, $w: 867, $top: 114, $left: 523);
   }
 
   .sub-title {
     position: absolute;
-    @include to-percent($section-height, $w: 367, $top: 267, $left: 777);
+    @include to-percent($sec-height, $w: 367, $top: 267, $left: 777);
+  }
+
+  @include screen("mobile") {
+    h2 {
+      @include to-percent-m($sec-height-m, $w: 324, $top: 70, $left: 17);
+    }
+    .sub-title {
+      @include to-percent-m($sec-height-m, $w: 248, $top: 444, $left: 56);
+      z-index: 10;
+    }
   }
 
   .sketch-book {
@@ -52,6 +63,32 @@
       }
     }
 
+    @include screen("mobile") {
+      width: 100%;
+      top: 17.1%;
+
+      .sticky-images {
+        top: -9.1%;
+        left: 16.9%;
+        width: 65.83%;
+        height: 37.02%;
+        background-image: url(images/sec06-frame-m.png);
+
+        &::after {
+          @include pseudo(41.8%, 24.5%);
+          top: -0.7%;
+          right: -4%;
+          background: url(images/sec06-photo-tip-m.png) no-repeat top right;
+          background-size: contain;
+        }
+
+        ul > li {
+          left: 6.1%;
+          width: 86.2%;
+        }
+      }
+    }
+
     .why-chosen {
       position: absolute;
       top: 0;
@@ -65,7 +102,7 @@
 
         p {
           text-align: right;
-          font-size: fluid-font(19px, $min: 14px);
+          font-size: fluid-font(19px, $min: 11px);
           color: #d05f98;
           line-height: 1;
         }
@@ -89,12 +126,47 @@
           top: 84.9%;
         }
       }
+
+      @include screen("mobile") {
+        width: 100%;
+        right: unset;
+
+        > li {
+          width: 100%;
+          text-align: center;
+
+          p {
+            text-align: center;
+            font-size: vw(13px);
+            font-weight: 500;
+          }
+
+          &.why1 {
+            top: 43.8%;
+          }
+          &.why2 {
+            top: 54.3%;
+          }
+          &.why3 {
+            top: 62.5%;
+          }
+          &.why4 {
+            top: 71.1%;
+          }
+          &.why5 {
+            top: 82%;
+          }
+          &.why6 {
+            top: 90.9%;
+          }
+        }
+      }
     }
   }
 
   .recommend-message {
     position: absolute;
-    @include to-percent($section-height, $w: 647, $left: 635);
+    @include to-percent($sec-height, $w: 647, $left: 635);
     bottom: 7.87%;
 
     &::before {
@@ -114,14 +186,39 @@
   }
 
   .line1 {
-    @include to-percent($section-height, $w: 85, $h: 52, $left: 774);
+    @include to-percent($sec-height, $w: 85, $h: 52, $left: 774);
     background-image: url(images/sec06-line1.png);
     bottom: 14.25%;
   }
 
   .line2 {
-    @include to-percent($section-height, $w: 380, $h: 25, $left: 630);
+    @include to-percent($sec-height, $w: 380, $h: 25, $left: 630);
     background-image: url(images/sec06-line2.png);
     bottom: 6.091%;
+  }
+
+  @include screen("mobile") {
+    .recommend-message {
+      @include to-percent-m($sec-height-m, $w: 299, $left: 31);
+      bottom: 6.47%;
+
+      &::before {
+        @include pseudo(2px, 91%);
+        top: -152%;
+        left: 48%;
+      }
+    }
+
+    .line1 {
+      @include to-percent-m($sec-height-m, $w: 44, $h: 27, $left: 90);
+      background-image: url(images/sec06-line1-m.png);
+      bottom: 10.95%;
+    }
+
+    .line2 {
+      @include to-percent-m($sec-height-m, $w: 177, $h: 12, $left: 27);
+      background-image: url(images/sec06-line2-m.png);
+      bottom: 5.091%;
+    }
   }
 }

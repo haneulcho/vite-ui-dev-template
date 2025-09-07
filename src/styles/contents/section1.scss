@@ -1,133 +1,247 @@
 .section1-1 {
-  $section-height: 1030;
+  $sec-height: 1030;
+  $sec-height-m: 664;
   .sub-title {
     position: absolute;
-    @include to-percent($section-height, $w: 1008, $top: 75, $left: 466);
+    @include to-percent($sec-height, $w: 1008, $top: 75, $left: 466);
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 169, $top: 30, $left: 96);
+    }
   }
   .main-title-copy {
     position: absolute;
-    @include to-percent($section-height, $w: 264, $top: 488, $left: 1293);
+    @include to-percent($sec-height, $w: 264, $top: 488, $left: 1293);
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 106, $top: 219, $left: 246);
+    }
   }
   .main-title {
     position: absolute;
     display: block;
     @include res-bg;
-    @include to-percent($section-height, $w: 220, $h: 350, $top: 144);
+    @include to-percent($sec-height, $w: 220, $h: 350, $top: 144);
     > span {
       @include sr-only;
     }
     &.title1 {
-      @include to-percent($section-height, $left: 344);
+      @include to-percent($sec-height, $left: 344);
       background-image: url(images/sec01-1-title1.png);
     }
     &.title2 {
-      @include to-percent($section-height, $left: 554);
+      @include to-percent($sec-height, $left: 554);
       background-image: url(images/sec01-1-title2.png);
     }
     &.title3 {
-      @include to-percent($section-height, $left: 748);
+      @include to-percent($sec-height, $left: 748);
       background-image: url(images/sec01-1-title3.png);
     }
     &.title4 {
-      @include to-percent($section-height, $left: 956);
+      @include to-percent($sec-height, $left: 956);
       background-image: url(images/sec01-1-title4.png);
     }
     &.title5 {
-      @include to-percent($section-height, $left: 1165);
+      @include to-percent($sec-height, $left: 1165);
       background-image: url(images/sec01-1-title5.png);
     }
     &.title6 {
-      @include to-percent($section-height, $left: 1357);
+      @include to-percent($sec-height, $left: 1357);
       background-image: url(images/sec01-1-title6.png);
+    }
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 70, $h: 120, $top: 92);
+      &.title1 {
+        @include to-percent-m($sec-height-m, $left: 6);
+        background-image: url(images/sec01-1-title1-m.png);
+      }
+      &.title2 {
+        @include to-percent-m($sec-height-m, $left: 68);
+        background-image: url(images/sec01-1-title2-m.png);
+      }
+      &.title3 {
+        @include to-percent-m($sec-height-m, $left: 127);
+        background-image: url(images/sec01-1-title3-m.png);
+      }
+      &.title4 {
+        @include to-percent-m($sec-height-m, $left: 176);
+        background-image: url(images/sec01-1-title4-m.png);
+      }
+      &.title5 {
+        @include to-percent-m($sec-height-m, $left: 237);
+        background-image: url(images/sec01-1-title5-m.png);
+      }
+      &.title6 {
+        @include to-percent-m($sec-height-m, $left: 292);
+        background-image: url(images/sec01-1-title6-m.png);
+      }
     }
   }
   .gabee {
     position: absolute;
-    @include to-percent($section-height, $w: 490, $left: 744);
+    @include to-percent($sec-height, $w: 490, $left: 744);
     bottom: 0;
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 306, $left: 54);
+    }
   }
   .signature-gabee {
     position: absolute;
-    @include to-percent($section-height, $w: 274, $top: 538, $left: 424);
+    @include to-percent($sec-height, $w: 274, $top: 538, $left: 424);
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 105, $top: 248, $left: 14);
+    }
   }
   .diamond {
     position: absolute;
     display: block;
     @include res-bg;
-    @include to-percent($section-height, $w: 21, $h: 26);
+    @include to-percent($sec-height, $w: 21, $h: 26);
     background-image: url(images/sec01-1-diamond.png);
     &.diamond1 {
-      @include to-percent($section-height, $top: 246, $left: 392);
+      @include to-percent($sec-height, $top: 246, $left: 392);
     }
     &.diamond2 {
-      @include to-percent($section-height, $top: 208, $left: 1514);
+      @include to-percent($sec-height, $top: 208, $left: 1514);
+    }
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 10, $h: 12);
+      background-image: url(images/sec01-1-diamond-m.png);
+      &.diamond1 {
+        @include to-percent-m($sec-height-m, $top: 123, $left: 18);
+      }
+      &.diamond2 {
+        @include to-percent-m($sec-height-m, $top: 133, $left: 338);
+      }
     }
   }
 }
 
 .section1-2 {
-  $section-height: 958;
+  $sec-height: 958;
+  $sec-height-m: 682;
+
   .sub-title {
     position: absolute;
-    @include to-percent($section-height, $w: 539, $top: 75, $left: 694);
+    @include to-percent($sec-height, $w: 539, $top: 75, $left: 694);
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 219, $top: 39.5, $left: 70);
+    }
   }
   .main-title-copy {
     position: absolute;
-    @include to-percent($section-height, $w: 264, $top: 488, $left: 1293);
+    @include to-percent($sec-height, $w: 264, $top: 488, $left: 1293);
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 107, $top: 209, $left: 246);
+    }
   }
+
   .main-title {
     position: absolute;
     display: block;
     @include res-bg;
-    @include to-percent($section-height, $w: 220, $h: 350, $top: 144);
+    @include to-percent($sec-height, $w: 220, $h: 350, $top: 144);
     > span {
       @include sr-only;
     }
     &.title1 {
-      @include to-percent($section-height, $left: 344);
+      @include to-percent($sec-height, $left: 344);
       background-image: url(images/sec01-2-title1.png);
     }
     &.title2 {
-      @include to-percent($section-height, $left: 554);
+      @include to-percent($sec-height, $left: 554);
       background-image: url(images/sec01-2-title2.png);
     }
     &.title3 {
-      @include to-percent($section-height, $left: 748);
+      @include to-percent($sec-height, $left: 748);
       background-image: url(images/sec01-2-title3.png);
     }
     &.title4 {
-      @include to-percent($section-height, $left: 956);
+      @include to-percent($sec-height, $left: 956);
       background-image: url(images/sec01-2-title4.png);
     }
     &.title5 {
-      @include to-percent($section-height, $left: 1165);
+      @include to-percent($sec-height, $left: 1165);
       background-image: url(images/sec01-2-title5.png);
     }
     &.title6 {
-      @include to-percent($section-height, $left: 1357);
+      @include to-percent($sec-height, $left: 1357);
       background-image: url(images/sec01-2-title6.png);
+    }
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 70, $h: 120, $top: 79);
+      &.title1 {
+        @include to-percent-m($sec-height-m, $left: 6);
+        background-image: url(images/sec01-2-title1-m.png);
+      }
+      &.title2 {
+        @include to-percent-m($sec-height-m, $left: 68);
+        background-image: url(images/sec01-2-title2-m.png);
+      }
+      &.title3 {
+        @include to-percent-m($sec-height-m, $left: 127);
+        background-image: url(images/sec01-2-title3-m.png);
+      }
+      &.title4 {
+        @include to-percent-m($sec-height-m, $left: 176);
+        background-image: url(images/sec01-2-title4-m.png);
+      }
+      &.title5 {
+        @include to-percent-m($sec-height-m, $left: 237);
+        background-image: url(images/sec01-2-title5-m.png);
+      }
+      &.title6 {
+        @include to-percent-m($sec-height-m, $left: 292);
+        background-image: url(images/sec01-2-title6-m.png);
+      }
     }
   }
   .arisha {
     position: absolute;
-    @include to-percent($section-height, $w: 460, $left: 755);
+    @include to-percent($sec-height, $w: 460, $left: 755);
     bottom: 0;
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 258, $left: 102);
+    }
   }
   .signature-arisha {
     position: absolute;
-    @include to-percent($section-height, $w: 330, $top: 532, $left: 404);
+    @include to-percent($sec-height, $w: 330, $top: 532, $left: 404);
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 169, $top: 233, $left: 16);
+    }
   }
   .diamond {
     position: absolute;
     display: block;
     @include res-bg;
-    @include to-percent($section-height, $w: 21, $h: 26);
+    @include to-percent($sec-height, $w: 21, $h: 26);
     background-image: url(images/sec01-2-diamond.png);
     &.diamond1 {
-      @include to-percent($section-height, $left: 392, $top: 246);
+      @include to-percent($sec-height, $left: 392, $top: 246);
     }
     &.diamond2 {
-      @include to-percent($section-height, $left: 1514, $top: 208);
+      @include to-percent($sec-height, $left: 1514, $top: 208);
+    }
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 10, $h: 12);
+      background-image: url(images/sec01-2-diamond-m.png);
+      &.diamond1 {
+        @include to-percent-m($sec-height-m, $top: 111, $left: 15);
+      }
+      &.diamond2 {
+        @include to-percent-m($sec-height-m, $top: 121, $left: 336);
+      }
     }
   }
 }

@@ -1,9 +1,10 @@
 .section2 {
-  $section-height: 1039;
+  $sec-height: 1039;
+  $sec-height-m: 613;
 
   .title-wrapper {
     position: absolute;
-    @include to-percent($section-height, $w: 340, $top: 112, $left: 431);
+    @include to-percent($sec-height, $w: 340, $top: 112, $left: 431);
     h2 {
       position: relative;
       font-size: fluid-font(48px, $min: 20px);
@@ -30,6 +31,9 @@
       font-size: fluid-font(23px);
       color: #000;
       line-height: 1.522;
+      strong {
+        font-weight: bold;
+      }
     }
   }
 
@@ -88,21 +92,126 @@
   }
   .gabee {
     position: absolute;
-    @include to-percent($section-height, $w: 522, $left: 507);
+    @include to-percent($sec-height, $w: 522, $left: 507);
     bottom: 0;
     z-index: 1;
   }
   .signature-gabee {
     position: absolute;
-    @include to-percent($section-height, $w: 95, $top: 388, $left: 425);
+    @include to-percent($sec-height, $w: 95, $top: 388, $left: 425);
   }
   .bg-line {
     position: absolute;
     display: block;
     @include res-bg;
-    @include to-percent($section-height, $w: 1062, $h: 567, $left: 0);
+    @include to-percent($sec-height, $w: 1062, $h: 567, $left: 0);
     bottom: 60px;
     z-index: 0;
     background-image: url(images/sec02-bg-line.png);
+  }
+
+  @include screen("mobile") {
+    .section2-gabee {
+      position: relative;
+
+      .title-wrapper {
+        @include to-percent-m($sec-height-m, $w: 260, $top: 45, $left: 54);
+
+        h2 {
+          font-size: vw(27px);
+          line-height: 1.2;
+          &::before {
+            @include pseudo(vw(18px), vw(13px));
+            top: -6.3%;
+            left: -8.9%;
+            background: url(images/sec02-quot1-m.png) no-repeat top center;
+            background-size: contain;
+          }
+          &::after {
+            @include pseudo(vw(16px), vw(14px));
+            bottom: 29%;
+            right: 37.5%;
+            background: url(images/sec02-quot2-m.png) no-repeat top center;
+            background-size: contain;
+          }
+        }
+        p {
+          margin-top: 5%;
+          font-size: clamp(vw(13px), vw(16px), vw(14px));
+          line-height: vw(25px);
+          letter-spacing: vw(-0.5px);
+          > span {
+            display: block;
+          }
+        }
+      }
+
+      .gabee {
+        @include to-percent-m($sec-height-m, $w: 306, $left: 44);
+      }
+      .signature-gabee {
+        @include to-percent-m($sec-height-m, $w: 56, $top: 206, $left: 50);
+      }
+      .bg-line {
+        display: none;
+      }
+    }
+
+    .section2-shorts {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      left: unset;
+      width: 100%;
+      height: auto;
+      padding: 0;
+
+      .flip-title-wrapper {
+        position: absolute;
+        margin-top: 11%;
+
+        h2 {
+          font-size: vw(24px);
+          text-align: center;
+          em {
+            font-size: vw(28px);
+            margin: 0;
+            padding: vw(5px) vw(25.5px);
+          }
+          > span:first-child {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: vw(11px);
+          }
+          > span:last-child {
+            margin-top: 1.4%;
+          }
+        }
+      }
+
+      .shorts {
+        position: absolute;
+        top: 23%;
+        width: 74%;
+        height: 71.1%;
+        margin: 0 auto;
+
+        // iframe {
+        //   position: absolute;
+        //   top: -60px;
+        //   bottom: -60px;
+        //   left: 0;
+        //   width: 100%;
+        //   height: calc(100% + 120px);
+        //   border: none;
+        // }
+        // &::after {
+        //   @include pseudo(100%, 100%);
+        //   z-index: 1;
+        // }
+      }
+    }
   }
 }

@@ -1,5 +1,6 @@
 .section7 {
-  $section-height: 974;
+  $sec-height: 974;
+  $sec-height-m: 1144;
 
   .title-wrapper {
     padding-top: 7.5%;
@@ -13,6 +14,16 @@
       text-align: center;
       font-size: fluid-font(44px, $min: 20px);
       line-height: 1.2;
+    }
+
+    @include screen("mobile") {
+      padding-top: 15.2%;
+
+      h2 {
+        font-size: vw(27px);
+        line-height: 1.2;
+        letter-spacing: -0.15rem;
+      }
     }
   }
 
@@ -30,9 +41,25 @@
       flex-direction: column;
       p {
         margin: 4.7% 0 0 10.2%;
-        font-size: fluid-font(19px, $min: 12px);
+        font-size: fluid-font(19px, $min: 10px);
+        font-weight: 500;
         line-height: 1.579;
         color: #333;
+      }
+    }
+
+    @include screen("mobile") {
+      flex-direction: column;
+      width: 89%;
+      margin: 0 auto;
+      padding-top: 7.1%;
+
+      li {
+        display: block;
+        margin-bottom: 1.9%;
+        p {
+          display: none;
+        }
       }
     }
   }

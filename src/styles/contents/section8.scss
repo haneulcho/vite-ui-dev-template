@@ -1,28 +1,47 @@
 .section8 {
-  $section-height: 1003;
+  $sec-height: 1003;
+  $sec-height-m: 968;
 
   .bubble {
     position: absolute;
     &.bubble1 {
-      @include to-percent($section-height, $w: 394, $top: 102, $left: 509);
+      @include to-percent($sec-height, $w: 394, $top: 102, $left: 509);
       z-index: 1;
     }
     &.bubble2 {
-      @include to-percent($section-height, $w: 511, $top: 230, $left: 416);
+      @include to-percent($sec-height, $w: 511, $top: 230, $left: 416);
     }
     &.bubble3 {
-      @include to-percent($section-height, $w: 441, $top: 509, $left: 512);
+      @include to-percent($sec-height, $w: 441, $top: 509, $left: 512);
+    }
+
+    @include screen("mobile") {
+      &.bubble1 {
+        @include to-percent-m($sec-height-m, $w: 238, $top: 61, $left: 78);
+      }
+      &.bubble2 {
+        @include to-percent-m($sec-height-m, $w: 313, $top: 130, $left: 26);
+      }
+      &.bubble3 {
+        @include to-percent-m($sec-height-m, $w: 267, $top: 285, $left: 71);
+      }
     }
   }
+
   .gabee {
     position: absolute;
-    @include to-percent($section-height, $w: 650, $left: 924);
+    @include to-percent($sec-height, $w: 650, $left: 924);
     bottom: 0;
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 294, $left: 48);
+      bottom: 25.4%;
+    }
   }
 
   .button-group {
     position: absolute;
-    @include to-percent($section-height, $w: 710, $top: 692, $left: 415);
+    @include to-percent($sec-height, $w: 710, $top: 692, $left: 415);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -91,6 +110,56 @@
           background-size: contain;
           background-position: center;
           background-repeat: no-repeat;
+        }
+      }
+
+      &.only-mo {
+        display: none;
+      }
+    }
+
+    @include screen("mobile") {
+      display: block;
+      top: unset;
+      left: 0;
+      bottom: 6.5%;
+      width: 100%;
+
+      a {
+        width: 82.22%;
+        padding: vw(20px) vw(20px) vw(21px) vw(26px);
+        margin: 0 auto;
+        font-size: vw(16px);
+        border-radius: 10px;
+        border-color: #ef4d9e;
+
+        &.--outline {
+          background-color: #fff;
+          .button-inner > span:last-child::after {
+            background-image: url(images/sec08-arrow1-m.png);
+          }
+        }
+
+        &.--filled {
+          .button-inner > span:last-child::after {
+            background-image: url(images/sec08-arrow2-m.png);
+          }
+        }
+
+        &:last-child {
+          margin-top: 2.4vw;
+        }
+      }
+
+      .button-inner {
+        > span {
+          letter-spacing: -0.1rem;
+          line-height: 1.4;
+
+          &:last-child::after {
+            @include pseudo(1.3rem, 1.7rem, relative);
+            margin: 0.1rem 0 0 auto;
+          }
         }
       }
     }

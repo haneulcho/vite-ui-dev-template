@@ -12,12 +12,24 @@
     max-width: 1080px;
     margin: 0 auto;
     padding: 2.2vw 2rem;
-  }
 
-  p {
-    text-align: center;
-    color: #663c42;
-    line-height: 1.526;
-    font-size: fluid-font(19px, $min: 14px);
+    p {
+      text-align: center;
+      color: #663c42;
+      line-height: 1.526;
+      font-size: fluid-font(19px, $min: 14px);
+    }
+
+    @include screen("mobile") {
+      padding: vw(35px) vw(40px);
+      p {
+        font-size: vw(14);
+        line-height: 1.714;
+      }
+
+      p > span {
+        display: block;
+      }
+    }
   }
 }

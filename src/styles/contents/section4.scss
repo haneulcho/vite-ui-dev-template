@@ -1,15 +1,15 @@
 .section4 {
-  $section-height: 960;
+  $sec-height: 960;
+  $sec-height-m: 708;
 
   .card {
     position: absolute;
     &.only-pc {
-      @include to-percent($section-height, $w: 370, $left: 519);
+      @include to-percent($sec-height, $w: 370, $left: 519);
       bottom: 0;
     }
     &.only-mo {
-      @include to-percent($section-height, $w: 360, $left: 744);
-      bottom: 0;
+      @include to-percent-m($sec-height-m, $w: 360, $top: 27, $left: 0);
     }
   }
 
@@ -17,28 +17,21 @@
     position: absolute;
     display: block;
     @include res-bg;
-    @include to-percent(
-      $section-height,
-      $w: 199,
-      $h: 93,
-      $top: 141,
-      $left: 915
-    );
+    @include to-percent($sec-height, $w: 199, $h: 93, $top: 141, $left: 915);
     background-image: url(images/sec04-says.png);
     > span {
       @include sr-only;
+    }
+
+    @include screen("mobile") {
+      @include to-percent-m($sec-height-m, $w: 119, $h: 59, $top: 283, $left: 31);
+      background-image: url(images/sec04-says-m.png);
     }
   }
 
   .message-wrapper {
     position: absolute;
-    @include to-percent(
-      $section-height,
-      $w: 600,
-      $h: 500,
-      $top: 266,
-      $left: 923
-    );
+    @include to-percent($sec-height, $w: 600, $h: 500, $top: 266, $left: 923);
     p {
       margin-left: 2.6%;
     }
@@ -101,12 +94,53 @@
         background-image: url(images/sec04-arrow.png);
       }
     }
+
+    @include screen("mobile") {
+      width: 100%;
+      height: auto;
+      top: 50%;
+      left: 0;
+
+      p {
+        margin-left: 9%;
+        letter-spacing: -0.03rem;
+      }
+
+      .letter {
+        font-size: vw(30px);
+        line-height: 1.05;
+      }
+      .main-message {
+        margin-top: 2.2%;
+        margin-bottom: 8.7%;
+        font-size: vw(34px);
+        line-height: 0.975;
+        letter-spacing: 0.12rem;
+      }
+      a {
+        width: calc(100% - 16.6%);
+        height: 15.3vw;
+        padding: 0 5.7% 0 8%;
+        margin: 0 auto;
+        font-size: vw(16);
+        line-height: 1;
+        border-radius: 0;
+        background-color: #c90d6b;
+        box-shadow: 4.663px 3.776px 24px 0px rgba(72, 56, 71, 0.25);
+        .arrow {
+          width: 4.2%;
+          height: 30%;
+          margin-top: 0;
+          background-image: url(images/sec04-arrow-m.png);
+        }
+      }
+    }
   }
   .bg-txt {
     position: absolute;
     display: block;
     @include res-bg;
-    @include to-percent($section-height, $w: 1901, $h: 659, $left: 12);
+    @include to-percent($sec-height, $w: 1901, $h: 659, $left: 12);
     bottom: 0;
     background-image: url(images/sec04-bg-txt.png);
   }

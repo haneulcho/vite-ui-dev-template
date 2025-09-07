@@ -1,5 +1,6 @@
 .section5 {
-  $section-height: 865;
+  $sec-height: 865;
+  $sec-height-m: 453;
 
   .title-wrapper {
     position: absolute;
@@ -13,6 +14,20 @@
       }
       font-size: fluid-font(44px, $min: 20px);
       line-height: 1.2;
+    }
+
+    @include screen("mobile") {
+      top: 13%;
+      left: 8.2%;
+
+      h2 {
+        font-size: vw(27px);
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2.7vw;
+        letter-spacing: -0.2rem;
+      }
     }
   }
 
@@ -33,6 +48,23 @@
         line-height: 1.476;
         color: #222;
         word-break: keep-all;
+      }
+    }
+
+    // FIXME: 모바일 처리 필요
+    @include screen("mobile") {
+      top: 32.5%;
+      left: 5.6%;
+
+      .swiper-slide {
+        display: flex;
+        flex-direction: column;
+        gap: 23px;
+        width: 370px;
+
+        > p {
+          display: none;
+        }
       }
     }
   }

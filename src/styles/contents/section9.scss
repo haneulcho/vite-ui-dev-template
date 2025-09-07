@@ -75,4 +75,52 @@
       }
     }
   }
+
+  @include screen("mobile") {
+    .app-inner {
+      padding: vw(60px) 0;
+    }
+
+    h3 {
+      font-size: vw(27px);
+    }
+
+    .accordion {
+      margin: vw(26px) auto 0;
+    }
+
+    .faq-list {
+      padding-left: 20px;
+      padding-right: 20px;
+
+      > li {
+        .question {
+          gap: 10px;
+          padding: vw(15px) 0;
+
+          h4 {
+            font-size: vw(14px);
+            > span {
+              margin-right: vw(8px);
+            }
+          }
+          &::after {
+            @include pseudo(vw(10px), vw(7px), relative);
+            margin-right: vw(7px);
+            background: url(images/sec09-arrow-m.png) no-repeat center;
+            background-size: contain;
+          }
+        }
+        .answer {
+          padding: vw(15px) vw(20px) vw(19px);
+          p {
+            line-height: 1.83;
+            letter-spacing: -0.05rem;
+            font-size: vw(14px);
+            word-wrap: break-word;
+          }
+        }
+      }
+    }
+  }
 }
