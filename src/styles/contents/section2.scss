@@ -55,12 +55,15 @@
         span {
           display: block;
         }
-        em {
-          font-size: fluid-font(45px, $min: 22px);
-          color: #ffffff;
+        div {
+          display: inline-block;
           margin: 0 0.6%;
           padding: 0.8% 4.5%;
           background-color: #fb48a3;
+        }
+        em {
+          font-size: fluid-font(45px, $min: 22px);
+          color: #ffffff;
         }
         > span:last-child {
           margin-top: 1.4%;
@@ -174,10 +177,12 @@
         h2 {
           font-size: vw(24px);
           text-align: center;
-          em {
-            font-size: vw(28px);
+          div {
             margin: 0;
             padding: vw(5px) vw(25.5px);
+          }
+          em {
+            font-size: vw(28px);
           }
           > span:first-child {
             display: flex;

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 var $window = $(window);
 
 $(document).on('ready', function () {
@@ -28,6 +29,8 @@ $(document).on('ready', function () {
     // 다음 이미지에 active 클래스 추가 (CSS delay로 자연스럽게 나타남)
     $nextLi.addClass('active');
   });
+
+  AOS.init();
 });
 
 $window.on('resize', function () {});

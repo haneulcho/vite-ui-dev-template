@@ -13,13 +13,13 @@
     }
   }
 
-  h2 {
+  .gabee-says {
     position: absolute;
     display: block;
     @include res-bg;
     @include to-percent($sec-height, $w: 199, $h: 93, $top: 141, $left: 915);
     background-image: url(images/sec04-says.png);
-    > span {
+    span {
       @include sr-only;
     }
 

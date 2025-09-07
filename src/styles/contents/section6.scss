@@ -205,19 +205,31 @@
     bottom: 0;
   }
 
+  .line1 span,
+  .line2 span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    @include res-bg;
+  }
+
   .line1 {
     @include to-percent($sec-height, $w: 85, $h: 52, $left: 774);
-    background-image: url(images/sec06-line1.png);
     bottom: 14.25%;
-    animation: line1-sway 1s ease-in-out infinite;
-    transform-origin: center bottom;
+    span {
+      background-image: url(images/sec06-line1.png);
+      animation: line1-sway 1s ease-in-out infinite;
+      transform-origin: center bottom;
+    }
   }
 
   .line2 {
     @include to-percent($sec-height, $w: 380, $h: 25, $left: 630);
-    background-image: url(images/sec06-line2.png);
     bottom: 6.091%;
-    animation: line2-draw 1s ease-in-out infinite;
+    span {
+      background-image: url(images/sec06-line2.png);
+      animation: line2-draw 1s ease-in-out infinite;
+    }
   }
 
   @include screen("mobile") {
@@ -234,14 +246,20 @@
 
     .line1 {
       @include to-percent-m($sec-height-m, $w: 44, $h: 27, $left: 90);
-      background-image: url(images/sec06-line1-m.png);
       bottom: 10.95%;
+
+      span {
+        background-image: url(images/sec06-line1-m.png);
+      }
     }
 
     .line2 {
       @include to-percent-m($sec-height-m, $w: 177, $h: 12, $left: 27);
-      background-image: url(images/sec06-line2-m.png);
       bottom: 5.091%;
+
+      span {
+        background-image: url(images/sec06-line2-m.png);
+      }
     }
   }
 }
