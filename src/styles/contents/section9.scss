@@ -61,6 +61,7 @@
         }
       }
       .answer {
+        display: none;
         padding: 2.6rem 4.3rem;
         background-color: #fff7fb;
         p {
@@ -112,6 +113,7 @@
           }
         }
         .answer {
+          display: none;
           padding: vw(15px) vw(20px) vw(19px);
           p {
             line-height: 1.83;
