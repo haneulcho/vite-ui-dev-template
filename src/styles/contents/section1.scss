@@ -1,24 +1,33 @@
 .section1 {
+  position: relative;
+  overflow: hidden;
+
   .section-trans-bg {
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 0;
-    background-size: cover;
+    will-change: transform;
 
     &.bg1 {
       background: url(images/sec01-1-bg.jpg) no-repeat top center;
+      background-size: cover;
     }
     &.bg2 {
       background: url(images/sec01-2-bg.jpg) no-repeat top center;
+      background-size: cover;
+      transform: translateY(100%);
+      transition: transform 0.1s ease-out;
     }
 
     @include screen("mobile") {
       &.bg1 {
         background: url(images/sec01-1-bg-m.jpg) no-repeat top center;
+        background-size: cover;
       }
       &.bg2 {
         background: url(images/sec01-2-bg-m.jpg) no-repeat top center;
+        background-size: cover;
       }
     }
   }
@@ -26,12 +35,31 @@
   .section-bg {
     opacity: 0;
   }
+
+  .section-pin-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) and (orientation: portrait) {
+  .section1-1,
+  .section1-2 {
+    height: auto !important;
+    max-height: none !important;
+  }
 }
 
 .section1-1 {
   $sec-height: 1030;
   $sec-height-m: 664;
 
+  // position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // height: 100vh;
   z-index: 1;
 
   .sub-title {
@@ -55,6 +83,7 @@
     display: block;
     @include res-bg;
     @include to-percent($sec-height, $w: 220, $h: 350, $top: 144);
+    transform: translateY(-55px);
     > span {
       @include sr-only;
     }
@@ -155,13 +184,15 @@
 }
 
 .section1-2 {
-  $sec-height: 958;
+  $sec-height: 1030;
   $sec-height-m: 664;
 
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  // height: 100vh;
+  opacity: 0;
 
   .sub-title {
     position: absolute;
