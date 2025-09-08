@@ -85,13 +85,23 @@
       border-radius: 5px;
       background-color: #d11875;
       box-shadow: 4.663px 3.776px 24px 0px rgba(72, 56, 71, 0.2);
+      transition: transform 300ms;
       .arrow {
         display: block;
         @include res-bg;
         width: 3.2%;
         height: 27%;
         margin-top: 1%;
+        transition: transform 300ms;
         background-image: url(images/sec04-arrow.png);
+      }
+
+      &:hover {
+        transform: translate(2px, 2px);
+
+        .arrow {
+          transform: translateX(4px);
+        }
       }
     }
 
