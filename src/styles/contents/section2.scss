@@ -45,6 +45,12 @@
     width: 100%;
     height: 100%;
     transition: transform 0.1s ease-out;
+
+    @include screen("mobile") {
+      position: relative;
+      top: unset;
+      z-index: 1;
+    }
   }
 
   .section2-shorts {
@@ -126,6 +132,7 @@
   @include screen("mobile") {
     .section2-gabee {
       position: relative;
+      // height: 110.1%;
 
       .title-wrapper {
         @include to-percent-m($sec-height-m, $w: 260, $top: 45, $left: 54);

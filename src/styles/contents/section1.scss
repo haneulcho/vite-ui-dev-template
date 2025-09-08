@@ -28,6 +28,7 @@
       &.bg2 {
         background: url(images/sec01-2-bg-m.jpg) no-repeat top center;
         background-size: cover;
+        transition: transform 0.5s ease-out;
       }
     }
   }

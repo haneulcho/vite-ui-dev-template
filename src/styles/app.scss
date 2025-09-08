@@ -15,15 +15,25 @@
   bottom: 40px;
   right: 40px;
   transition: transform 300ms;
+  width: 14vw;
+  min-width: 100px;
+  max-width: 206px;
 
   &:hover {
     transform: translateY(-10px);
+  }
+
+  @include screen("tablet") {
+    bottom: 15px;
+    right: 15px;
   }
 
   @include screen("mobile") {
     right: unset;
     bottom: 12px;
     width: 100%;
+    min-width: auto;
+    max-width: none;
     a {
       display: flex;
       flex-direction: row;

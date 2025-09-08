@@ -63,12 +63,16 @@ const initDiamondAnimation = () => {
 };
 
 const visualMotion = () => {
+  // portrait이고 innerWidth가 540 미만일 때 pin, pinSpacing을 false로 처리
+  const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+  const isSmallWidth = window.innerWidth < 540;
+
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.app-section.section1',
       start: 'top top',
-      end: '+=110%',
-      pinSpacing: window.innerWidth >= 1024 ? true : false,
+      end: isPortrait ? 'top+=250% bottom+=130%' : '+=110%',
+      pinSpacing: isPortrait && isSmallWidth ? true : window.innerWidth >= 1024 ? true : false,
       scrub: 1,
       pin: true,
       anticipatePin: 1,
@@ -85,19 +89,25 @@ const visualMotion = () => {
 };
 
 const shortsMotion = () => {
-  const t2 = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.app-section.section2',
-      start: 'center center',
-      end: '+=110%',
-      pinSpacing: true,
-      scrub: 1,
-      pin: true,
-      invalidateOnRefresh: true,
-    },
-  });
+  const isSmallWidth = window.innerWidth < 1200;
 
-  t2.to('.section2-trans-shorts', { yPercent: 0, ease: 'none' }, 0);
+  if (!isSmallWidth) {
+    gsap.set('.section2-trans-shorts', { yPercent: 100, willChange: 'transform' });
+
+    const t2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.app-section.section2',
+        start: 'center center',
+        end: '+=80%',
+        pinSpacing: true,
+        scrub: 1,
+        pin: true,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    t2.to('.section2-trans-shorts', { yPercent: 0, ease: 'none' }, 0);
+  }
 };
 
 window.matchMedia('(orientation: portrait)').addEventListener('change', () => {
@@ -108,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.set('.section-trans-bg.bg2', { yPercent: 100, willChange: 'transform' });
-  gsap.set('.section2-trans-shorts', { yPercent: 100, willChange: 'transform' });
 
   initChosenAnimation();
 
