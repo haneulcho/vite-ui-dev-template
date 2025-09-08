@@ -2,6 +2,8 @@
   $sec-height: 1039;
   $sec-height-m: 613;
 
+  overflow: hidden;
+
   .title-wrapper {
     position: absolute;
     @include to-percent($sec-height, $w: 340, $top: 112, $left: 431);
@@ -35,6 +37,14 @@
         font-weight: bold;
       }
     }
+  }
+
+  .section2-trans-shorts {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.1s ease-out;
   }
 
   .section2-shorts {

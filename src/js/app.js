@@ -72,12 +72,37 @@ const visualMotion = () => {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: '.app-section.section1',
-      // start: () => `top top+=${headerH}`, // 헤더만큼 아래에서 핀 시작
-      start: 'top top',
-      end: '+=50%', // 스크롤 구간 길이 (체감에 맞게 120~200% 사이로 조절)
-      scrub: 0.8, // 스크럽(부드럽게 이어짐)
+      start: 'top top', // 섹션의 'center'가 뷰포트 'center'에 닿는 순간
+      end: '+=110%',
+      // pinSpacing: window.innerWidth >= 720 ? true : false, // pin 동안 아래 컨텐츠 밀어내기 (필요 없으면 false)
+      // pinSpacing: false,
+      scrub: 1, // 스크럽(부드럽게 이어짐)
       pin: true, // 고정
-      pinSpacing: window.innerWidth >= 720 ? true : false, // pin 동안 아래 컨텐츠 밀어내기 (필요 없으면 false)
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+    },
+  });
+
+  // 진행 중 애니메이션(스크럽과 연동)
+  tl.to('.section-trans-bg.bg2', { yPercent: 0, ease: 'none' }, 0);
+
+  tl.add('cross', 0.75)
+    .to('.section1-1', { autoAlpha: 0, duration: 0.25, ease: 'none' }, 'cross')
+    .set('.section1-1', { display: 'none', pointerEvents: 'none' })
+    .to('.section1-2', { autoAlpha: 1, duration: 0.3, ease: 'none' }, '>-0.15');
+};
+
+const shortsMotion = () => {
+  const t2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.app-section.section2',
+      // start: () => `center center+=${headerH}`, // 헤더만큼 아래에서 핀 시작 (center에서 시작)
+      start: 'center center',
+      end: '+=110%',
+      scrub: 1, // 스크럽(부드럽게 이어짐)
+      pin: true, // 고정
+      invalidateOnRefresh: true,
+      // pinSpacing: window.innerWidth >= 720 ? true : false, // pin 동안 아래 컨텐츠 밀어내기 (필요 없으면 false)
       // pinSpacing: false,
       // anticipatePin: 1, // 핀 직전 점프 방지
       // invalidateOnRefresh: true, // 리사이즈/로딩 후 재계산
@@ -93,12 +118,14 @@ const visualMotion = () => {
   });
 
   // 진행 중 애니메이션(스크럽과 연동)
-  tl.to('.section-trans-bg.bg2', { yPercent: 0, ease: 'none' }, 0);
+  t2.to('.section2-trans-shorts', { yPercent: 0, ease: 'none' }, 0);
 
-  tl.add('cross', 0.75)
-    .to('.section1-1', { autoAlpha: 0, duration: 0.25, ease: 'none' }, 'cross')
-    .set('.section1-1', { display: 'none', pointerEvents: 'none' })
-    .to('.section1-2', { autoAlpha: 1, duration: 0.3, ease: 'none' }, '>-0.1');
+  // flip-title-wrapper em에 flip 애니메이션 추가
+
+  // t2.add('cross', 0.75)
+  //   .to('.section1-1', { autoAlpha: 0, duration: 0.25, ease: 'none' }, 'cross')
+  //   .set('.section1-1', { display: 'none', pointerEvents: 'none' })
+  //   .to('.section1-2', { autoAlpha: 1, duration: 0.3, ease: 'none' }, '>-0.1');
 };
 
 window.matchMedia('(orientation: portrait)').addEventListener('change', () => {
@@ -110,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 초기 상태 세팅 (flash 방지)
   gsap.set('.section-trans-bg.bg2', { yPercent: 100, willChange: 'transform' });
+  gsap.set('.section2-trans-shorts', { yPercent: 100, willChange: 'transform' });
 
   // CHOSEN 글자 애니메이션 초기화
   initChosenAnimation();
@@ -119,7 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setTimeout(() => {
     visualMotion();
-  }, 500);
+    shortsMotion();
+  }, 1000);
 
   // Section3 Swiper 초기화
   const section3Swiper = new Swiper('.section3 .slider-wrapper', {
