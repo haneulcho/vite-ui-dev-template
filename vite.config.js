@@ -19,10 +19,7 @@ function appendVer(html, prefix) {
 
   const resolvedPrefix = !prefix.startsWith('/') ? '/' + prefix : prefix;
   const escaped = resolvedPrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const regex = new RegExp(
-    `(href|src)=(["'])(${escaped}[^"'?#]+\\.(?:css|js))(\\2)`,
-    'g'
-  );
+  const regex = new RegExp(`(href|src)=(["'])(${escaped}[^"'?#]+\\.(?:css|js))(\\2)`, 'g');
 
   return html.replace(regex, (_m, attr, quote, url) => {
     // 이미 query/hash 있으면 패스
@@ -47,9 +44,31 @@ function htmlTransform(mode) {
   };
 }
 
+function cssUrlPrefixer(prefix) {
+  // data:, http(s):, / 로 시작하는 절대경로는 제외하고,
+  // css에서 자주 쓰는 ../images/ 또는 images/ 패턴만 잡아 prefix를 붙입니다.
+  const re = /url\((['"]?)(?!data:|https?:|\/)(?:\.\.\/)*images\/([^'")?#]+(?:[?#][^'")]+)?)\1\)/g;
+
+  const normalized = prefix.replace(/^\/+|\/+$/g, ''); // 앞뒤 슬래시 정리
+
+  return {
+    name: 'css-url-prefixer',
+    generateBundle(_opts, bundle) {
+      for (const [fileName, chunk] of Object.entries(bundle)) {
+        if (fileName.endsWith('.css') && chunk.type === 'asset') {
+          chunk.source = String(chunk.source).replace(
+            re,
+            (_m, quote, rest) => `url(${quote}/${normalized}/images/${rest}${quote})`
+          );
+        }
+      }
+    },
+  };
+}
+
 export default defineConfig(({ _command, mode }) => {
   return {
-    plugins: [includeHtml(), htmlTransform(mode)],
+    plugins: [includeHtml(), htmlTransform(mode), cssUrlPrefixer(appPath)],
     base: mode === 'production' ? `/${appPath}/` : '/',
     css: {
       preprocessorOptions: {
@@ -79,9 +98,7 @@ export default defineConfig(({ _command, mode }) => {
           assetFileNames(assetInfo) {
             // assetInfo.name이 없을 경우 filename, source까지 체크
             const name =
-              assetInfo?.name ||
-              assetInfo?.filename ||
-              (typeof assetInfo?.source === 'string' ? assetInfo.source : '');
+              assetInfo?.name || assetInfo?.filename || (typeof assetInfo?.source === 'string' ? assetInfo.source : '');
 
             let extType = '';
             if (name) {
