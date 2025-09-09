@@ -124,6 +124,7 @@
       @include res-bg;
       @include to-percent($sec-height, $w: 220, $h: 350, $top: 144);
       transform: translateY(-55px);
+      opacity: 0;
       > span {
         @include sr-only;
       }
@@ -154,6 +155,7 @@
 
       @include screen("mobile") {
         @include to-percent-m($sec-height-m, $w: 70, $h: 120, $top: 92);
+        transform: translateY(-35px);
         &.title1 {
           @include to-percent-m($sec-height-m, $left: 6);
           background-image: url(images/sec01-1-title1-m.png);
@@ -259,6 +261,8 @@
       display: block;
       @include res-bg;
       @include to-percent($sec-height, $w: 220, $h: 350, $top: 144);
+      transform: translateY(-55px);
+      opacity: 0;
       > span {
         @include sr-only;
       }
@@ -288,6 +292,7 @@
       }
 
       @include screen("mobile") {
+        transform: translateY(-35px);
         @include to-percent-m($sec-height-m, $w: 70, $h: 120, $top: 92);
         &.title1 {
           @include to-percent-m($sec-height-m, $left: 6);

@@ -6,7 +6,7 @@ var $window = $(window);
 // -------------------------
 const SELECTOR = {
   section1: '.app-section.section1',
-  section1Titles: '.section1-1 .main-title',
+  section1Titles: '.section1 .main-title',
   section1Diamonds: '.section1 .diamond',
   section3Wrapper: '.section3 .overflow-section-wrapper',
   section3Contents: '.section3 .overflow-section',
@@ -68,9 +68,10 @@ const chosenTitleMotion = () => {
 
   gsap.to(titleElements, {
     y: 0,
-    duration: 1.35,
+    autoAlpha: 1,
+    duration: 1.45,
     ease: 'elastic.out(1, 0.3)',
-    stagger: 0.1,
+    stagger: 0.12,
     delay: 0.1,
   });
 
@@ -92,7 +93,7 @@ const shortsMotion = () => {
       // scrub: 1,
       pin: true,
       anticipatePin: 1,
-      pinType: 'transform', // 필요시
+      pinType: 'fixed', // 필요시
       pinnedContainer: '.chosen', // 필요시
 
       // invalidateOnRefresh: true,
@@ -406,7 +407,10 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
   initSwiperSlider();
-  chosenTitleMotion();
+
+  setTimeout(() => {
+    chosenTitleMotion();
+  }, 300);
 
   setTimeout(() => {
     visualMotion();
