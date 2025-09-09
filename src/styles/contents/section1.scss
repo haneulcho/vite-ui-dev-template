@@ -18,7 +18,7 @@
         background: url(images/sec01-2-bg.jpg) no-repeat top center;
         background-size: cover;
         transform: translateY(100%);
-        transition: transform 0.9s ease;
+        transition: all 1.3s ease;
       }
 
       @include screen("mobile") {
@@ -33,14 +33,15 @@
       }
     }
 
-    .section-bg {
-      // opacity: 0;
-    }
-
     .section-pin-wrapper {
       position: relative;
       width: 100%;
       height: 100%;
+    }
+
+    .section1-1,
+    .section1-2 {
+      transition: opacity 0.6s ease;
     }
 
     &.active {
@@ -53,11 +54,11 @@
       }
       .section1-2 {
         opacity: 1;
-        z-index: 1;
+        z-index: 2;
       }
 
       .gabee {
-        transform: translateX(30px);
+        transform: translateX(40px);
       }
       .arisha {
         transform: translateX(0);
@@ -65,7 +66,7 @@
     }
 
     .diamond {
-      transition: opacity 700ms ease;
+      transition: opacity 0.7s ease;
       animation: diamondFloat 0.7s ease-in-out infinite alternate;
       &.active {
         opacity: 1;
@@ -180,7 +181,7 @@
       position: absolute;
       @include to-percent($sec-height, $w: 490, $left: 744);
       bottom: 0;
-      transition: transform 0.5s ease;
+      transition: all 0.7s ease;
 
       @include screen("mobile") {
         @include to-percent-m($sec-height-m, $w: 306, $left: 54);
@@ -232,8 +233,6 @@
     // height: 100vh;
     opacity: 0;
     z-index: 0;
-
-    transition: opacity 0.5s ease;
 
     .sub-title {
       position: absolute;
@@ -317,8 +316,8 @@
       position: absolute;
       @include to-percent($sec-height, $w: 460, $left: 755);
       bottom: 0;
-      transition: transform 0.5s ease;
-      transform: translateX(-30px);
+      transition: all 0.7s ease;
+      transform: translateX(-40px);
 
       @include screen("mobile") {
         @include to-percent-m($sec-height-m, $w: 258, $left: 102);
