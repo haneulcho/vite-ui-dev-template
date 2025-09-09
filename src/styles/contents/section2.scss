@@ -156,7 +156,7 @@
           }
         }
         p {
-          margin-top: 5%;
+          margin-top: 3%;
           font-size: clamp(vw(13px), vw(16px), vw(14px));
           line-height: vw(25px);
           letter-spacing: vw(-0.5px);
@@ -194,12 +194,14 @@
         h2 {
           font-size: vw(24px);
           text-align: center;
+          letter-spacing: -0.12rem;
           div {
-            margin: 0;
-            padding: vw(5px) vw(25.5px);
+            margin: 0 0 0 vw(3px);
+            padding: vw(5px) vw(23px);
           }
           em {
             font-size: vw(28px);
+            vertical-align: vw(1px);
           }
           > span:first-child {
             display: flex;

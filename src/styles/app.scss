@@ -39,8 +39,10 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
+      padding: 0 vw(17px);
     }
     a > img.only-mo {
+      width: 100%;
       max-width: 400px;
     }
   }

@@ -23,7 +23,7 @@
         @include to-percent-m($sec-height-m, $w: 313, $top: 130, $left: 26);
       }
       &.bubble3 {
-        @include to-percent-m($sec-height-m, $w: 267, $top: 285, $left: 71);
+        @include to-percent-m($sec-height-m, $w: 267, $top: 284, $left: 71);
       }
     }
   }
@@ -34,7 +34,7 @@
     bottom: 0;
 
     @include screen("mobile") {
-      @include to-percent-m($sec-height-m, $w: 294, $left: 48);
+      @include to-percent-m($sec-height-m, $w: 288, $left: 51);
       bottom: 25.4%;
     }
   }
@@ -122,7 +122,7 @@
       display: block;
       top: unset;
       left: 0;
-      bottom: 6.5%;
+      bottom: 6.4%;
       width: 100%;
 
       a {
