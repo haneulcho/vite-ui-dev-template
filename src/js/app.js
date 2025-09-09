@@ -1,6 +1,34 @@
 /* eslint-disable no-undef */
 var $window = $(window);
 
+// -------------------------
+// Helpers / Constants
+// -------------------------
+const SELECTOR = {
+  section1: '.app-section.section1',
+  section1Titles: '.section1-1 .main-title',
+  section1Diamonds: '.section1 .diamond',
+  section3Wrapper: '.section3 .overflow-slider-wrapper',
+  section3Contents: '.overflow-slider-contents',
+};
+
+const rafThrottle = fn => {
+  let isRunning = false;
+  return function throttled() {
+    if (isRunning) return;
+    isRunning = true;
+    const ctx = this;
+    const args = arguments;
+    requestAnimationFrame(function () {
+      fn.apply(ctx, args);
+      isRunning = false;
+    });
+  };
+};
+
+const getScrollTop = () => window.pageYOffset || document.documentElement.scrollTop || 0;
+const isNarrow = () => $window.width() <= 1000;
+
 $(document).on('ready', function () {
   $(document).on('click', '.faq-list li a.question', function (e) {
     e.preventDefault();
@@ -31,7 +59,7 @@ $(document).on('ready', function () {
 $window.on('resize', function () {});
 
 const chosenTitleMotion = () => {
-  const titleElements = document.querySelectorAll('.section1-1 .main-title');
+  const titleElements = document.querySelectorAll(SELECTOR.section1Titles);
 
   if (titleElements.length === 0) return;
 
@@ -44,37 +72,44 @@ const chosenTitleMotion = () => {
   });
 
   setTimeout(() => {
-    $('.section1 .diamond').addClass('active');
+    $(SELECTOR.section1Diamonds).addClass('active');
   }, 900);
 };
 
 const visualMotion = () => {
-  const section1 = document.querySelector('.app-section.section1');
+  const section1 = document.querySelector(SELECTOR.section1);
+  if (!section1) return;
 
-  if (section1) {
-    window.addEventListener('scroll', () => {
-      const isHeaderLoaded = $('#header');
+  const computeTriggerPoint = () => section1.offsetHeight * (isNarrow() ? 0.085 : 0.12);
+  let triggerPoint = computeTriggerPoint();
 
-      if (!isHeaderLoaded) return;
+  const onResize = rafThrottle(() => {
+    triggerPoint = computeTriggerPoint();
+  });
 
-      const section1Height = section1.offsetHeight;
-      const triggerRatio = $window.width() <= 1000 ? 0.085 : 0.12;
-      const triggerPoint = section1Height * triggerRatio;
+  const onScroll = rafThrottle(() => {
+    // header가 로드되었는지 확인 (jQuery 객체 자체는 truthy이므로 length 검사)
+    const isHeaderLoaded = $('#header').length > 0;
+    if (!isHeaderLoaded) return;
 
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop >= triggerPoint) {
-        if (!$('.app-section.section1').hasClass('active')) {
-          $('.app-section.section1').addClass('active');
-        }
-      } else {
-        $('.app-section.section1').removeClass('active');
-      }
-    });
-  }
+    const scrollTop = getScrollTop();
+    const $section1 = $(SELECTOR.section1);
+    if (scrollTop >= triggerPoint) {
+      if (!$section1.hasClass('active')) $section1.addClass('active');
+    } else {
+      $section1.removeClass('active');
+    }
+  });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onResize, { passive: true });
+  // 초기 1회 평가
+  onScroll();
 };
 
 const shortsMotion = () => {
-  const t2 = gsap.timeline({
+  // pinned timeline (섹션1 고정 스크럽)
+  gsap.timeline({
     scrollTrigger: {
       trigger: '.app-section.section1',
       start: 'top top',
@@ -173,12 +208,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // section3 가로 스크롤 기능
   const initSection3HorizontalScroll = () => {
-    const section3 = document.querySelector('.section3 .overflow-slider-wrapper');
-    const overflowSliderContents = document.querySelector('.overflow-slider-contents');
+    const section3 = document.querySelector(SELECTOR.section3Wrapper);
+    const overflowSliderContents = document.querySelector(SELECTOR.section3Contents);
 
     if (!section3 || !overflowSliderContents) return;
 
-    let isScrolling = false;
+    let isScrolling = false; // reserved (미사용) - 미래 확장 대비
     let scrollPosition = 0;
     let maxScrollLeft = 0;
     let isHorizontalScrollActive = false;
@@ -194,64 +229,68 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateMaxScroll();
 
     // 윈도우 리사이즈 시 최대 스크롤 거리 재계산
-    window.addEventListener('resize', calculateMaxScroll);
+    window.addEventListener('resize', calculateMaxScroll, { passive: true });
 
     // 마우스 휠 이벤트
-    section3.addEventListener('wheel', e => {
-      const deltaY = e.deltaY;
-      const deltaX = e.deltaX;
-      const scrollSpeedX = 30; // 스크롤 속도 조절
-      const scrollSpeedY = 50; // 스크롤 속도 조절
+    section3.addEventListener(
+      'wheel',
+      e => {
+        const deltaY = e.deltaY;
+        const deltaX = e.deltaX;
+        const scrollSpeedX = 30; // 스크롤 속도 조절
+        const scrollSpeedY = 50; // 스크롤 속도 조절
 
-      let scrollDirection = 0;
+        let scrollDirection = 0;
 
-      // 가로 스크롤 우선 처리
-      if (Math.abs(deltaX) > Math.abs(deltaY) || deltaX !== 0) {
-        // deltaX > 0: 오른쪽으로 스크롤 = 왼쪽으로 이동
-        // deltaX < 0: 왼쪽으로 스크롤 = 오른쪽으로 이동
-        scrollDirection = deltaX > 0 ? scrollSpeedX : -scrollSpeedX;
-      } else {
-        // 세로 스크롤을 가로 스크롤로 변환
-        // deltaY > 0: 아래로 스크롤 = 왼쪽으로 이동
-        // deltaY < 0: 위로 스크롤 = 오른쪽으로 이동
-        scrollDirection = deltaY > 0 ? scrollSpeedY : -scrollSpeedY;
-      }
+        // 가로 스크롤 우선 처리
+        if (Math.abs(deltaX) > Math.abs(deltaY) || deltaX !== 0) {
+          // deltaX > 0: 오른쪽으로 스크롤 = 왼쪽으로 이동
+          // deltaX < 0: 왼쪽으로 스크롤 = 오른쪽으로 이동
+          scrollDirection = deltaX > 0 ? scrollSpeedX : -scrollSpeedX;
+        } else {
+          // 세로 스크롤을 가로 스크롤로 변환
+          // deltaY > 0: 아래로 스크롤 = 왼쪽으로 이동
+          // deltaY < 0: 위로 스크롤 = 오른쪽으로 이동
+          scrollDirection = deltaY > 0 ? scrollSpeedY : -scrollSpeedY;
+        }
 
-      // 스크롤이 끝에 도달했고 오른쪽으로 스크롤하려고 할 때
-      if (scrollPosition >= maxScrollLeft && scrollDirection > 0) {
-        // 가로 스크롤 완료, 아래로 세로 스크롤 허용
-        isHorizontalScrollActive = false;
-        return; // early return으로 가로 스크롤 로직 차단
-      }
+        // 스크롤이 끝에 도달했고 오른쪽으로 스크롤하려고 할 때
+        if (scrollPosition >= maxScrollLeft && scrollDirection > 0) {
+          // 가로 스크롤 완료, 아래로 세로 스크롤 허용
+          isHorizontalScrollActive = false;
+          return; // early return으로 가로 스크롤 로직 차단
+        }
 
-      // 스크롤이 처음에 도달했고 왼쪽으로 스크롤하려고 할 때
-      if (scrollPosition <= 0 && scrollDirection < 0) {
-        // 가로 스크롤이 처음 위치, 위로 스크롤 허용
-        isHorizontalScrollActive = false;
-        return; // early return으로 가로 스크롤 로직 차단
-      }
+        // 스크롤이 처음에 도달했고 왼쪽으로 스크롤하려고 할 때
+        if (scrollPosition <= 0 && scrollDirection < 0) {
+          // 가로 스크롤이 처음 위치, 위로 스크롤 허용
+          isHorizontalScrollActive = false;
+          return; // early return으로 가로 스크롤 로직 차단
+        }
 
-      // 가로 스크롤이 활성화된 경우에만 preventDefault 실행
-      if (isHorizontalScrollActive || maxScrollLeft > 0) {
-        e.preventDefault();
-      }
+        // 가로 스크롤이 활성화된 경우에만 preventDefault 실행
+        if (isHorizontalScrollActive || maxScrollLeft > 0) {
+          e.preventDefault();
+        }
 
-      if (isScrolling) return;
+        if (isScrolling) return;
 
-      const newScrollPosition = scrollPosition + scrollDirection;
+        const newScrollPosition = scrollPosition + scrollDirection;
 
-      // 스크롤 범위 제한
-      const clampedPosition = Math.max(0, Math.min(newScrollPosition, maxScrollLeft));
+        // 스크롤 범위 제한
+        const clampedPosition = Math.max(0, Math.min(newScrollPosition, maxScrollLeft));
 
-      // 스크롤 위치가 변경되었을 때만 실행
-      if (clampedPosition !== scrollPosition) {
-        scrollPosition = clampedPosition;
-        isHorizontalScrollActive = true;
+        // 스크롤 위치가 변경되었을 때만 실행
+        if (clampedPosition !== scrollPosition) {
+          scrollPosition = clampedPosition;
+          isHorizontalScrollActive = true;
 
-        // translateX로 왼쪽으로 이동 (음수 값)
-        overflowSliderContents.style.transform = `translateX(-${scrollPosition}px)`;
-      }
-    });
+          // translateX로 왼쪽으로 이동 (음수 값)
+          overflowSliderContents.style.transform = `translateX(-${scrollPosition}px)`;
+        }
+      },
+      { passive: false }
+    );
 
     // 터치 이벤트 추가
     let touchStartX = 0;
@@ -264,36 +303,40 @@ document.addEventListener('DOMContentLoaded', () => {
       isTouchScrolling = false;
     });
 
-    section3.addEventListener('touchmove', e => {
-      if (!touchStartX || !touchStartY) return;
+    section3.addEventListener(
+      'touchmove',
+      e => {
+        if (!touchStartX || !touchStartY) return;
 
-      const touchCurrentX = e.touches[0].clientX;
-      const touchCurrentY = e.touches[0].clientY;
+        const touchCurrentX = e.touches[0].clientX;
+        const touchCurrentY = e.touches[0].clientY;
 
-      const deltaX = touchStartX - touchCurrentX;
-      const deltaY = touchStartY - touchCurrentY;
+        const deltaX = touchStartX - touchCurrentX;
+        const deltaY = touchStartY - touchCurrentY;
 
-      // 가로 스와이프가 세로 스와이프보다 클 때만 가로 스크롤 처리
-      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
-        e.preventDefault(); // 가로 스와이프일 때만 preventDefault
+        // 가로 스와이프가 세로 스와이프보다 클 때만 가로 스크롤 처리
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+          e.preventDefault(); // 가로 스와이프일 때만 preventDefault
 
-        if (!isTouchScrolling) {
-          isTouchScrolling = true;
-          isHorizontalScrollActive = true;
+          if (!isTouchScrolling) {
+            isTouchScrolling = true;
+            isHorizontalScrollActive = true;
+          }
+
+          const swipeSpeed = 0.4; // 터치 스와이프 속도 조절 (더 자연스럽게)
+          const newScrollPosition = scrollPosition + deltaX * swipeSpeed;
+
+          // 스크롤 범위 제한
+          const clampedPosition = Math.max(0, Math.min(newScrollPosition, maxScrollLeft));
+
+          if (clampedPosition !== scrollPosition) {
+            scrollPosition = clampedPosition;
+            overflowSliderContents.style.transform = `translateX(-${scrollPosition}px)`;
+          }
         }
-
-        const swipeSpeed = 0.4; // 터치 스와이프 속도 조절 (더 자연스럽게)
-        const newScrollPosition = scrollPosition + deltaX * swipeSpeed;
-
-        // 스크롤 범위 제한
-        const clampedPosition = Math.max(0, Math.min(newScrollPosition, maxScrollLeft));
-
-        if (clampedPosition !== scrollPosition) {
-          scrollPosition = clampedPosition;
-          overflowSliderContents.style.transform = `translateX(-${scrollPosition}px)`;
-        }
-      }
-    });
+      },
+      { passive: false }
+    );
 
     section3.addEventListener('touchend', () => {
       touchStartX = 0;
