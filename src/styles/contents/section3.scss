@@ -3,13 +3,92 @@
     $sec-height: 917;
     $sec-height-m: 655;
 
-    .title-wrapper {
+    .app-inner {
+      max-width: none;
+    }
+
+    .overflow-section-wrapper {
       position: absolute;
-      top: 37.7%;
-      left: 8.3%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: visible;
+      max-width: 2560px;
+
+      .overflow-section {
+        position: relative;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: vw(113px, 1920);
+        padding-right: vw(200px, 1920);
+        height: 100%;
+
+        min-width: max-content;
+        transition: transform 0.3s ease;
+
+        .overflow-slider {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          gap: vw(103px, 1920);
+          padding-top: vw(107px, 1920);
+          min-width: max-content;
+
+          li {
+            flex: 0 0 auto;
+            position: relative;
+            width: vw(640px, 1920);
+            height: fit-content;
+            max-width: 640px;
+            max-height: 640px;
+
+            .slide-image {
+              position: relative;
+              z-index: 0;
+            }
+            .slide-txt {
+              position: absolute;
+              bottom: 24.84%;
+              z-index: 1;
+              width: 23.4%;
+
+              &.slide-txt1 {
+                right: 6.05%;
+              }
+              &.slide-txt2 {
+                right: 0;
+              }
+              &.slide-txt3 {
+                right: 11.09%;
+              }
+            }
+          }
+
+          @include screen("mobile") {
+            display: none;
+          }
+
+          @include screen("tablet") {
+            gap: vw(80px, 1920);
+          }
+        }
+
+        @include screen("tablet") {
+          gap: vw(70px, 1920);
+        }
+      }
+    }
+
+    .title-wrapper {
+      flex-shrink: 0;
+      padding-top: 12.7%;
+      padding-left: 5.9%;
 
       h2 {
-        font-size: fluid-font(47.5px, $min: 24px);
+        font-size: fluid-font(47.5px, $min: 20px);
         line-height: 1.341;
         color: #111;
         font-weight: 500 !important;
@@ -19,7 +98,7 @@
         }
       }
       p {
-        margin-top: 6%;
+        margin-top: 5.8%;
         letter-spacing: 0rem;
         color: #333;
         font-size: fluid-font(22px, $min: 14px);
@@ -27,8 +106,10 @@
       }
 
       @include screen("mobile") {
+        position: absolute;
         top: 8.3%;
         left: 8.5%;
+        padding: 0;
 
         h2 {
           font-size: vw(27px);
@@ -37,70 +118,7 @@
         p {
           font-size: vw(16px);
           line-height: 1.2;
-        }
-      }
-    }
-
-    .overflow-slider-wrapper {
-      position: absolute;
-      top: 11.99%;
-      left: 38.5%;
-      width: 61.5%;
-
-      .overflow-slider {
-        width: 100%;
-        overflow-x: hidden;
-      }
-
-      .overflow-slider-contents {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        gap: vw(104px, 1920);
-        padding-right: vw(60px, 1920);
-        min-width: max-content;
-        transition: transform 0.3s ease;
-
-        li {
-          flex: 0 0 auto;
-          position: relative;
-          width: vw(640px, 1920);
-          max-width: 640px;
-
-          .slide-image {
-            position: relative;
-            z-index: 0;
-          }
-          .slide-txt {
-            position: absolute;
-            bottom: 24.84%;
-            z-index: 1;
-            width: 23.4%;
-
-            &.slide-txt1 {
-              right: 6.05%;
-            }
-            &.slide-txt2 {
-              right: 0;
-            }
-            &.slide-txt3 {
-              right: 11.09%;
-            }
-          }
-        }
-      }
-
-      @include screen("mobile") {
-        display: none;
-      }
-
-      @include screen("tablet") {
-        .overflow-slider {
-          margin-left: 5%;
-        }
-
-        .overflow-slider-contents {
-          gap: vw(60px, 1920);
+          margin-top: 6%;
         }
       }
     }
