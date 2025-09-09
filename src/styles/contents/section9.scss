@@ -1,128 +1,130 @@
-.section9 {
-  background-color: #fff;
+.#{$app-name} {
+  .section9 {
+    background-color: #fff;
 
-  .app-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    max-width: $artboard-width;
-    margin: 0 auto;
-    padding: 7.3vw 0 5vw;
-    top: unset;
-    left: unset;
-    transform: translateX(0);
-  }
-
-  h3 {
-    text-align: center;
-    color: #111111;
-    font-weight: bold;
-    line-height: 1.2;
-    font-size: fluid-font(44px, $min: 20px);
-  }
-
-  .accordion {
-    width: 100%;
-    max-width: 1080px;
-    margin: 4.5% auto 0;
-  }
-
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    > li {
-      &.active {
-        .question::after {
-          transform: rotate(180deg);
-        }
-      }
-      .question {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        padding: 2.57rem 4rem;
-        border-bottom: 1px solid #c1c1c1;
-
-        h4 {
-          color: #ef4d9f;
-          font-weight: bold;
-          line-height: 1.2;
-          font-size: fluid-font(21px, $min: 18px);
-          > span {
-            margin-right: 0.7rem;
-          }
-        }
-        &::after {
-          @include pseudo(2rem, 1.2rem, relative);
-          transition: transform 300ms;
-          background: url(images/sec09-arrow.png) no-repeat center;
-          background-size: contain;
-        }
-      }
-      .answer {
-        display: none;
-        padding: 2.6rem 4.3rem;
-        background-color: #fff7fb;
-        p {
-          color: #333;
-          line-height: 1.526;
-          font-size: fluid-font(19px, $min: 15px);
-          word-wrap: break-word !important;
-          strong {
-            font-weight: bold !important;
-          }
-        }
-      }
-    }
-  }
-
-  @include screen("mobile") {
     .app-inner {
-      padding: vw(60px) 0;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: $artboard-width;
+      margin: 0 auto;
+      padding: 7.3vw 0 5vw;
+      top: unset;
+      left: unset;
+      transform: translateX(0);
     }
 
     h3 {
-      font-size: vw(27px);
+      text-align: center;
+      color: #111111;
+      font-weight: bold;
+      line-height: 1.2;
+      font-size: fluid-font(44px, $min: 20px);
     }
 
     .accordion {
-      margin: vw(26px) auto 0;
+      width: 100%;
+      max-width: 1080px;
+      margin: 4.5% auto 0;
     }
 
     .faq-list {
-      padding-left: 20px;
-      padding-right: 20px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
 
       > li {
+        &.active {
+          .question::after {
+            transform: rotate(180deg);
+          }
+        }
         .question {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
           gap: 10px;
-          padding: vw(15px) 0;
+          padding: 2.57rem 4rem;
+          border-bottom: 1px solid #c1c1c1;
 
           h4 {
-            font-size: vw(14px);
+            color: #ef4d9f;
+            font-weight: bold;
+            line-height: 1.2;
+            font-size: fluid-font(21px, $min: 18px);
             > span {
-              margin-right: vw(8px);
+              margin-right: 0.7rem;
             }
           }
           &::after {
-            @include pseudo(vw(10px), vw(7px), relative);
-            margin-right: vw(7px);
-            background: url(images/sec09-arrow-m.png) no-repeat center;
+            @include pseudo(2rem, 1.2rem, relative);
+            transition: transform 300ms;
+            background: url(images/sec09-arrow.png) no-repeat center;
             background-size: contain;
           }
         }
         .answer {
           display: none;
-          padding: vw(15px) vw(20px) vw(19px);
+          padding: 2.6rem 4.3rem;
+          background-color: #fff7fb;
           p {
-            line-height: 1.83;
-            letter-spacing: -0.05rem;
-            font-size: vw(14px);
-            word-wrap: break-word;
+            color: #333;
+            line-height: 1.526;
+            font-size: fluid-font(19px, $min: 15px);
+            word-wrap: break-word !important;
+            strong {
+              font-weight: bold !important;
+            }
+          }
+        }
+      }
+    }
+
+    @include screen("mobile") {
+      .app-inner {
+        padding: vw(60px) 0;
+      }
+
+      h3 {
+        font-size: vw(27px);
+      }
+
+      .accordion {
+        margin: vw(26px) auto 0;
+      }
+
+      .faq-list {
+        padding-left: 20px;
+        padding-right: 20px;
+
+        > li {
+          .question {
+            gap: 10px;
+            padding: vw(15px) 0;
+
+            h4 {
+              font-size: vw(14px);
+              > span {
+                margin-right: vw(8px);
+              }
+            }
+            &::after {
+              @include pseudo(vw(10px), vw(7px), relative);
+              margin-right: vw(7px);
+              background: url(images/sec09-arrow-m.png) no-repeat center;
+              background-size: contain;
+            }
+          }
+          .answer {
+            display: none;
+            padding: vw(15px) vw(20px) vw(19px);
+            p {
+              line-height: 1.83;
+              letter-spacing: -0.05rem;
+              font-size: vw(14px);
+              word-wrap: break-word;
+            }
           }
         }
       }

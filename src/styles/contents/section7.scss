@@ -1,64 +1,66 @@
-.section7 {
-  $sec-height: 974;
-  $sec-height-m: 1144;
+.#{$app-name} {
+  .section7 {
+    $sec-height: 974;
+    $sec-height-m: 1144;
 
-  .title-wrapper {
-    padding-top: 7.5%;
-    width: 100%;
-    color: #111111;
-
-    h2 {
-      strong {
-        font-weight: bold !important;
-      }
-      text-align: center;
-      font-size: fluid-font(44px, $min: 20px);
-      line-height: 1.2;
-    }
-
-    @include screen("mobile") {
-      padding-top: 15.2%;
+    .title-wrapper {
+      padding-top: 7.5%;
+      width: 100%;
+      color: #111111;
 
       h2 {
-        font-size: vw(27px);
+        strong {
+          font-weight: bold !important;
+        }
+        text-align: center;
+        font-size: fluid-font(44px, $min: 20px);
         line-height: 1.2;
-        letter-spacing: -0.15rem;
+      }
+
+      @include screen("mobile") {
+        padding-top: 15.2%;
+
+        h2 {
+          font-size: vw(27px);
+          line-height: 1.2;
+          letter-spacing: -0.15rem;
+        }
       }
     }
-  }
 
-  .stories {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 3%;
-    width: 65%;
-    margin: 0 17.5%;
-    padding-top: 3.8%;
-
-    li {
+    .stories {
       display: flex;
-      flex-direction: column;
-      p {
-        margin: 4.7% 0 0 10.2%;
-        font-size: fluid-font(19px, $min: 10px);
-        font-weight: 500;
-        line-height: 1.579;
-        color: #333;
-      }
-    }
-
-    @include screen("mobile") {
-      flex-direction: column;
-      width: 89%;
-      margin: 0 auto;
-      padding-top: 6.8%;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 3%;
+      width: 65%;
+      margin: 0 17.5%;
+      padding-top: 3.8%;
 
       li {
-        display: block;
-        margin-bottom: 1.9%;
+        display: flex;
+        flex-direction: column;
         p {
-          display: none;
+          margin: 4.7% 0 0 10.2%;
+          font-size: fluid-font(19px, $min: 10px);
+          font-weight: 500;
+          line-height: 1.579;
+          color: #333;
+        }
+      }
+
+      @include screen("mobile") {
+        flex-direction: column;
+        width: 89%;
+        margin: 0 auto;
+        padding-top: 6.8%;
+
+        li {
+          display: block;
+          margin-bottom: 1.9%;
+          p {
+            display: none;
+          }
         }
       }
     }

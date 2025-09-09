@@ -7,137 +7,137 @@
   margin: 0 auto;
   min-width: $min-width;
   cursor: url("images/cursor.png"), auto;
-}
 
-.floating-button {
-  position: fixed;
-  z-index: 10;
-  bottom: 40px;
-  right: 40px;
-  transition: transform 300ms;
-  width: 14vw;
-  min-width: 100px;
-  max-width: 206px;
+  .floating-button {
+    position: fixed;
+    z-index: 10;
+    bottom: 40px;
+    right: 40px;
+    transition: transform 300ms;
+    width: 14vw;
+    min-width: 100px;
+    max-width: 206px;
 
-  &:hover {
-    transform: translateY(-10px);
-  }
-
-  @include screen("tablet") {
-    bottom: 15px;
-    right: 15px;
-  }
-
-  @include screen("mobile") {
-    right: unset;
-    bottom: 12px;
-    width: 100%;
-    min-width: auto;
-    max-width: none;
-    a {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      padding: 0 vw(17px);
+    &:hover {
+      transform: translateY(-10px);
     }
-    a > img.only-mo {
+
+    @include screen("tablet") {
+      bottom: 15px;
+      right: 15px;
+    }
+
+    @include screen("mobile") {
+      right: unset;
+      bottom: 12px;
       width: 100%;
-      max-width: 400px;
+      min-width: auto;
+      max-width: none;
+      a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 0 vw(17px);
+      }
+      a > img.only-mo {
+        width: 100%;
+        max-width: 400px;
+      }
     }
   }
-}
 
-.section-bg {
-  width: 100%;
-  max-width: $max-width;
-  pointer-events: none;
-  margin: 0 auto;
-  opacity: 0;
-  // opacity: 0; // FIXME: 임시
-}
-
-.section1-1 {
-  // height: 1030px;
-  background: url(images/sec01-1-bg.jpg) no-repeat 50% 0;
-  background-size: cover;
-}
-.section1-2 {
-  // height: 958px;
-  background: url(images/sec01-2-bg.jpg) no-repeat 50% 0;
-  background-size: cover;
-}
-// FIXME: 나중에 작업
-.section2 {
-  // height: 1039px;
-  background: url(images/sec02-bg.jpg) no-repeat 50% 0;
-  background-size: cover;
-}
-
-.section3 {
-  // height: 917px;
-  background: url(images/sec03-bg.jpg) no-repeat 50% 0;
-  background-size: cover;
-}
-.section4 {
-  // height: 960px;
-  background: url(images/sec04-bg.jpg) no-repeat 50% 0;
-  background-size: cover;
-}
-// FIXME: 슬라이더 이미지 요청 필요
-.section5 {
-  // height: 865px;
-  background: url(images/sec05-bg.jpg) no-repeat 50% 0;
-  background-size: cover;
-}
-.section6 {
-  // height: 1740px;
-  background: url(images/sec06-bg.jpg) no-repeat 50% 0;
-  background-size: cover;
-}
-.section7 {
-  // height: 974px;
-  background: url(images/sec07-bg.jpg) no-repeat 50% 0;
-  background-size: cover;
-}
-.section8 {
-  // height: 1003px;
-  background: url(images/sec08-bg.jpg) no-repeat 50% 0;
-  background-size: cover;
-}
-// .section9 {
-//   height: 1275px;
-//   background: url(images/bg9.jpg) no-repeat 50% 0;
-//   background-size: cover;
-//   // display: none;
-// }
-// .section9,
-// .section10 {
-//   display: none;
-// }
-
-.app-section {
-  overflow: hidden;
-  max-width: 100%;
-  margin: 0 auto;
-  position: relative;
-
-  .only-mo {
+  .section-bg {
     width: 100%;
+    max-width: $max-width;
+    pointer-events: none;
+    margin: 0 auto;
+    opacity: 0;
+    // opacity: 0; // FIXME: 임시
   }
-}
 
-.app-inner {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  max-width: $max-width;
-  &:after {
-    content: "";
-    display: block;
-    clear: both;
+  .section1-1 {
+    // height: 1030px;
+    background: url(images/sec01-1-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section1-2 {
+    // height: 958px;
+    background: url(images/sec01-2-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  // FIXME: 나중에 작업
+  .section2 {
+    // height: 1039px;
+    background: url(images/sec02-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+
+  .section3 {
+    // height: 917px;
+    background: url(images/sec03-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section4 {
+    // height: 960px;
+    background: url(images/sec04-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  // FIXME: 슬라이더 이미지 요청 필요
+  .section5 {
+    // height: 865px;
+    background: url(images/sec05-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section6 {
+    // height: 1740px;
+    background: url(images/sec06-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section7 {
+    // height: 974px;
+    background: url(images/sec07-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section8 {
+    // height: 1003px;
+    background: url(images/sec08-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  // .section9 {
+  //   height: 1275px;
+  //   background: url(images/bg9.jpg) no-repeat 50% 0;
+  //   background-size: cover;
+  //   // display: none;
+  // }
+  // .section9,
+  // .section10 {
+  //   display: none;
+  // }
+
+  .app-section {
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    .only-mo {
+      width: 100%;
+    }
+  }
+
+  .app-inner {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    max-width: $max-width;
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
   }
 }

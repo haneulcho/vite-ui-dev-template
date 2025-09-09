@@ -1,157 +1,159 @@
-.section4 {
-  $sec-height: 960;
-  $sec-height-m: 708;
+.#{$app-name} {
+  .section4 {
+    $sec-height: 960;
+    $sec-height-m: 708;
 
-  .card {
-    position: absolute;
-    &.only-pc {
-      @include to-percent($sec-height, $w: 370, $left: 519);
-      bottom: 0;
-    }
-    &.only-mo {
-      @include to-percent-m($sec-height-m, $w: 360, $top: 27, $left: 0);
-    }
-  }
-
-  .gabee-says {
-    position: absolute;
-    display: block;
-    @include res-bg;
-    @include to-percent($sec-height, $w: 199, $h: 93, $top: 141, $left: 915);
-    background-image: url(images/sec04-says.png);
-    span {
-      @include sr-only;
-    }
-
-    @include screen("mobile") {
-      @include to-percent-m($sec-height-m, $w: 119, $h: 59, $top: 283, $left: 31);
-      background-image: url(images/sec04-says-m.png);
-    }
-  }
-
-  .message-wrapper {
-    position: absolute;
-    @include to-percent($sec-height, $w: 600, $h: 500, $top: 266, $left: 923);
-    p {
-      margin-left: 2.6%;
-    }
-    p,
-    p > strong {
-      font-family:
-        "Gaemittongkkumeong",
-        Pretendard,
-        Noto Sans KR,
-        Noto Sans,
-        -apple-system,
-        BlinkMacSystemFont,
-        Roboto,
-        "Apple SD Gothic Neo",
-        "Helvetica Neue",
-        Helvetica,
-        Arial,
-        "Malgun Gothic",
-        "맑은 고딕",
-        Dotum,
-        "돋움",
-        sans-serif;
-      color: #272424;
-    }
-    strong {
-      font-weight: 700 !important;
-    }
-    .letter {
-      font-size: fluid-font(46px, $min: 20px);
-      line-height: 1;
-    }
-    .main-message {
-      margin-top: 3.6%;
-      margin-bottom: 7.8%;
-      font-size: fluid-font(56.5px, $min: 24px);
-      font-weight: bold;
-      line-height: 0.92;
-    }
-    a {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      width: 82.4%;
-      height: 18%;
-      padding: 0 7.3% 0 8%;
-      color: #ffffff;
-      font-size: fluid-font(27px, $min: 10px);
-      line-height: 1;
-      border-radius: 5px;
-      background-color: #d11875;
-      box-shadow: 4.663px 3.776px 24px 0px rgba(72, 56, 71, 0.2);
-      transition: transform 300ms;
-      .arrow {
-        display: block;
-        @include res-bg;
-        width: 3.2%;
-        height: 27%;
-        margin-top: 1%;
-        transition: transform 300ms;
-        background-image: url(images/sec04-arrow.png);
+    .card {
+      position: absolute;
+      &.only-pc {
+        @include to-percent($sec-height, $w: 370, $left: 519);
+        bottom: 0;
       }
-
-      &:hover {
-        transform: translate(2px, 2px);
-
-        .arrow {
-          transform: translateX(4px);
-        }
+      &.only-mo {
+        @include to-percent-m($sec-height-m, $w: 360, $top: 27, $left: 0);
       }
     }
 
-    @include screen("mobile") {
-      width: 100%;
-      height: auto;
-      top: 50%;
-      left: 0;
+    .gabee-says {
+      position: absolute;
+      display: block;
+      @include res-bg;
+      @include to-percent($sec-height, $w: 199, $h: 93, $top: 141, $left: 915);
+      background-image: url(images/sec04-says.png);
+      span {
+        @include sr-only;
+      }
 
+      @include screen("mobile") {
+        @include to-percent-m($sec-height-m, $w: 119, $h: 59, $top: 283, $left: 31);
+        background-image: url(images/sec04-says-m.png);
+      }
+    }
+
+    .message-wrapper {
+      position: absolute;
+      @include to-percent($sec-height, $w: 600, $h: 500, $top: 266, $left: 923);
       p {
-        margin-left: 9%;
-        letter-spacing: -0.03rem;
+        margin-left: 2.6%;
       }
-
+      p,
+      p > strong {
+        font-family:
+          "Gaemittongkkumeong",
+          Pretendard,
+          Noto Sans KR,
+          Noto Sans,
+          -apple-system,
+          BlinkMacSystemFont,
+          Roboto,
+          "Apple SD Gothic Neo",
+          "Helvetica Neue",
+          Helvetica,
+          Arial,
+          "Malgun Gothic",
+          "맑은 고딕",
+          Dotum,
+          "돋움",
+          sans-serif;
+        color: #272424;
+      }
+      strong {
+        font-weight: 700 !important;
+      }
       .letter {
-        font-size: vw(30px);
-        line-height: 1.05;
+        font-size: fluid-font(46px, $min: 20px);
+        line-height: 1;
       }
       .main-message {
-        margin-top: 2.2%;
-        margin-bottom: 8.7%;
-        font-size: vw(34px);
-        line-height: 0.975;
-        letter-spacing: 0.12rem;
+        margin-top: 3.6%;
+        margin-bottom: 7.8%;
+        font-size: fluid-font(56.5px, $min: 24px);
+        font-weight: bold;
+        line-height: 0.92;
       }
       a {
-        width: calc(100% - 16.6%);
-        height: 15.3vw;
-        padding: 0 5.7% 0 8%;
-        margin: 0 auto;
-        font-size: vw(16);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        width: 82.4%;
+        height: 18%;
+        padding: 0 7.3% 0 8%;
+        color: #ffffff;
+        font-size: fluid-font(27px, $min: 10px);
         line-height: 1;
-        border-radius: 0;
-        background-color: #c90d6b;
-        box-shadow: 4.663px 3.776px 24px 0px rgba(72, 56, 71, 0.25);
+        border-radius: 5px;
+        background-color: #d11875;
+        box-shadow: 4.663px 3.776px 24px 0px rgba(72, 56, 71, 0.2);
+        transition: transform 300ms;
         .arrow {
-          width: 4.2%;
-          height: 30%;
-          margin-top: 0;
-          background-image: url(images/sec04-arrow-m.png);
+          display: block;
+          @include res-bg;
+          width: 3.2%;
+          height: 27%;
+          margin-top: 1%;
+          transition: transform 300ms;
+          background-image: url(images/sec04-arrow.png);
+        }
+
+        &:hover {
+          transform: translate(2px, 2px);
+
+          .arrow {
+            transform: translateX(4px);
+          }
+        }
+      }
+
+      @include screen("mobile") {
+        width: 100%;
+        height: auto;
+        top: 50%;
+        left: 0;
+
+        p {
+          margin-left: 9%;
+          letter-spacing: -0.03rem;
+        }
+
+        .letter {
+          font-size: vw(30px);
+          line-height: 1.05;
+        }
+        .main-message {
+          margin-top: 2.2%;
+          margin-bottom: 8.7%;
+          font-size: vw(34px);
+          line-height: 0.975;
+          letter-spacing: 0.12rem;
+        }
+        a {
+          width: calc(100% - 16.6%);
+          height: 15.3vw;
+          padding: 0 5.7% 0 8%;
+          margin: 0 auto;
+          font-size: vw(16);
+          line-height: 1;
+          border-radius: 0;
+          background-color: #c90d6b;
+          box-shadow: 4.663px 3.776px 24px 0px rgba(72, 56, 71, 0.25);
+          .arrow {
+            width: 4.2%;
+            height: 30%;
+            margin-top: 0;
+            background-image: url(images/sec04-arrow-m.png);
+          }
         }
       }
     }
-  }
-  .bg-txt {
-    position: absolute;
-    display: block;
-    @include res-bg;
-    @include to-percent($sec-height, $w: 1901, $h: 659, $left: 12);
-    bottom: 0;
-    background-image: url(images/sec04-bg-txt.png);
+    .bg-txt {
+      position: absolute;
+      display: block;
+      @include res-bg;
+      @include to-percent($sec-height, $w: 1901, $h: 659, $left: 12);
+      bottom: 0;
+      background-image: url(images/sec04-bg-txt.png);
+    }
   }
 }

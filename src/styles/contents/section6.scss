@@ -1,289 +1,291 @@
-.section6 {
-  $sec-height: 1740;
-  $sec-height-m: 1170;
+.#{$app-name} {
+  .section6 {
+    $sec-height: 1740;
+    $sec-height-m: 1170;
 
-  h2 {
-    position: absolute;
-    @include to-percent($sec-height, $w: 867, $top: 114, $left: 523);
-  }
-
-  .sub-title {
-    position: absolute;
-    @include to-percent($sec-height, $w: 367, $top: 267, $left: 777);
-  }
-
-  @include screen("mobile") {
     h2 {
-      @include to-percent-m($sec-height-m, $w: 324, $top: 70, $left: 17);
-    }
-    .sub-title {
-      @include to-percent-m($sec-height-m, $w: 248, $top: 444, $left: 56);
-      z-index: 10;
-    }
-  }
-
-  .sketch-book {
-    position: absolute;
-    top: 23.1%;
-    left: 0;
-
-    .sticky-images {
       position: absolute;
-      top: 15.4%;
-      left: 19.4%;
-      width: 21.92%;
-      height: 63.67%;
-      @include res-bg;
-      background-image: url(images/sec06-frame.png);
+      @include to-percent($sec-height, $w: 867, $top: 114, $left: 523);
+    }
 
-      &::after {
-        @include pseudo(43.5%, 16.7%);
-        top: -0.6%;
-        right: -7.2%;
-        background: url(images/sec06-photo-tip.png) no-repeat top right;
-        background-size: contain;
-        z-index: 5;
-      }
-
-      ul {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        > li {
-          position: absolute;
-          top: 2.6%;
-          left: 5.2%;
-          width: 89%;
-          z-index: 0;
-
-          .photo-link {
-            display: block;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-
-            img {
-              width: 100%;
-              height: auto;
-              opacity: 0;
-              transform: rotate(-10deg) translateX(20px) translateY(10px);
-              transition: all 0.6s ease-in-out;
-            }
-          }
-
-          &.active {
-            z-index: 4;
-            .photo-link img {
-              opacity: 1;
-              transform: rotate(0deg) translateX(0px) translateY(0px);
-              transition-delay: 0.15s;
-            }
-          }
-        }
-      }
+    .sub-title {
+      position: absolute;
+      @include to-percent($sec-height, $w: 367, $top: 267, $left: 777);
     }
 
     @include screen("mobile") {
-      width: 100%;
-      top: 17.1%;
-
-      .sticky-images {
-        top: -9.1%;
-        left: 16.9%;
-        width: 65.83%;
-        height: 37.02%;
-        background-image: url(images/sec06-frame-m.png);
-
-        &::after {
-          @include pseudo(41.8%, 24.5%);
-          top: -0.7%;
-          right: -4%;
-          background: url(images/sec06-photo-tip-m.png) no-repeat top right;
-          background-size: contain;
-        }
-
-        ul > li {
-          left: 6.1%;
-          width: 86.2%;
-        }
+      h2 {
+        @include to-percent-m($sec-height-m, $w: 324, $top: 70, $left: 17);
+      }
+      .sub-title {
+        @include to-percent-m($sec-height-m, $w: 248, $top: 444, $left: 56);
+        z-index: 10;
       }
     }
 
-    .why-chosen {
+    .sketch-book {
       position: absolute;
-      top: 0;
-      right: 23.95%;
-      width: 33%;
-      height: 100%;
+      top: 23.1%;
+      left: 0;
 
-      > li {
+      .sticky-images {
         position: absolute;
-        right: 0;
+        top: 15.4%;
+        left: 19.4%;
+        width: 21.92%;
+        height: 63.67%;
+        @include res-bg;
+        background-image: url(images/sec06-frame.png);
 
-        p {
-          text-align: right;
-          font-size: fluid-font(19px, $min: 11px);
-          color: #d05f98;
-          line-height: 1;
+        &::after {
+          @include pseudo(43.5%, 16.7%);
+          top: -0.6%;
+          right: -7.2%;
+          background: url(images/sec06-photo-tip.png) no-repeat top right;
+          background-size: contain;
+          z-index: 5;
         }
 
-        &.why1 {
-          top: 19.5%;
-        }
-        &.why2 {
-          top: 33.4%;
-        }
-        &.why3 {
-          top: 45.8%;
-        }
-        &.why4 {
-          top: 57.4%;
-        }
-        &.why5 {
-          top: 72.4%;
-        }
-        &.why6 {
-          top: 84.9%;
+        ul {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          > li {
+            position: absolute;
+            top: 2.6%;
+            left: 5.2%;
+            width: 89%;
+            z-index: 0;
+
+            .photo-link {
+              display: block;
+              width: 100%;
+              height: 100%;
+              cursor: pointer;
+
+              img {
+                width: 100%;
+                height: auto;
+                opacity: 0;
+                transform: rotate(-10deg) translateX(20px) translateY(10px);
+                transition: all 0.6s ease-in-out;
+              }
+            }
+
+            &.active {
+              z-index: 4;
+              .photo-link img {
+                opacity: 1;
+                transform: rotate(0deg) translateX(0px) translateY(0px);
+                transition-delay: 0.15s;
+              }
+            }
+          }
         }
       }
 
       @include screen("mobile") {
         width: 100%;
-        right: unset;
+        top: 17.1%;
+
+        .sticky-images {
+          top: -9.1%;
+          left: 16.9%;
+          width: 65.83%;
+          height: 37.02%;
+          background-image: url(images/sec06-frame-m.png);
+
+          &::after {
+            @include pseudo(41.8%, 24.5%);
+            top: -0.7%;
+            right: -4%;
+            background: url(images/sec06-photo-tip-m.png) no-repeat top right;
+            background-size: contain;
+          }
+
+          ul > li {
+            left: 6.1%;
+            width: 86.2%;
+          }
+        }
+      }
+
+      .why-chosen {
+        position: absolute;
+        top: 0;
+        right: 23.95%;
+        width: 33%;
+        height: 100%;
 
         > li {
-          width: 100%;
-          text-align: center;
+          position: absolute;
+          right: 0;
 
           p {
-            text-align: center;
-            font-size: vw(13px);
-            font-weight: 500;
+            text-align: right;
+            font-size: fluid-font(19px, $min: 11px);
+            color: #d05f98;
+            line-height: 1;
           }
 
           &.why1 {
-            top: 43.8%;
+            top: 19.5%;
           }
           &.why2 {
-            top: 54.3%;
+            top: 33.4%;
           }
           &.why3 {
-            top: 62.5%;
+            top: 45.8%;
           }
           &.why4 {
-            top: 71.1%;
+            top: 57.4%;
           }
           &.why5 {
-            top: 82%;
+            top: 72.4%;
           }
           &.why6 {
-            top: 90.9%;
+            top: 84.9%;
           }
+        }
+
+        @include screen("mobile") {
+          width: 100%;
+          right: unset;
+
+          > li {
+            width: 100%;
+            text-align: center;
+
+            p {
+              text-align: center;
+              font-size: vw(13px);
+              font-weight: 500;
+            }
+
+            &.why1 {
+              top: 43.8%;
+            }
+            &.why2 {
+              top: 54.3%;
+            }
+            &.why3 {
+              top: 62.5%;
+            }
+            &.why4 {
+              top: 71.1%;
+            }
+            &.why5 {
+              top: 82%;
+            }
+            &.why6 {
+              top: 90.9%;
+            }
+          }
+        }
+      }
+    }
+
+    .recommend-message {
+      position: absolute;
+      @include to-percent($sec-height, $w: 647, $left: 635);
+      bottom: 7.87%;
+
+      &::before {
+        @include pseudo(2px, 118%);
+        top: -152%;
+        left: 50%;
+        background-color: #f798c4;
+      }
+    }
+
+    .line1,
+    .line2 {
+      position: absolute;
+      display: block;
+      @include res-bg;
+      bottom: 0;
+    }
+
+    .line1 span,
+    .line2 span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      @include res-bg;
+    }
+
+    .line1 {
+      @include to-percent($sec-height, $w: 85, $h: 52, $left: 774);
+      bottom: 14.25%;
+      span {
+        background-image: url(images/sec06-line1.png);
+        animation: line1-sway 1s ease-in-out infinite;
+        transform-origin: center bottom;
+      }
+    }
+
+    .line2 {
+      @include to-percent($sec-height, $w: 380, $h: 25, $left: 630);
+      bottom: 6.091%;
+      span {
+        background-image: url(images/sec06-line2.png);
+        animation: line2-draw 1s ease-in-out infinite;
+      }
+    }
+
+    @include screen("mobile") {
+      .recommend-message {
+        @include to-percent-m($sec-height-m, $w: 299, $left: 31);
+        bottom: 6.47%;
+
+        &::before {
+          @include pseudo(2px, 91%);
+          top: -152%;
+          left: 48%;
+        }
+      }
+
+      .line1 {
+        @include to-percent-m($sec-height-m, $w: 44, $h: 27, $left: 90);
+        bottom: 10.95%;
+
+        span {
+          background-image: url(images/sec06-line1-m.png);
+        }
+      }
+
+      .line2 {
+        @include to-percent-m($sec-height-m, $w: 177, $h: 12, $left: 27);
+        bottom: 5.091%;
+
+        span {
+          background-image: url(images/sec06-line2-m.png);
         }
       }
     }
   }
 
-  .recommend-message {
-    position: absolute;
-    @include to-percent($sec-height, $w: 647, $left: 635);
-    bottom: 7.87%;
-
-    &::before {
-      @include pseudo(2px, 118%);
-      top: -152%;
-      left: 50%;
-      background-color: #f798c4;
+  @keyframes line1-sway {
+    0% {
+      transform: rotate(-5deg);
+    }
+    50% {
+      transform: rotate(5deg);
+    }
+    100% {
+      transform: rotate(-5deg);
     }
   }
 
-  .line1,
-  .line2 {
-    position: absolute;
-    display: block;
-    @include res-bg;
-    bottom: 0;
-  }
-
-  .line1 span,
-  .line2 span {
-    display: block;
-    width: 100%;
-    height: 100%;
-    @include res-bg;
-  }
-
-  .line1 {
-    @include to-percent($sec-height, $w: 85, $h: 52, $left: 774);
-    bottom: 14.25%;
-    span {
-      background-image: url(images/sec06-line1.png);
-      animation: line1-sway 1s ease-in-out infinite;
-      transform-origin: center bottom;
+  @keyframes line2-draw {
+    0% {
+      transform: translateY(2px);
     }
-  }
-
-  .line2 {
-    @include to-percent($sec-height, $w: 380, $h: 25, $left: 630);
-    bottom: 6.091%;
-    span {
-      background-image: url(images/sec06-line2.png);
-      animation: line2-draw 1s ease-in-out infinite;
+    50% {
+      transform: translateY(0);
     }
-  }
-
-  @include screen("mobile") {
-    .recommend-message {
-      @include to-percent-m($sec-height-m, $w: 299, $left: 31);
-      bottom: 6.47%;
-
-      &::before {
-        @include pseudo(2px, 91%);
-        top: -152%;
-        left: 48%;
-      }
+    100% {
+      transform: translateY(2px);
     }
-
-    .line1 {
-      @include to-percent-m($sec-height-m, $w: 44, $h: 27, $left: 90);
-      bottom: 10.95%;
-
-      span {
-        background-image: url(images/sec06-line1-m.png);
-      }
-    }
-
-    .line2 {
-      @include to-percent-m($sec-height-m, $w: 177, $h: 12, $left: 27);
-      bottom: 5.091%;
-
-      span {
-        background-image: url(images/sec06-line2-m.png);
-      }
-    }
-  }
-}
-
-@keyframes line1-sway {
-  0% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-  100% {
-    transform: rotate(-5deg);
-  }
-}
-
-@keyframes line2-draw {
-  0% {
-    transform: translateY(2px);
-  }
-  50% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(2px);
   }
 }

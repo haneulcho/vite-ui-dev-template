@@ -1,67 +1,138 @@
-.section3 {
-  $sec-height: 917;
-  $sec-height-m: 655;
+.#{$app-name} {
+  .section3 {
+    $sec-height: 917;
+    $sec-height-m: 655;
 
-  .title-wrapper {
-    position: absolute;
-    top: 37.7%;
-    left: 8.3%;
-
-    h2 {
-      font-size: fluid-font(47.5px, $min: 24px);
-      line-height: 1.341;
-      color: #111;
-      font-weight: 500 !important;
-      letter-spacing: -0.2rem;
-      em {
-        font-weight: bolder !important;
-      }
-    }
-    p {
-      margin-top: 6%;
-      letter-spacing: 0rem;
-      color: #333;
-      font-size: fluid-font(22px, $min: 14px);
-      line-height: 1.2;
-    }
-
-    @include screen("mobile") {
-      top: 8.3%;
-      left: 8.5%;
+    .title-wrapper {
+      position: absolute;
+      top: 37.7%;
+      left: 8.3%;
 
       h2 {
-        font-size: vw(27px);
-        line-height: 1.333;
+        font-size: fluid-font(47.5px, $min: 24px);
+        line-height: 1.341;
+        color: #111;
+        font-weight: 500 !important;
+        letter-spacing: -0.2rem;
+        em {
+          font-weight: bolder !important;
+        }
       }
       p {
-        font-size: vw(16px);
+        margin-top: 6%;
+        letter-spacing: 0rem;
+        color: #333;
+        font-size: fluid-font(22px, $min: 14px);
         line-height: 1.2;
       }
+
+      @include screen("mobile") {
+        top: 8.3%;
+        left: 8.5%;
+
+        h2 {
+          font-size: vw(27px);
+          line-height: 1.333;
+        }
+        p {
+          font-size: vw(16px);
+          line-height: 1.2;
+        }
+      }
     }
-  }
 
-  .overflow-slider-wrapper {
-    position: absolute;
-    top: 11.99%;
-    left: 38.5%;
-    width: 61.5%;
+    .overflow-slider-wrapper {
+      position: absolute;
+      top: 11.99%;
+      left: 38.5%;
+      width: 61.5%;
 
-    .overflow-slider {
-      width: 100%;
-      overflow-x: hidden;
+      .overflow-slider {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      .overflow-slider-contents {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: vw(104px, 1920);
+        padding-right: vw(60px, 1920);
+        min-width: max-content;
+        transition: transform 0.3s ease;
+
+        li {
+          flex: 0 0 auto;
+          position: relative;
+          width: vw(640px, 1920);
+          max-width: 640px;
+
+          .slide-image {
+            position: relative;
+            z-index: 0;
+          }
+          .slide-txt {
+            position: absolute;
+            bottom: 24.84%;
+            z-index: 1;
+            width: 23.4%;
+
+            &.slide-txt1 {
+              right: 6.05%;
+            }
+            &.slide-txt2 {
+              right: 0;
+            }
+            &.slide-txt3 {
+              right: 11.09%;
+            }
+          }
+        }
+      }
+
+      @include screen("mobile") {
+        display: none;
+      }
+
+      @include screen("tablet") {
+        .overflow-slider {
+          margin-left: 5%;
+        }
+
+        .overflow-slider-contents {
+          gap: vw(60px, 1920);
+        }
+      }
     }
 
-    .overflow-slider-contents {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      gap: vw(104px, 1920);
-      padding-right: vw(60px, 1920);
-      min-width: max-content;
-      transition: transform 0.3s ease;
+    .slider-wrapper {
+      display: none;
+      position: absolute;
+      top: 11.99%;
+      left: 38.5%;
+      width: 61.5%;
+      padding-bottom: vw(51px);
 
-      li {
-        flex: 0 0 auto;
+      .swiper-pagination {
+        display: none;
+      }
+
+      .swiper-pagination-bullet {
+        border-radius: 50%;
+        background: #5b6f6d;
+        opacity: 1;
+        width: vw(7px);
+        height: vw(7px);
+        margin: 0 vw(3.5px);
+        &.swiper-pagination-bullet-active {
+          border-radius: 50px;
+          background: #ef4d9f !important;
+          width: vw(24px);
+          height: vw(7px);
+        }
+      }
+
+      .swiper-slide {
         position: relative;
         width: vw(640px, 1920);
         max-width: 640px;
@@ -87,104 +158,35 @@
           }
         }
       }
-    }
 
-    @include screen("mobile") {
-      display: none;
-    }
-
-    @include screen("tablet") {
-      .overflow-slider {
-        margin-left: 5%;
-      }
-
-      .overflow-slider-contents {
-        gap: vw(60px, 1920);
-      }
-    }
-  }
-
-  .slider-wrapper {
-    display: none;
-    position: absolute;
-    top: 11.99%;
-    left: 38.5%;
-    width: 61.5%;
-    padding-bottom: vw(51px);
-
-    .swiper-pagination {
-      display: none;
-    }
-
-    .swiper-pagination-bullet {
-      border-radius: 50%;
-      background: #5b6f6d;
-      opacity: 1;
-      width: vw(7px);
-      height: vw(7px);
-      margin: 0 vw(3.5px);
-      &.swiper-pagination-bullet-active {
-        border-radius: 50px;
-        background: #ef4d9f !important;
-        width: vw(24px);
-        height: vw(7px);
-      }
-    }
-
-    .swiper-slide {
-      position: relative;
-      width: vw(640px, 1920);
-      max-width: 640px;
-
-      .slide-image {
-        position: relative;
-        z-index: 0;
-      }
-      .slide-txt {
-        position: absolute;
-        bottom: 24.84%;
-        z-index: 1;
-        width: 23.4%;
-
-        &.slide-txt1 {
-          right: 6.05%;
-        }
-        &.slide-txt2 {
-          right: 0;
-        }
-        &.slide-txt3 {
-          right: 11.09%;
-        }
-      }
-    }
-
-    @include screen("mobile") {
-      display: block;
-      top: 31.8%;
-      left: 1%;
-      width: 99%;
-
-      .swiper-pagination {
+      @include screen("mobile") {
         display: block;
-        bottom: 3.6% !important;
-      }
+        top: 31.8%;
+        left: 1%;
+        width: 99%;
 
-      .swiper-slide {
-        width: vw(339px);
-        margin-right: 0;
+        .swiper-pagination {
+          display: block;
+          bottom: 3.6% !important;
+        }
 
-        .slide-txt {
-          bottom: 21.3%;
-          width: 27.8%;
+        .swiper-slide {
+          width: vw(339px);
+          margin-right: 0;
 
-          &.slide-txt1 {
-            right: 2.05%;
-          }
-          &.slide-txt2 {
-            right: 0;
-          }
-          &.slide-txt3 {
-            right: 5%;
+          .slide-txt {
+            bottom: 21.3%;
+            width: 27.8%;
+
+            &.slide-txt1 {
+              right: 2.05%;
+            }
+            &.slide-txt2 {
+              right: 0;
+            }
+            &.slide-txt3 {
+              right: 5%;
+            }
           }
         }
       }
