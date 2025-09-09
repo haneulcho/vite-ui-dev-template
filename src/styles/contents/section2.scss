@@ -92,20 +92,17 @@
       position: relative;
       width: 45%;
       height: 70.5%;
-      margin-top: 6.2%;
+      margin-top: 5.7%;
 
       iframe {
         position: absolute;
-        top: -60px;
-        bottom: -60px;
+        top: 0;
+        bottom: 0;
         left: 0;
+        right: 0;
         width: 100%;
-        height: calc(100% + 120px);
+        height: 100%;
         border: none;
-      }
-      &::after {
-        @include pseudo(100%, 100%);
-        z-index: 1;
       }
     }
   }
