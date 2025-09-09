@@ -71,8 +71,6 @@
           font-size: fluid-font(43px, $min: 20px);
           color: #ffe8e8;
           font-weight: bold;
-          perspective: 800px;
-          transform-style: preserve-3d;
           span {
             display: inline-flex;
             align-items: center;
@@ -81,11 +79,14 @@
           .flip-text-wrapper {
             position: relative;
             display: inline-block;
-            // margin: 0 1.8%;
             width: vw(226px, 1920);
             height: vw(69px, 1920);
             max-width: 226px;
             max-height: 69px;
+            perspective: 800px;
+            transform-style: preserve-3d;
+            will-change: transform;
+            animation: flipX 3.8s ease-in-out infinite;
             .flip-text {
               position: absolute;
               display: flex;
@@ -100,11 +101,16 @@
               background-color: #fb48a3;
               backface-visibility: hidden;
               transform-origin: center;
-              animation: flipX 3s ease infinite;
               em {
                 font-size: fluid-font(45px, $min: 22px);
                 color: #ffffff;
               }
+            }
+            .flip-text:first-child {
+              transform: rotateX(0deg) translateZ(1px);
+            }
+            .flip-text:last-child {
+              transform: rotateX(180deg) translateZ(1px);
             }
           }
 
@@ -227,11 +233,11 @@
             .flip-text-wrapper {
               width: vw(145px);
               height: vw(49px);
+              max-width: 145px;
+              max-height: 49px;
               .flip-text {
-                // padding: vw(5px) vw(23px);
                 em {
                   font-size: vw(28px);
-                  // vertical-align: vw(1px);
                 }
               }
             }
@@ -273,13 +279,13 @@
     0% {
       transform: rotateX(0deg);
     }
-    45% {
-      transform: rotateX(0deg);
-    }
-    65% {
+    14.285% {
       transform: rotateX(180deg);
     }
-    80% {
+    50% {
+      transform: rotateX(180deg);
+    }
+    64.285% {
       transform: rotateX(360deg);
     }
     100% {
