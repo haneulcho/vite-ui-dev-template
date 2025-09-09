@@ -77,13 +77,18 @@ const visualMotion = () => {
 
   // section1 height의 10%를 지났을 때 console.log 찍기
   if (section1) {
-    const section1Height = section1.offsetHeight;
-    const triggerPoint = section1Height * 0.15;
-
     // TweenMax 타임라인으로 묶어서 순차적으로 실행
     // gsap.set('.section-trans-bg.bg2', { yPercent: 100, willChange: 'transform' });
 
     window.addEventListener('scroll', () => {
+      const isHeaderLoaded = $('#header');
+
+      if (!isHeaderLoaded) return;
+
+      const section1Height = section1.offsetHeight;
+      const triggerRatio = $window.width() <= 1000 ? 0.085 : 0.13;
+      const triggerPoint = section1Height * triggerRatio;
+
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       if (scrollTop >= triggerPoint) {
         console.log('section1 height의 10%를 지났습니다!');
