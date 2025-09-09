@@ -33,7 +33,7 @@
   }
 
   .section-bg {
-    opacity: 0;
+    // opacity: 0;
   }
 
   .section-pin-wrapper {
@@ -336,20 +336,20 @@
     @include to-percent($sec-height, $w: 21, $h: 26);
     background-image: url(images/sec01-2-diamond.png);
     &.diamond1 {
-      @include to-percent($sec-height, $left: 392, $top: 246);
+      @include to-percent($sec-height, $top: 246, $left: 392);
     }
     &.diamond2 {
-      @include to-percent($sec-height, $left: 1514, $top: 208);
+      @include to-percent($sec-height, $top: 208, $left: 1514);
     }
 
     @include screen("mobile") {
       @include to-percent-m($sec-height-m, $w: 10, $h: 12);
       background-image: url(images/sec01-2-diamond-m.png);
       &.diamond1 {
-        @include to-percent-m($sec-height-m, $top: 111, $left: 15);
+        @include to-percent-m($sec-height-m, $top: 123, $left: 18);
       }
       &.diamond2 {
-        @include to-percent-m($sec-height-m, $top: 121, $left: 336);
+        @include to-percent-m($sec-height-m, $top: 133, $left: 338);
       }
     }
   }
