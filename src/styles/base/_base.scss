@@ -30,7 +30,7 @@
     vertical-align: middle;
   }
 
-  img {
+  img:not(.section-bg) {
     height: auto;
     max-width: 100%;
   }

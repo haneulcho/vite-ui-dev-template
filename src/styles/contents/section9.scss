@@ -8,6 +8,9 @@
     max-width: $artboard-width;
     margin: 0 auto;
     padding: 7.3vw 0 5vw;
+    top: unset;
+    left: unset;
+    transform: translateX(0);
   }
 
   h3 {
