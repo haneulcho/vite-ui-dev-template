@@ -100,23 +100,24 @@ const visualMotion = () => {
 const shortsMotion = () => {
   const isSmallWidth = window.innerWidth < 1200;
 
-  if (!isSmallWidth) {
-    gsap.set('.section2-trans-shorts', { yPercent: 100, willChange: 'transform' });
+  // if (!isSmallWidth) {
+  // gsap.set('.section2-trans-shorts', { yPercent: 100, willChange: 'transform' });
 
-    const t2 = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.app-section.section2',
-        start: 'center center',
-        end: '+=80%',
-        pinSpacing: true,
-        scrub: 1,
-        pin: true,
-        invalidateOnRefresh: true,
-      },
-    });
+  const t2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.app-section.section1',
+      start: 'top top',
+      // end: '+=100%',
+      end: 'bottom',
+      pinSpacing: false,
+      scrub: 1,
+      pin: true,
+      invalidateOnRefresh: true,
+    },
+  });
 
-    t2.to('.section2-trans-shorts', { yPercent: 0, ease: 'none' }, 0);
-  }
+  // t2.to('.section2-trans-shorts', { yPercent: 0, ease: 'none' }, 0);
+  // }
 };
 
 // window.matchMedia('(orientation: portrait)').addEventListener('change', () => {
@@ -124,13 +125,13 @@ const shortsMotion = () => {
 // });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
   chosenTitleMotion();
 
   setTimeout(() => {
     visualMotion();
-    // shortsMotion();
+    shortsMotion();
   }, 500);
 
   const section3Swiper = new Swiper('.section3 .slider-wrapper', {
