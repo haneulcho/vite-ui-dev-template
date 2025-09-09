@@ -218,4 +218,173 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     },
   });
+
+  // section3 가로 스크롤 기능
+  const initSection3HorizontalScroll = () => {
+    const section3 = document.querySelector('.section3 .overflow-slider-wrapper');
+    const overflowSliderContents = document.querySelector('.overflow-slider-contents');
+
+    if (!section3 || !overflowSliderContents) return;
+
+    let isScrolling = false;
+    let scrollPosition = 0;
+    let maxScrollLeft = 0;
+    let isHorizontalScrollActive = false;
+
+    // 최대 스크롤 가능한 거리 계산
+    const calculateMaxScroll = () => {
+      const containerWidth = section3.offsetWidth;
+      const contentWidth = overflowSliderContents.scrollWidth;
+      maxScrollLeft = Math.max(0, contentWidth - containerWidth);
+    };
+
+    // 초기 최대 스크롤 거리 계산
+    calculateMaxScroll();
+
+    // 윈도우 리사이즈 시 최대 스크롤 거리 재계산
+    window.addEventListener('resize', calculateMaxScroll);
+
+    // 마우스 휠 이벤트
+    section3.addEventListener('wheel', e => {
+      const deltaY = e.deltaY;
+      const deltaX = e.deltaX;
+      const scrollSpeedX = 30; // 스크롤 속도 조절
+      const scrollSpeedY = 50; // 스크롤 속도 조절
+
+      let scrollDirection = 0;
+
+      // 가로 스크롤 우선 처리
+      if (Math.abs(deltaX) > Math.abs(deltaY) || deltaX !== 0) {
+        // deltaX > 0: 오른쪽으로 스크롤 = 왼쪽으로 이동
+        // deltaX < 0: 왼쪽으로 스크롤 = 오른쪽으로 이동
+        scrollDirection = deltaX > 0 ? scrollSpeedX : -scrollSpeedX;
+        console.log('가로 스크롤 감지:', deltaX > 0 ? '오른쪽 → 왼쪽 이동' : '왼쪽 → 오른쪽 이동');
+      } else {
+        // 세로 스크롤을 가로 스크롤로 변환
+        // deltaY > 0: 아래로 스크롤 = 왼쪽으로 이동
+        // deltaY < 0: 위로 스크롤 = 오른쪽으로 이동
+        scrollDirection = deltaY > 0 ? scrollSpeedY : -scrollSpeedY;
+        console.log('세로 스크롤을 가로로 변환:', deltaY > 0 ? '아래 → 왼쪽 이동' : '위 → 오른쪽 이동');
+      }
+
+      // 스크롤이 끝에 도달했고 오른쪽으로 스크롤하려고 할 때
+      if (scrollPosition >= maxScrollLeft && scrollDirection > 0) {
+        // 가로 스크롤 완료, 아래로 세로 스크롤 허용
+        isHorizontalScrollActive = false;
+        console.log('스크롤 끝입니다 - 아래로 세로 스크롤 허용');
+        return; // early return으로 가로 스크롤 로직 차단
+      }
+
+      // 스크롤이 처음에 도달했고 왼쪽으로 스크롤하려고 할 때
+      if (scrollPosition <= 0 && scrollDirection < 0) {
+        // 가로 스크롤이 처음 위치, 위로 스크롤 허용
+        isHorizontalScrollActive = false;
+        console.log('스크롤 처음입니다 - 위로 세로 스크롤 허용');
+        return; // early return으로 가로 스크롤 로직 차단
+      }
+
+      // 가로 스크롤이 활성화된 경우에만 preventDefault 실행
+      if (isHorizontalScrollActive || maxScrollLeft > 0) {
+        e.preventDefault();
+      }
+
+      if (isScrolling) return;
+
+      const newScrollPosition = scrollPosition + scrollDirection;
+
+      // 스크롤 범위 제한
+      const clampedPosition = Math.max(0, Math.min(newScrollPosition, maxScrollLeft));
+
+      // 스크롤 위치가 변경되었을 때만 실행
+      if (clampedPosition !== scrollPosition) {
+        scrollPosition = clampedPosition;
+        isHorizontalScrollActive = true;
+
+        // translateX로 왼쪽으로 이동 (음수 값)
+        overflowSliderContents.style.transform = `translateX(-${scrollPosition}px)`;
+      }
+    });
+
+    // 터치 이벤트 추가
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isTouchScrolling = false;
+
+    section3.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      isTouchScrolling = false;
+    });
+
+    section3.addEventListener('touchmove', e => {
+      if (!touchStartX || !touchStartY) return;
+
+      const touchCurrentX = e.touches[0].clientX;
+      const touchCurrentY = e.touches[0].clientY;
+
+      const deltaX = touchStartX - touchCurrentX;
+      const deltaY = touchStartY - touchCurrentY;
+
+      // 가로 스와이프가 세로 스와이프보다 클 때만 가로 스크롤 처리
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+        e.preventDefault(); // 가로 스와이프일 때만 preventDefault
+
+        if (!isTouchScrolling) {
+          isTouchScrolling = true;
+          isHorizontalScrollActive = true;
+        }
+
+        const swipeSpeed = 0.4; // 터치 스와이프 속도 조절 (더 자연스럽게)
+        const newScrollPosition = scrollPosition + deltaX * swipeSpeed;
+
+        // 스크롤 범위 제한
+        const clampedPosition = Math.max(0, Math.min(newScrollPosition, maxScrollLeft));
+
+        if (clampedPosition !== scrollPosition) {
+          scrollPosition = clampedPosition;
+          overflowSliderContents.style.transform = `translateX(-${scrollPosition}px)`;
+        }
+      }
+    });
+
+    section3.addEventListener('touchend', () => {
+      touchStartX = 0;
+      touchStartY = 0;
+      isTouchScrolling = false;
+
+      // 터치가 끝나면 잠시 후 가로 스크롤 비활성화
+      setTimeout(() => {
+        isHorizontalScrollActive = false;
+      }, 300);
+    });
+
+    // 마우스 진입/이탈 이벤트
+    section3.addEventListener('mouseenter', () => {
+      if (maxScrollLeft > 0) {
+        isHorizontalScrollActive = true;
+      }
+    });
+
+    section3.addEventListener('mouseleave', () => {
+      // 마우스가 벗어나면 잠시 후 세로 스크롤 허용
+      setTimeout(() => {
+        isHorizontalScrollActive = false;
+      }, 500);
+    });
+
+    // 전역 스크롤 이벤트에서 가로 스크롤 중일 때만 세로 스크롤 방지
+    window.addEventListener(
+      'wheel',
+      e => {
+        // section3에 마우스가 있고, 가로 스크롤이 활성화되어 있을 때만 preventDefault
+        if (section3.matches(':hover') && isHorizontalScrollActive) {
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
+  };
+
+  // DOM 로드 후 초기화
+  initSection3HorizontalScroll();
 });
