@@ -8,8 +8,8 @@ const SELECTOR = {
   section1: '.app-section.section1',
   section1Titles: '.section1-1 .main-title',
   section1Diamonds: '.section1 .diamond',
-  section3Wrapper: '.section3 .overflow-slider-wrapper',
-  section3Contents: '.overflow-slider-contents',
+  section3Wrapper: '.section3 .overflow-section-wrapper',
+  section3Contents: '.section3 .overflow-section',
 };
 
 const rafThrottle = fn => {
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const deltaY = e.deltaY;
         const deltaX = e.deltaX;
         const scrollSpeedX = 30; // 스크롤 속도 조절
-        const scrollSpeedY = 50; // 스크롤 속도 조절
+        const scrollSpeedY = 65; // 스크롤 속도 조절
 
         let scrollDirection = 0;
 
