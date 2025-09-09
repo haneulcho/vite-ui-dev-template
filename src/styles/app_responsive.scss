@@ -17,12 +17,6 @@
     }
   }
 
-  @media screen and (min-width: #{$max-width + 1px}) {
-    .floating-button {
-      right: calc((100% - 1920px) / 2 + 40px);
-    }
-  }
-
   @media screen and (min-width: #{$breakpoint-tablet}) and (max-width: 1330px) {
     .section8 {
       .button-group {
