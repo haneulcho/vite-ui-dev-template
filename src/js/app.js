@@ -30,7 +30,7 @@ $(document).on('ready', function () {
 
 $window.on('resize', function () {});
 
-const initChosenAnimation = () => {
+const chosenTitleMotion = () => {
   const titleElements = document.querySelectorAll('.section1-1 .main-title');
 
   if (titleElements.length === 0) return;
@@ -42,24 +42,10 @@ const initChosenAnimation = () => {
     stagger: 0.1,
     delay: 0.1,
   });
-};
 
-const initDiamondAnimation = () => {
-  const diamondElements = document.querySelectorAll('.section1-1 .diamond, .section1-2 .diamond');
-
-  if (diamondElements.length === 0) return;
-
-  diamondElements.forEach((diamond, index) => {
-    gsap.to(diamond, {
-      scale: 1.2,
-      rotation: 10,
-      duration: 0.6,
-      ease: 'power2.inOut',
-      yoyo: true,
-      repeat: -1,
-      delay: index * 0.3,
-    });
-  });
+  setTimeout(() => {
+    $('.section1 .diamond').addClass('active');
+  }, 900);
 };
 
 const visualMotion = () => {
@@ -67,25 +53,55 @@ const visualMotion = () => {
   const isPortrait = window.matchMedia('(orientation: portrait)').matches;
   const isSmallWidth = window.innerWidth < 540;
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.app-section.section1',
-      start: 'top top',
-      end: isPortrait ? 'top+=250% bottom+=130%' : '+=110%',
-      pinSpacing: isPortrait && isSmallWidth ? true : window.innerWidth >= 1024 ? true : false,
-      scrub: 1,
-      pin: true,
-      anticipatePin: 1,
-      invalidateOnRefresh: true,
-    },
-  });
+  // const tl = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: '.app-section.section1',
+  //     start: 'top top',
+  //     end: isPortrait ? 'top+=250% bottom+=130%' : '+=110%',
+  //     pinSpacing: isPortrait && isSmallWidth ? true : window.innerWidth >= 1024 ? true : false,
+  //     scrub: 1,
+  //     pin: true,
+  //     anticipatePin: 1,
+  //     invalidateOnRefresh: true,
+  //   },
+  // });
 
-  tl.to('.section-trans-bg.bg2', { yPercent: 0, ease: 'none' }, 0);
+  // tl.to('.section-trans-bg.bg2', { yPercent: 0, ease: 'none' }, 0);
 
-  tl.add('cross', 0.75)
-    .to('.section1-1', { autoAlpha: 0, duration: 0.25, ease: 'none' }, 'cross')
-    .set('.section1-1', { display: 'none', pointerEvents: 'none' })
-    .to('.section1-2', { autoAlpha: 1, duration: 0.3, ease: 'none' }, '>-0.15');
+  // tl.add('cross', 0.75)
+  //   .to('.section1-1', { autoAlpha: 0, duration: 0.25, ease: 'none' }, 'cross')
+  //   .set('.section1-1', { display: 'none', pointerEvents: 'none' })
+  //   .to('.section1-2', { autoAlpha: 1, duration: 0.3, ease: 'none' }, '>-0.15');
+
+  const section1 = document.querySelector('.app-section.section1');
+
+  // section1 height의 10%를 지났을 때 console.log 찍기
+  if (section1) {
+    const section1Height = section1.offsetHeight;
+    const triggerPoint = section1Height * 0.15;
+
+    // TweenMax 타임라인으로 묶어서 순차적으로 실행
+    // gsap.set('.section-trans-bg.bg2', { yPercent: 100, willChange: 'transform' });
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop >= triggerPoint) {
+        console.log('section1 height의 10%를 지났습니다!');
+
+        if (!$('.app-section.section1').hasClass('active')) {
+          $('.app-section.section1').addClass('active');
+        }
+
+        // var tl = new TimelineMax();
+        // tl.to('.section-trans-bg.bg2', 1, { yPercent: 0, ease: Power0.easeNone }, 0)
+        //   .to('.section1-1', 0.25, { autoAlpha: 0, ease: Power0.easeNone }, 0.75)
+        //   .set('.section1-1', { opacity: 0, pointerEvents: 'none' }, 1)
+        //   .to('.section1-2', 0.3, { autoAlpha: 1, ease: Power0.easeNone }, '>-0.1');
+      } else {
+        $('.app-section.section1').removeClass('active');
+      }
+    });
+  }
 };
 
 const shortsMotion = () => {
@@ -110,22 +126,18 @@ const shortsMotion = () => {
   }
 };
 
-window.matchMedia('(orientation: portrait)').addEventListener('change', () => {
-  ScrollTrigger.refresh();
-});
+// window.matchMedia('(orientation: portrait)').addEventListener('change', () => {
+//   ScrollTrigger.refresh();
+// });
 
 document.addEventListener('DOMContentLoaded', () => {
-  gsap.registerPlugin(ScrollTrigger);
+  // gsap.registerPlugin(ScrollTrigger);
 
-  gsap.set('.section-trans-bg.bg2', { yPercent: 100, willChange: 'transform' });
-
-  initChosenAnimation();
-
-  initDiamondAnimation();
+  visualMotion();
+  chosenTitleMotion();
 
   setTimeout(() => {
-    visualMotion();
-    shortsMotion();
+    // shortsMotion();
   }, 1000);
 
   const section3Swiper = new Swiper('.section3 .slider-wrapper', {

@@ -17,7 +17,7 @@
       background: url(images/sec01-2-bg.jpg) no-repeat top center;
       background-size: cover;
       transform: translateY(100%);
-      transition: transform 0.1s ease-out;
+      transition: transform 0.9s ease;
     }
 
     @include screen("mobile") {
@@ -28,7 +28,6 @@
       &.bg2 {
         background: url(images/sec01-2-bg-m.jpg) no-repeat top center;
         background-size: cover;
-        transition: transform 0.5s ease-out;
       }
     }
   }
@@ -41,6 +40,40 @@
     position: relative;
     width: 100%;
     height: 100%;
+  }
+
+  &.active {
+    .section-trans-bg.bg2 {
+      transform: translateY(0);
+    }
+    .section1-1 {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .section1-2 {
+      opacity: 1;
+    }
+
+    .gabee {
+      transform: translateX(30px);
+    }
+    .arisha {
+      transform: translateX(0);
+    }
+  }
+
+  .diamond {
+    transition: opacity 700ms ease;
+    animation: diamondFloat 0.7s ease-in-out infinite alternate;
+    &.active {
+      opacity: 1;
+    }
+    &.diamond1 {
+      animation-delay: 0s;
+    }
+    &.diamond2 {
+      animation-delay: 0.3s;
+    }
   }
 }
 
@@ -145,6 +178,7 @@
     position: absolute;
     @include to-percent($sec-height, $w: 490, $left: 744);
     bottom: 0;
+    transition: transform 0.5s ease;
 
     @include screen("mobile") {
       @include to-percent-m($sec-height-m, $w: 306, $left: 54);
@@ -161,6 +195,7 @@
   .diamond {
     position: absolute;
     display: block;
+    opacity: 0;
     @include res-bg;
     @include to-percent($sec-height, $w: 21, $h: 26);
     background-image: url(images/sec01-1-diamond.png);
@@ -194,6 +229,8 @@
   width: 100%;
   // height: 100vh;
   opacity: 0;
+
+  transition: opacity 0.5s ease;
 
   .sub-title {
     position: absolute;
@@ -277,6 +314,8 @@
     position: absolute;
     @include to-percent($sec-height, $w: 460, $left: 755);
     bottom: 0;
+    transition: transform 0.5s ease;
+    transform: translateX(-30px);
 
     @include screen("mobile") {
       @include to-percent-m($sec-height-m, $w: 258, $left: 102);
@@ -313,5 +352,15 @@
         @include to-percent-m($sec-height-m, $top: 121, $left: 336);
       }
     }
+  }
+}
+
+// 다이아몬드 플로팅 애니메이션
+@keyframes diamondFloat {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.3) rotate(10deg);
   }
 }
