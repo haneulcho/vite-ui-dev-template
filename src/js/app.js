@@ -75,33 +75,21 @@ const visualMotion = () => {
 
   const section1 = document.querySelector('.app-section.section1');
 
-  // section1 height의 10%를 지났을 때 console.log 찍기
   if (section1) {
-    // TweenMax 타임라인으로 묶어서 순차적으로 실행
-    // gsap.set('.section-trans-bg.bg2', { yPercent: 100, willChange: 'transform' });
-
     window.addEventListener('scroll', () => {
       const isHeaderLoaded = $('#header');
 
       if (!isHeaderLoaded) return;
 
       const section1Height = section1.offsetHeight;
-      const triggerRatio = $window.width() <= 1000 ? 0.085 : 0.13;
+      const triggerRatio = $window.width() <= 1000 ? 0.085 : 0.12;
       const triggerPoint = section1Height * triggerRatio;
 
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       if (scrollTop >= triggerPoint) {
-        console.log('section1 height의 10%를 지났습니다!');
-
         if (!$('.app-section.section1').hasClass('active')) {
           $('.app-section.section1').addClass('active');
         }
-
-        // var tl = new TimelineMax();
-        // tl.to('.section-trans-bg.bg2', 1, { yPercent: 0, ease: Power0.easeNone }, 0)
-        //   .to('.section1-1', 0.25, { autoAlpha: 0, ease: Power0.easeNone }, 0.75)
-        //   .set('.section1-1', { opacity: 0, pointerEvents: 'none' }, 1)
-        //   .to('.section1-2', 0.3, { autoAlpha: 1, ease: Power0.easeNone }, '>-0.1');
       } else {
         $('.app-section.section1').removeClass('active');
       }
@@ -138,12 +126,12 @@ const shortsMotion = () => {
 document.addEventListener('DOMContentLoaded', () => {
   // gsap.registerPlugin(ScrollTrigger);
 
-  visualMotion();
   chosenTitleMotion();
 
   setTimeout(() => {
+    visualMotion();
     // shortsMotion();
-  }, 1000);
+  }, 500);
 
   const section3Swiper = new Swiper('.section3 .slider-wrapper', {
     slidesPerView: 'auto',
@@ -258,20 +246,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // deltaX > 0: 오른쪽으로 스크롤 = 왼쪽으로 이동
         // deltaX < 0: 왼쪽으로 스크롤 = 오른쪽으로 이동
         scrollDirection = deltaX > 0 ? scrollSpeedX : -scrollSpeedX;
-        console.log('가로 스크롤 감지:', deltaX > 0 ? '오른쪽 → 왼쪽 이동' : '왼쪽 → 오른쪽 이동');
       } else {
         // 세로 스크롤을 가로 스크롤로 변환
         // deltaY > 0: 아래로 스크롤 = 왼쪽으로 이동
         // deltaY < 0: 위로 스크롤 = 오른쪽으로 이동
         scrollDirection = deltaY > 0 ? scrollSpeedY : -scrollSpeedY;
-        console.log('세로 스크롤을 가로로 변환:', deltaY > 0 ? '아래 → 왼쪽 이동' : '위 → 오른쪽 이동');
       }
 
       // 스크롤이 끝에 도달했고 오른쪽으로 스크롤하려고 할 때
       if (scrollPosition >= maxScrollLeft && scrollDirection > 0) {
         // 가로 스크롤 완료, 아래로 세로 스크롤 허용
         isHorizontalScrollActive = false;
-        console.log('스크롤 끝입니다 - 아래로 세로 스크롤 허용');
         return; // early return으로 가로 스크롤 로직 차단
       }
 
@@ -279,7 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (scrollPosition <= 0 && scrollDirection < 0) {
         // 가로 스크롤이 처음 위치, 위로 스크롤 허용
         isHorizontalScrollActive = false;
-        console.log('스크롤 처음입니다 - 위로 세로 스크롤 허용');
         return; // early return으로 가로 스크롤 로직 차단
       }
 
@@ -369,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 마우스가 벗어나면 잠시 후 세로 스크롤 허용
       setTimeout(() => {
         isHorizontalScrollActive = false;
-      }, 500);
+      }, 200);
     });
 
     // 전역 스크롤 이벤트에서 가로 스크롤 중일 때만 세로 스크롤 방지
