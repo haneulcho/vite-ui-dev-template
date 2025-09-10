@@ -61,7 +61,7 @@ const shortsMotion = () => {
   gsap.timeline({
     scrollTrigger: {
       trigger: '.app-section.section1',
-      start: `top+=${section1Height * 0.4}`,
+      start: `top+=${section1Height * 0.3}`,
       end: 'bottom',
       pinSpacing: false,
       pin: true,
@@ -78,7 +78,7 @@ const visualMotion = () => {
 
   // 여기서 수치 조정
   // 모바일 30%, PC 25% 지나면 가비<->아동 전환
-  const computeTriggerPoint = () => section1.offsetHeight * (isNarrow() ? 0.3 : 0.15);
+  const computeTriggerPoint = () => section1.offsetHeight * (isNarrow() ? 0.3 : 0.22);
   let triggerPoint = computeTriggerPoint();
 
   const onResize = rafThrottle(() => {
