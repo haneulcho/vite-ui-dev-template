@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "project",
   "type": "module",
-  "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --force",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint src --ext js --report-unused-disable-directives --max-warnings 0",
