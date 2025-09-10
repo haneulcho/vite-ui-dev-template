@@ -52,7 +52,7 @@ const chosenTitleMotion = () => {
   }, 900);
 };
 
-const mobileShortsMotion = () => {
+const shortsMotion = () => {
   const section1 = document.querySelector('.app-section.section1');
   if (!section1) return;
 
@@ -78,7 +78,7 @@ const visualMotion = () => {
 
   // 여기서 수치 조정
   // 모바일 30%, PC 25% 지나면 가비<->아동 전환
-  const computeTriggerPoint = () => section1.offsetHeight * (isNarrow() ? 0.35 : 0.45);
+  const computeTriggerPoint = () => section1.offsetHeight * (isNarrow() ? 0.3 : 0.15);
   let triggerPoint = computeTriggerPoint();
 
   const onResize = rafThrottle(() => {
