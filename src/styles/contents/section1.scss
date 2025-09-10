@@ -4,6 +4,8 @@
     overflow: hidden;
 
     will-change: transform;
+    height: auto !important;
+    max-height: none !important;
 
     .section-trans-bg {
       width: 100%;
@@ -82,6 +84,34 @@
       }
     }
   }
+
+  @media (max-width: 767px) and (orientation: portrait) {
+    .pin-spacer:has(.section1:not(.active)) {
+      margin-bottom: vw(-200px) !important;
+    }
+    .section1 .section1-2 {
+      margin-top: vw(200px);
+    }
+    .section1.active::after {
+      @include pseudo(100%, vw(200px), relative);
+    }
+  }
+
+  // @media (min-width: 768px) {
+  //   // &:has(.pin-spacer) .sectoin1 > div {
+  //   //   margin-bottom: vw(-150px, 1920);
+  //   // }
+  //   .pin-spacer:has(.section1:not(.active)) {
+  //     margin-bottom: -140px !important;
+  //     max-height: none !important;
+  //   }
+  //   .section1 .section1-2 {
+  //     margin-top: 140px;
+  //   }
+  //   .section1.active::after {
+  //     @include pseudo(100%, 140px, relative);
+  //   }
+  // }
 
   @media (min-width: 768px) and (orientation: portrait) {
     .section1-1,

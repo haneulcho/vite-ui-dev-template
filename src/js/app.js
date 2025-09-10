@@ -31,35 +31,7 @@ let hasUserScrolled = false; // 실제 사용자 스크롤 여부
 
 const getScrollTop = () => window.pageYOffset || document.documentElement.scrollTop || 0;
 const isNarrow = () => $window.width() <= 1000;
-
-$(document).on('ready', function () {
-  $(document).on('click', '.faq-list li a.question', function (e) {
-    e.preventDefault();
-
-    const $currentLi = $(this).closest('li');
-    const $currentAnswer = $currentLi.find('.answer');
-
-    $currentLi.toggleClass('active');
-    $currentAnswer.stop(true, true).slideToggle(300);
-  });
-
-  $(document).on('click', '.sticky-images .photo-link', function (e) {
-    e.preventDefault();
-
-    const $currentLi = $(this).closest('li');
-    const $allLis = $('.sticky-images ul > li');
-    const currentIndex = $allLis.index($currentLi);
-    const nextIndex = (currentIndex + 1) % $allLis.length;
-    const $nextLi = $allLis.eq(nextIndex);
-
-    $allLis.removeClass('active');
-    $nextLi.addClass('active');
-  });
-
-  AOS.init();
-});
-
-$window.on('resize', function () {});
+const isTablet = () => $window.width() > 768;
 
 const chosenTitleMotion = () => {
   const titleElements = document.querySelectorAll(SELECTOR.section1Titles);
@@ -80,23 +52,22 @@ const chosenTitleMotion = () => {
   }, 900);
 };
 
-const shortsMotion = () => {
-  // pinned timeline (섹션1 고정 스크럽)
+const mobileShortsMotion = () => {
+  const section1 = document.querySelector('.app-section.section1');
+  if (!section1) return;
+
+  const section1Height = section1.offsetHeight;
+
   gsap.timeline({
     scrollTrigger: {
-      // trigger: '.app-section.section1 .section1-1',
       trigger: '.app-section.section1',
-      // trigger: '.chosen',
-      start: 'top top',
+      start: `top+=${section1Height * 0.4}`,
       end: 'bottom',
       pinSpacing: false,
-      // scrub: 1,
       pin: true,
       anticipatePin: 1,
-      pinType: 'fixed', // 필요시
-      pinnedContainer: '.chosen', // 필요시
-
-      // invalidateOnRefresh: true,
+      pinType: 'fixed',
+      pinnedContainer: '.chosen',
     },
   });
 };
@@ -105,7 +76,9 @@ const visualMotion = () => {
   const section1 = document.querySelector(SELECTOR.section1);
   if (!section1) return;
 
-  const computeTriggerPoint = () => section1.offsetHeight * (isNarrow() ? 0.12 : 0.15);
+  // 여기서 수치 조정
+  // 모바일 30%, PC 25% 지나면 가비<->아동 전환
+  const computeTriggerPoint = () => section1.offsetHeight * (isNarrow() ? 0.35 : 0.45);
   let triggerPoint = computeTriggerPoint();
 
   const onResize = rafThrottle(() => {
@@ -122,9 +95,11 @@ const visualMotion = () => {
 
     if (!isHeaderLoaded) return;
 
-    if (!isScrollTriggerLoaded) {
+    if (!isScrollTriggerLoaded && $('.section1').hasClass('active')) {
       isScrollTriggerLoaded = true;
-      shortsMotion();
+      setTimeout(() => {
+        shortsMotion();
+      }, 300);
     }
 
     if (!hasUserScrolled) return; // 사용자 스크롤 전에는 동작하지 않음
@@ -132,12 +107,12 @@ const visualMotion = () => {
     const scrollTop = getScrollTop();
     const $section1 = $(SELECTOR.section1);
     if (scrollTop >= triggerPoint) {
-      if (!isPinSpacerLoaded) return;
+      // if (!isPinSpacerLoaded) return;
       if (!$section1.hasClass('active')) {
         $section1.addClass('active');
       }
     } else {
-      if (!isPinSpacerLoaded) return;
+      // if (!isPinSpacerLoaded) return;
       $section1.removeClass('active');
     }
   });
@@ -188,8 +163,9 @@ const initSection3HorizontalScroll = () => {
     e => {
       const deltaY = e.deltaY;
       const deltaX = e.deltaX;
-      const scrollSpeedX = 30; // 스크롤 속도 조절
-      const scrollSpeedY = 70; // 스크롤 속도 조절
+      // FIXME: 여기 수정
+      const scrollSpeedX = 30; // 가로 스크롤 속도 조절 (높을수록 빠르게)
+      const scrollSpeedY = 60; // 세로 스크롤 속도 조절 (높을수록 빠르게)
 
       let scrollDirection = 0;
 
@@ -402,6 +378,33 @@ const initSwiperSlider = () => {
     },
   });
 };
+
+$(document).on('ready', function () {
+  $(document).on('click', '.faq-list li a.question', function (e) {
+    e.preventDefault();
+
+    const $currentLi = $(this).closest('li');
+    const $currentAnswer = $currentLi.find('.answer');
+
+    $currentLi.toggleClass('active');
+    $currentAnswer.stop(true, true).slideToggle(300);
+  });
+
+  $(document).on('click', '.sticky-images .photo-link', function (e) {
+    e.preventDefault();
+
+    const $currentLi = $(this).closest('li');
+    const $allLis = $('.sticky-images ul > li');
+    const currentIndex = $allLis.index($currentLi);
+    const nextIndex = (currentIndex + 1) % $allLis.length;
+    const $nextLi = $allLis.eq(nextIndex);
+
+    $allLis.removeClass('active');
+    $nextLi.addClass('active');
+  });
+
+  AOS.init();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
