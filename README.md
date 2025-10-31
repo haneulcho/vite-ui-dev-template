@@ -1,127 +1,87 @@
-## Vite + SASS + HTML UI 개발 기본 템플릿
+# World Vision Monorepo (pnpm Workspace)
 
-Vite 기반 정적 웹 프로젝트입니다. 개발/빌드/미리보기 및 코드 품질 관리를 위해 pnpm 스크립트를 제공합니다.
+월드비전 캠페인 페이지들을 pnpm 워크스페이스 기반 모노레포로 관리합니다. `apps/` 폴더에는 각각의 이벤트/캠페인 앱이, `packages/` 폴더에는 공통으로 사용하는 스타일 및 설정 패키지가 위치합니다.
 
-### 요구 사항
-- Node.js (권장: `.nvmrc` 참조)
-- pnpm 9.x 이상
+## 요구 사항
+- Node.js (권장 버전은 `.nvmrc` 참고)
+- pnpm 10.x 이상 (Corepack 사용 가능)
 
-### 설치
+## 디렉터리 구조
+```
+.
+├── apps/
+│   └── 2025-chosen/           # 현재 등록된 캠페인 앱 (Vite 기반)
+│       ├── public/            # 정적 자산
+│       ├── src/               # html includes, js, scss 등 앱 소스
+│       └── package.json       # 앱 전용 의존성 및 스크립트
+├── packages/
+│   ├── config-eslint/         # 공통 ESLint 구성 (`@repo/config-eslint`)
+│   ├── config-prettier/       # 공통 Prettier 구성 (`@repo/config-prettier`)
+│   └── styles/                # 공통 SASS 유틸 (`@repo/styles`)
+├── scripts/                   # CI/CD용 유틸 스크립트
+├── package.json               # 루트 스크립트 (dev/build/lint 등)
+├── pnpm-workspace.yaml        # 워크스페이스 정의
+└── pnpm-lock.yaml
+```
+
+## 설치
 ```bash
 pnpm install
 ```
+> 루트에서 실행하면 워크스페이스에 포함된 모든 패키지의 의존성이 한 번에 설치됩니다.
 
-### 사용법 (Scripts)
-- **개발 서버 실행**: HMR이 가능한 로컬 서버를 실행합니다.
+## 루트 스크립트
+루트 `package.json`은 앱들을 대상으로 하는 헬퍼 스크립트를 제공합니다.
+
+| 스크립트 | 설명 |
+| --- | --- |
+| `pnpm dev` | Turbo를 통해 기본 앱(`@repo/2025-chosen`) 및 의존 패키지 개발 서버 실행 |
+| `pnpm build` | Turbo 캐시를 활용해 `apps/` 하위 앱과 의존 패키지를 빌드 |
+| `pnpm lint` / `lint:fix` | 모든 앱과 의존 패키지의 ESLint 검사 / 자동 수정 |
+| `pnpm format` / `format:fix` | 모든 앱과 의존 패키지의 Prettier 포맷 검사 / 자동 정리 |
+
+특정 앱만 실행하거나 빌드하려면 `--filter`를 사용하세요.
 ```bash
-pnpm dev
+# 2025-chosen 앱 개발 서버 (의존 패키지 포함)
+pnpm turbo run dev --filter=@repo/2025-chosen^...
+
+# 2025-chosen 앱만 빌드 (의존 패키지 포함)
+pnpm turbo run build --filter=@repo/2025-chosen^...
 ```
 
-- **프로덕션 빌드**: 최적화된 정적 파일을 `dist/`에 생성합니다.
-```bash
-pnpm build
-```
-
-- **빌드 미리보기**: 빌드된 결과물을 로컬에서 서빙합니다.
-```bash
-pnpm preview
-```
-
-- **ESLint 검사**: `src/`의 `.js` 파일을 검사하고 사용되지 않는 eslint-disable 지시어를 보고합니다.
-```bash
-pnpm lint
-```
-
-- **ESLint 자동 수정**: 가능한 규칙을 자동으로 수정합니다.
-```bash
-pnpm lint:fix
-```
-
-- **Prettier 포맷 검사**: `src/**/*.{js,html}` 포맷을 확인합니다.
-```bash
-pnpm format
-```
-
-- **Prettier 자동 정리**: 지정된 경로의 코드를 포맷팅합니다.
-```bash
-pnpm format:fix
-```
-
-### 빌드 결과
-- 산출물 경로: `dist/`
-- 배포 정적 자산: `dist/static/campaign/2025/chosen/` (프로젝트 구조에 따라 달라질 수 있음)
-
-### 기술 스택
-- Vite, PostCSS(autoprefixer), Sass
-- ESLint, Prettier
-
-### 디렉터리 안내
-- `src/` 소스 코드 (HTML include, JS, SCSS)
-- `public/` 정적 자산 (빌드 시 그대로 복사)
-- `dist/` 빌드 산출물
-
-### 참고
-- 저장소/홈페이지/버그 리포트 URL은 `package.json`의 `repository`, `homepage`, `bugs` 필드를 참조하세요.
-
-### 소스 구조 상세 및 작성 가이드
-
-#### JS: `src/js/main.js`
-- 역할: 엔트리 스크립트. SCSS를 import하여 번들링하고, 페이지 초기화 코드를 실행합니다.
-- 현재 내용 요약:
-  - `import '../css/style.scss'`로 스타일을 포함
-  - `DOMContentLoaded` 시점 로그 출력 등 기본 스캐폴드 포함
-- 확장 방법:
-  - 필요한 모듈을 추가로 import하여 사용합니다.
-  - DOM 조작은 `DOMContentLoaded` 이벤트 안에서 수행하는 것을 권장합니다.
-
-#### 스타일: `src/css/style.scss`
-- 역할: 전역 스타일 및 컴포넌트 스타일의 진입점.
-- Vite SCSS 설정: `vite.config.js`의 `css.preprocessorOptions.scss`로 아래와 같이 포맷이 고정됩니다.
-  - `outputStyle: 'expanded'`, `indentType: 'tab'`, `indentWidth: 1`
-- 사용 방법:
-  - 부분 스타일을 `_component.scss`, `_media.scss` 등으로 분리하고 `style.scss`에서 import하세요.
-  - `main.js`가 `style.scss`를 import하므로 별도 링크 태그는 필요 없습니다.
-
-#### HTML 인클루드: `src/includes/`
-- 위치: `src/includes/vendors.html`, `src/includes/contents.html` 등 조각(Partial) HTML 관리
-- 개발/빌드 반영 방식:
-  - `vite-plugin-include-html` 플러그인이 `<include src="...">` 태그를 해석하여 해당 파일 내용을 정적으로 삽입합니다.
-  - 개발 서버(`pnpm dev`)와 빌드(`pnpm build`) 모두에서 동작합니다.
-  - 예) `index.html` 내 삽입:
-    ```html
-    <!-- 추가 css js 입력 -->
-    <include src="src/includes/vendors.html"></include>
-    <!-- 컨텐츠 작업 영역 - html -->
-    <include src="src/includes/contents.html"></include>
-    ```
-- 새 인클루드 파일 추가 절차:
-  1) `src/includes/example.html` 파일 생성
-  2) `index.html` 원하는 위치에 다음과 같이 삽입
-     ```html
-     <include src="src/includes/example.html"></include>
-     ```
-  3) 개발 서버가 자동 반영하며, 빌드 시에는 최종 HTML에 정적으로 병합됩니다.
-
-#### `index.html`과 스크립트 주입
-- 모듈 엔트리 연결: 페이지 하단에 다음처럼 연결되어 있습니다.
-  ```html
-  <script type="module" src="./src/js/main.js"></script>
+## 공통 패키지 사용법
+- `@repo/styles`: 공통 SASS 유틸 모음 (`reset`, `variables`, `mixins` 등). 앱에서 예시처럼 사용합니다.
+  ```scss
+  @import '@repo/styles/reset';
+  @import '@repo/styles/abstracts/variables';
   ```
-- 프로젝트 내부 인클루드는 `<include src="...">`로 처리됩니다.
+- `@repo/config-eslint`: 모든 앱에서 동일한 린트 규칙을 적용합니다.
+  ```js
+  // apps/<app>/eslint.config.js
+  import config from '@repo/config-eslint';
+  export default config;
+  ```
+- `@repo/config-prettier`: 공통 포맷 설정을 `prettier.config.js`에서 불러옵니다.
 
-### 빌드/배포 동작 상세
-- 출력 경로: `vite.config.js` 설정에 따라 `dist/static/campaign/2025/chosen`에 산출물 생성
-- 파일명 규칙:
-  - JS: `js/app-[hash].js`
-  - CSS: `css/style-[hash].css` (엔트리명이 `index`인 경우 `style-`로 리네이밍)
-  - 이미지: `images/[name]-[hash][ext]`
-  - 폰트: `fonts/[name]-[hash][ext]`
-- 프로덕션 경로(Base):
-  - `base`가 프로덕션 모드에서 `'/static/campaign/2025/chosen/'`로 설정됩니다.
-  - HTML 내 이미지 경로 `src="/images/..."`는 빌드 시 `src="/static/campaign/2025/chosen/images/..."`로 자동 치환됩니다.
+새로운 공통 리소스를 추가하고 싶다면 `packages/` 하위에 패키지를 만들고 각 앱의 `package.json`에 `workspace:*` 버전으로 연결하면 됩니다.
 
-### 빠른 체크리스트
-1) `src/includes/*.html`을 생성/수정하고 `<include src="...">`로 `index.html`에 삽입했는가?
-2) `src/css/style.scss`에서 필요한 부분 SCSS를 import했는가?
-3) 동작 스크립트를 `src/js/main.js`에 추가했는가?
-4) 개발 서버에서 확인 후 `pnpm build`로 산출물을 생성했는가?
+## Turbo 파이프라인
+- `turbo.json`에 정의된 파이프라인은 `build → lint → format` 등의 작업을 캐싱합니다.
+- `dev` 작업은 캐시가 비활성화되어 있어 실시간 개발에 적합합니다.
+- GitHub Actions에서 `.turbo` 디렉터리를 캐시하여 재빌드 시간을 단축합니다.
+
+## GitHub Actions (Selective Build)
+`.github/workflows/deploy.yml`은 변경된 앱만 빌드하도록 동작합니다.
+- `scripts/find-changed-apps.mjs`가 변경 파일을 분석하여 필요한 앱만 선택합니다.
+- 공통 패키지(`packages/**`)나 루트 설정이 수정되면 모든 앱을 다시 빌드합니다.
+- Turbo로 빌드한 결과는 루트 `dist/`에 합쳐져 GitHub Pages에 배포됩니다.
+
+## 새 앱 추가 가이드
+1. `apps/<새로운-이벤트>` 폴더를 생성하고 Vite 프로젝트를 구성합니다.
+2. `package.json`에서 공통 패키지를 `workspace:*` 버전으로 의존성에 추가합니다.
+3. `pnpm install` 실행 후 `pnpm turbo run dev --filter=@repo/<새로운-이벤트>^...` 로 개발 서버를 확인합니다.
+4. GitHub에 푸시하면 워크플로가 자동으로 변경분을 감지하여 해당 앱만 빌드합니다.
+
+## 참고
+- 기존 산출물 구조 및 빌드 옵션은 `apps/2025-chosen/vite.config.js`에서 확인할 수 있습니다.
+- 스타일 설정은 `packages/styles` 패키지를 통해 공유되며, 각 앱은 필요 시 자유롭게 추가 스타일을 정의할 수 있습니다.

@@ -10,6 +10,3 @@ trim_trailing_whitespace = true
 
 [*.md]
 trim_trailing_whitespace = false
-
-[*.{js,ts,jsx,tsx,css,scss,html,php}]
-indent_size = 2

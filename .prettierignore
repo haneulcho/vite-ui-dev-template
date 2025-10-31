@@ -16,3 +16,18 @@ pnpm-lock.yaml
 
 # Logs
 *.log
+
+cache
+.cache
+public
+
+.yarn
+build
+**/dist/**
+
+.github
+.git
+ui-debug.log
+
+**/types/api/*d.ts
+**/types/generated/**

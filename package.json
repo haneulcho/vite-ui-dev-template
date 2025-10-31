@@ -1,36 +1,27 @@
 {
-  "name": "project",
+  "name": "ui-dev-template",
   "version": "1.0.0",
-  "description": "project",
-  "type": "module",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "vite --force",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint src --ext js --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "pnpm lint --fix",
-    "format": "pnpm prettier --check --debug-check \"./src/**/*.{js,scss,html}\"",
-    "format:fix": "pnpm prettier --write \"./src/**/*.{js,scss,html}\""
+    "build": "turbo run build",
+    "build:chosen": "turbo run build --filter=@repo/2025-chosen",
+    "dev": "turbo run dev",
+    "dev:chosen": "turbo run dev --filter=@repo/2025-chosen",
+    "lint": "turbo run lint",
+    "format": "prettier --write --cache --ignore-unknown \"**/*.{js,jsx,ts,tsx,md,css,scss}\"",
+    "clean": "turbo run clean && rm -rf node_modules && pnpm i"
   },
-  "repository": {
-    "type": "git",
-    "url": "url"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "url"
-  },
-  "homepage": "url",
+  "prettier": "@repo/config-prettier",
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "eslint": "^9.0.0",
-    "eslint-plugin-import": "^2.29.0",
-    "postcss": "^8.4.49",
-    "prettier": "^3.3.0",
-    "sass": "^1.80.0",
-    "terser": "^5.44.0",
-    "vite": "^6.0.0",
-    "vite-plugin-include-html": "^1.0.0"
+    "turbo": "^2.5.8"
+  },
+  "packageManager": "pnpm@10.20.0",
+  "engines": {
+    "node": "22.x.x",
+    "pnpm": "10.20.x"
   }
 }
