@@ -1,6 +1,6 @@
-# World Vision Monorepo (pnpm Workspace)
+# vite-ui-dev-template
 
-월드비전 캠페인 페이지들을 pnpm 워크스페이스 기반 모노레포로 관리합니다. `apps/` 폴더에는 각각의 이벤트/캠페인 앱이, `packages/` 폴더에는 공통으로 사용하는 스타일 및 설정 패키지가 위치합니다.
+Vite와 pnpm 워크스페이스를 기반으로 랜딩/캠페인 UI를 빠르게 제작하기 위한 템플릿입니다. `apps/` 폴더에는 템플릿을 활용한 개별 프로젝트가, `packages/` 폴더에는 공통으로 사용하는 스타일 및 설정 패키지가 위치합니다.
 
 ## 요구 사항
 - Node.js (권장 버전은 `.nvmrc` 참고)
@@ -10,7 +10,7 @@
 ```
 .
 ├── apps/
-│   └── 2025-chosen/           # 현재 등록된 캠페인 앱 (Vite 기반)
+│   └── 2025-chosen/           # 기본으로 제공되는 샘플 앱 (Vite 기반)
 │       ├── public/            # 정적 자산
 │       ├── src/               # html includes, js, scss 등 앱 소스
 │       └── package.json       # 앱 전용 의존성 및 스크립트
@@ -35,17 +35,17 @@ pnpm install
 
 | 스크립트 | 설명 |
 | --- | --- |
-| `pnpm dev` | Turbo를 통해 기본 앱(`@repo/2025-chosen`) 및 의존 패키지 개발 서버 실행 |
+| `pnpm dev` | Turbo를 통해 기본 샘플 앱(`@repo/2025-chosen`) 및 의존 패키지 개발 서버 실행 |
 | `pnpm build` | Turbo 캐시를 활용해 `apps/` 하위 앱과 의존 패키지를 빌드 |
 | `pnpm lint` / `lint:fix` | 모든 앱과 의존 패키지의 ESLint 검사 / 자동 수정 |
 | `pnpm format` / `format:fix` | 모든 앱과 의존 패키지의 Prettier 포맷 검사 / 자동 정리 |
 
 특정 앱만 실행하거나 빌드하려면 `--filter`를 사용하세요.
 ```bash
-# 2025-chosen 앱 개발 서버 (의존 패키지 포함)
+# 샘플 앱(2025-chosen) 개발 서버 (의존 패키지 포함)
 pnpm turbo run dev --filter=@repo/2025-chosen^...
 
-# 2025-chosen 앱만 빌드 (의존 패키지 포함)
+# 샘플 앱(2025-chosen)만 빌드 (의존 패키지 포함)
 pnpm turbo run build --filter=@repo/2025-chosen^...
 ```
 
