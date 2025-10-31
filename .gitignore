@@ -7,7 +7,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# pnpm cache/artifacts
+.pnpm-store
+.pnpm-debug.log*
+.pnpm/**
+
+# Dependencies / build output
 node_modules
+.turbo
 dist
 dist-ssr
 *.local
@@ -17,6 +24,7 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj

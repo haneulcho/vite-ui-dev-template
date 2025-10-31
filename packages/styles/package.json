@@ -1,0 +1,17 @@
+{
+  "name": "@repo/styles",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "main": "src/index.scss",
+  "exports": {
+    ".": "./src/index.scss",
+    "./abstracts": "./src/abstracts/_index.scss",
+    "./abstracts/*": "./src/abstracts/*.scss",
+    "./vendors/*": "./src/vendors/*.scss",
+    "./reset": "./src/vendors/_reset.scss"
+  }
+}

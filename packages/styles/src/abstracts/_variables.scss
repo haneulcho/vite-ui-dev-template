@@ -45,22 +45,9 @@ $breakpoint-desktop: 1280px;
 $base-font-size: 16px !default;
 $base-letter-spacing: 0;
 
-$base-font-system:
-  Pretendard,
-  Noto Sans KR,
-  Noto Sans,
-  -apple-system,
-  BlinkMacSystemFont,
-  Roboto,
-  "Apple SD Gothic Neo",
-  "Helvetica Neue",
-  Helvetica,
-  Arial,
-  "Malgun Gothic",
-  "맑은 고딕",
-  Dotum,
-  "돋움",
-  sans-serif !default;
+$base-font-system: Pretendard, Noto Sans KR, Noto Sans, -apple-system,
+  BlinkMacSystemFont, Roboto, "Apple SD Gothic Neo", "Helvetica Neue", Helvetica,
+  Arial, "Malgun Gothic", "맑은 고딕", Dotum, "돋움", sans-serif !default;
 
 $base-font-stack: (
   base: (

@@ -1,0 +1,91 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build all apps
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.changed-apps.outputs.has_changes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.20.0
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Cache turbo build setup
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: "${{ runner.os }}-turbo-${{ github.sha }}"
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      - name: Detect changed apps
+        id: changed-apps
+        run: node ./scripts/find-changed-apps.mjs
+        env:
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+
+      - name: Show changed apps
+        if: steps.changed-apps.outputs.has_changes == 'true'
+        run: echo "${{ steps.changed-apps.outputs.apps_json }}"
+
+      - name: Build changed apps
+        if: steps.changed-apps.outputs.has_changes == 'true'
+        env:
+          APPS_JSON: ${{ steps.changed-apps.outputs.apps_json }}
+        run: node ./scripts/build-changed-apps.mjs
+
+      - name: Upload artifact
+        if: steps.changed-apps.outputs.has_changes == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    if: needs.build.outputs.has_changes == 'true'
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

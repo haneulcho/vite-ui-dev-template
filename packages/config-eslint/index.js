@@ -34,15 +34,12 @@ export default [
       import: importPlugin,
     },
     rules: {
-      // 기본 규칙
       'no-console': 'warn',
       'no-debugger': 'error',
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'no-undef': 'error',
-
-      // Import 규칙
-      'import/order': 'off', // 임시로 비활성화
-      'import/no-unresolved': 'off', // Vite에서 처리
+      'import/order': 'off',
+      'import/no-unresolved': 'off',
       'import/no-extraneous-dependencies': 'off',
     },
   },

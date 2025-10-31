@@ -1,0 +1,17 @@
+{
+  "name": "@repo/config-eslint",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0"
+  }
+}

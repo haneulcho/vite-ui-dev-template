@@ -3,9 +3,10 @@
 // $app-name 변수를 활용하여 네임스페이스 하위에만 reset 등 특정 스타일 적용
 $app-name: "chosen" !default;
 
-@import "abstracts/variables";
-@import "abstracts/functions";
-@import "abstracts/mixins";
+@import "@repo/styles/abstracts/variables";
+@import "@repo/styles/abstracts/functions";
+@import "@repo/styles/abstracts/mixins";
+@import "@repo/styles/reset";
 
 @import "vendors/font";
 
