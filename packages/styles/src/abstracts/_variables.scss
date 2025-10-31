@@ -34,10 +34,10 @@ $color-black: black !default;
 // -----------------------------------------------------------------------------
 // Breakpoint
 // -----------------------------------------------------------------------------
-$breakpoint-mobile-small: 320px;
-$breakpoint-mobile: 360px;
-$breakpoint-tablet: 720px;
-$breakpoint-desktop: 1280px;
+$breakpoint-mobile-small: 320px !default;
+$breakpoint-mobile: 360px !default;
+$breakpoint-tablet: 720px !default;
+$breakpoint-desktop: 1280px !default;
 
 // -----------------------------------------------------------------------------
 // Typography
