@@ -83,5 +83,5 @@ pnpm turbo run build --filter=@repo/2025-chosen^...
 4. GitHub에 푸시하면 워크플로가 자동으로 변경분을 감지하여 해당 앱만 빌드합니다.
 
 ## 참고
-- 기존 산출물 구조 및 빌드 옵션은 `apps/2025-chosen/vite.config.js`에서 확인할 수 있습니다.
+- 기존 산출물 구조 및 빌드 옵션은 `apps/<이벤트>/vite.config.js`에서 확인할 수 있습니다.
 - 스타일 설정은 `packages/styles` 패키지를 통해 공유되며, 각 앱은 필요 시 자유롭게 추가 스타일을 정의할 수 있습니다.
