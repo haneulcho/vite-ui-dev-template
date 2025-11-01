@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+$app-name: "1000girls-s2";
+
+$breakpoint-mobile-small: 320px;
+$breakpoint-mobile: 360px;
+$breakpoint-tablet: 720px;
+$breakpoint-desktop: 1280px;
+
+@import "@repo/styles/abstracts/variables";
+@import "@repo/styles/abstracts/functions";
+@import "@repo/styles/abstracts/mixins";
+@import "@repo/styles/reset";

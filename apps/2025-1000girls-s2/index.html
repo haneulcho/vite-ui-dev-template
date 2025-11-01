@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#fff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    <!-- SEO 정보 입력-->
+    <title>한국월드비전 공식홈 | 세계 최대 구호개발 NGO - 월드비전</title>
+    <meta
+      name="description"
+      content="한국월드비전은 지구촌 2억 명 어린이와 가족, 지역사회를 돕는 글로벌 NGO 입니다. 월드비전은 투명한 기부금을 약속합니다."
+    />
+    <meta property="og:title" content="한국월드비전 공식홈 | 세계 최대 구호개발 NGO - 월드비전" />
+    <meta
+      property="og:description"
+      content="한국월드비전은 지구촌 2억 명 어린이와 가족, 지역사회를 돕는 글로벌 NGO 입니다. 월드비전은 투명한 기부금을 약속합니다."
+    />
+    <meta property="og:image" content="https://www.worldvision.or.kr/static/images/common/logo.png" />
+    <meta property="og:url" content="https://www.worldvision.or.kr/" />
+    <link rel="canonical" href="//www.worldvision.or.kr" />
+
+    <!-- //SEO 정보 입력 -->
+
+    <link rel="shortcut icon" href="https://www.worldvision.or.kr/static/images/common/favicon.ico" />
+
+    <link type="text/css" rel="stylesheet" href="https://www.worldvision.or.kr/static/css/jquery-ui.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://www.worldvision.or.kr/static/css/swiper.min.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.worldvision.or.kr/static/css/common.css?v=20240226171940"
+    />
+    <link type="text/css" rel="stylesheet" href="https://www.worldvision.or.kr/static/css/main.css?v=20240226171940" />
+    <link type="text/css" rel="stylesheet" href="https://www.worldvision.or.kr/static/css/sub.css?v=20240226171940" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.worldvision.or.kr/static/css/module.css?v=20240226171940"
+    />
+    <link type="text/css" rel="stylesheet" href="https://www.worldvision.or.kr/static/css/cmsModule.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://gb.worldvision.or.kr/resources/wvFrt/project/template/inc/wv-add.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap&subset=korean"
+      rel="stylesheet"
+    />
+
+    <style>
+      #container .container {
+        min-height: 500px;
+      }
+
+      .member_wrap .member_con {
+        padding: 0;
+      }
+
+      [class^='box'] {
+        width: initial;
+        display: initial;
+        padding: initial;
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: rgba(42, 21, 11, 1) !important;
+      }
+
+      .swiper-pagination-bullet {
+        transition: all 0.4s;
+        opacity: 1;
+        width: 56px;
+        height: 12px;
+        border-radius: 100px;
+        background-color: rgba(42, 21, 11, 0.1);
+      }
+    </style>
+
+    <script type="text/javascript" src="https://www.worldvision.or.kr/static/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="https://www.worldvision.or.kr/static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://www.worldvision.or.kr/static/js/jquery.nicescroll.min.js"></script>
+    <script type="text/javascript" src="https://www.worldvision.or.kr/static/js/swiper.min.js"></script>
+    <script type="text/javascript" src="https://www.worldvision.or.kr/static/js/in-view.js"></script>
+    <script type="text/javascript" src="https://www.worldvision.or.kr/static/js/ui.js"></script>
+    <script
+      type="text/javascript"
+      src="https://www.worldvision.or.kr/static/js/common/common.js?v=20240226171940"
+    ></script>
+    <script type="text/javascript" src="https://www.worldvision.or.kr/static/js/common.js?v=20240226171940"></script>
+    <script type="text/javascript" src="https://www.worldvision.or.kr/static/js/cmsModule.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        //타이틀 내용 엔터처리
+        $('.l-grid input[name=titleContents]')
+          .closest('.l-grid')
+          .each(function (i) {
+            var titleContents = $(this).find('input[name=titleContents]').val();
+            if (typeof titleContents != 'undefined' && titleContents != '') {
+              titleContents = titleContents.replaceAll('\n', '<br/>');
+              $(this).find('p[name=titleContentsPc]').append(titleContents);
+              $(this).find('p[name=titleContentsMo]').append(titleContents);
+            }
+          });
+
+        //영상.내용 엔터처리
+        $('.l-grid input[name=videoContents]')
+          .closest('.l-grid')
+          .each(function (i) {
+            var videoContents = $(this).find('input[name=videoContents]').val();
+            if (typeof videoContents != 'undefined' && videoContents != '') {
+              videoContents = videoContents.replaceAll('\n', '<br/>');
+              $(this).find('p[name=videoContentsPc]').append(videoContents);
+              $(this).find('p[name=videoContentsMo]').append(videoContents);
+            }
+          });
+
+        //텍스트상자.설명 엔터처리
+        $('.section-banner input[name=textContents]')
+          .closest('.section-banner')
+          .each(function (i) {
+            var textContents = $(this).find('input[name=textContents]').val();
+            if (typeof textContents != 'undefined' && textContents != '') {
+              textContents = textContents.replaceAll('\n', '<br/>');
+              $(this).find('p[name=textContentsPc]').append(textContents);
+              $(this).find('p[name=textContentsMo]').append(textContents);
+            }
+          });
+        //텍스트상자.내용 엔터처리
+        $('.l-grid input[name=textPContents]')
+          .closest('.l-grid')
+          .each(function (i) {
+            var textPContents = $(this).find('input[name=textPContents]').val();
+            if (typeof textPContents != 'undefined' && textPContents != '') {
+              textPContents = textPContents.replaceAll('\n', '<br/>');
+              $(this).find('p[name=pContentsPc]').append(textPContents);
+              $(this).find('p[name=pContentsMo]').append(textPContents);
+            }
+          });
+
+        //변화3단.내용 엔터처리
+        $('.section-banner input[name=changeContents]')
+          .closest('.section-banner')
+          .each(function (i) {
+            var changeContents = $(this).find('input[name=changeContents]').val();
+            if (typeof changeContents != 'undefined' && changeContents != '') {
+              changeContents = changeContents.replaceAll('\n', '<br/>');
+              $(this).find('p[name=changeContentsPc]').append(changeContents);
+              $(this).find('p[name=changeContentsMo]').append(changeContents);
+            }
+          });
+      });
+
+      //버튼클릭 링크이동 이벤트
+      function moveLink(flag, url) {
+        var setUrl = '';
+        if (url.includes('https')) {
+          setUrl = url;
+        } else {
+          setUrl = 'https://' + url;
+        }
+
+        if (flag == '1') {
+          location.href = setUrl;
+        } else {
+          window.open(setUrl);
+        }
+      }
+
+      //플로팅 클릭이벤트
+      function clickArrow() {
+        var floatUrl = $('#floatUrl').val();
+        var floatTargetFlag = $('#floatTargetFlag').val();
+
+        var setUrl = '';
+        if (floatUrl.includes('https')) {
+          setUrl = floatUrl;
+        } else {
+          setUrl = 'https://' + floatUrl;
+        }
+
+        if (floatTargetFlag == '1') {
+          location.href = setUrl;
+        } else {
+          window.open(setUrl);
+        }
+      }
+
+      $(function () {
+        $('#arrow').click(function () {});
+
+        /* 섹션 스와이퍼 */
+        var section_swiper = new Array();
+        $('.section_swiper').each(function (e) {
+          section_swiper[e] = new Swiper($(this).find('.swiper-container'), {
+            //loop: true, /* loop: true 넣음 에러남 */
+            pagination: {
+              el: $(this).find('.progress_pagination'),
+              type: 'progressbar',
+            },
+            navigation: {
+              nextEl: $(this).find('.btn_next'),
+              prevEl: $(this).find('.btn_prev'),
+            },
+            on: {
+              init: function () {
+                var len = this.slides.length;
+                var idx = this.activeIndex + 1;
+                $('.section_swiper').eq(e).find('.total').text(len);
+                $('.section_swiper').eq(e).find('.idx').text(idx);
+                if (len == 1) {
+                  setTimeout(function () {
+                    section_swiper[e].destroy();
+                    $('.section_swiper').eq(e).find('.pag_wrap').hide();
+                  });
+                }
+              },
+              update: function () {
+                var len = this.slides.length;
+                var idx = this.activeIndex + 1;
+                $('.section_swiper').eq(e).find('.total').text(len);
+                $('.section_swiper').eq(e).find('.idx').text(idx);
+                if (len == 1) {
+                  setTimeout(function () {
+                    section_swiper[e].destroy();
+                    $('.section_swiper').eq(e).find('.pag_wrap').hide();
+                  });
+                }
+              },
+              slideChange: function () {
+                var len = this.slides.length;
+                var idx = this.activeIndex + 1;
+                if (idx > len) {
+                  idx = 1;
+                } else if (idx < 1) {
+                  idx = len;
+                }
+                $('.section_swiper').eq(e).find('.idx').text(idx);
+              },
+            },
+          });
+
+          /* //이미지 모듈 높이 값 제어
+                $('.section_swiper').each(function () {
+
+                    var _length = $(this).find('.swiper-slide');
+                    var $target = _length.find('.caption');
+
+                    if (_length.length > 1) {
+                        var $maxHeight = 0;
+
+                        $target.each(function () {
+                            $thisHeight = $(this).height();
+
+                            if ($thisHeight > $maxHeight) {
+                                $maxHeight = $thisHeight;
+                            }
+                        });
+                        $target.height($maxHeight);
+                    }
+                }); */
+        });
+      });
+    </script>
+
+    <script async="" src="https://script.hotjar.com/modules.3ba69200791f16077ba8.js" charset="utf-8"></script>
+    <script
+      type="text/javascript"
+      async=""
+      src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/651132761/?random=1708935699077&amp;cv=11&amp;fst=1708935699077&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be42l0za200&amp;gcd=13l3l3l3l1&amp;dma=0&amp;u_w=1920&amp;u_h=1080&amp;url=https%3A%2F%2Fwww.worldvision.or.kr%2Fparticipate%2FchurchVisionSunday&amp;ref=https%3A%2F%2Fwww.worldvision.or.kr%2FworldVisionIntro%2FintroInfo&amp;hn=www.googleadservices.com&amp;frm=0&amp;tiba=%EB%B9%84%EC%A0%84%EC%A3%BC%EC%9D%BC%20%7C%20%EC%B0%B8%EC%97%AC%ED%95%98%EA%B8%B0%20-%20%EC%9B%94%EB%93%9C%EB%B9%84%EC%A0%84&amp;npa=0&amp;pscdl=noapi&amp;auid=1947791541.1708906766&amp;uaa=x86&amp;uab=64&amp;uafvl=Chromium%3B122.0.6261.69%7CNot(A%253ABrand%3B24.0.0.0%7CGoogle%2520Chrome%3B122.0.6261.69&amp;uamb=0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;fledge=1&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"
+    ></script>
+
+    <!-- 추가 css js 입력 -->
+    <include src="src/includes/vendors.html"></include>
+    <!-- //추가 css js 입력 -->
+  </head>
+
+  <body>
+    <div id="wrap">
+      <!-- top-menu -->
+      <div data-include-path="https://gb.worldvision.or.kr/resources/wvFrt/project/template/inc/top-menu.html"></div>
+      <!-- //top-menu -->
+
+      <section id="container">
+        <!-- 컨텐츠 작업 영역 - html -->
+        <div class="1000girls-s2">
+          <include src="src/includes/contents.html"></include>
+          <include src="src/includes/faq.html"></include>
+        </div>
+        <!-- //컨텐츠 작업 영역 - html -->
+      </section>
+
+      <!-- footer -->
+      <div data-include-path="https://gb.worldvision.or.kr/resources/wvFrt/project/template/inc/footer.html"></div>
+      <!-- //footer -->
+    </div>
+
+    <!-- 컨텐츠 작업 영역 - css, script -->
+    <script type="module" src="./src/js/main.js"></script>
+    <!-- //컨텐츠 작업 영역 - css, script -->
+
+    <script>
+      window.addEventListener('load', function () {
+        var allElements = document.getElementsByTagName('*');
+        Array.prototype.forEach.call(allElements, function (el) {
+          var includePath = el.dataset.includePath;
+          if (includePath) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                el.outerHTML = this.responseText;
+              }
+            };
+            xhttp.open('GET', includePath, true);
+            xhttp.send();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
