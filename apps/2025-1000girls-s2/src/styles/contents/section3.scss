@@ -1,0 +1,101 @@
+.#{$app-name} {
+  .section3 {
+    $w: 1920;
+    $h: 2587;
+    $w-m: 1236;
+    $h-m: 5763;
+
+    .app-inner > h2 {
+      position: absolute;
+      @include hide-text;
+      @include res-bg;
+      @include to-percent($h, $w: 655, $h: 57, $top: 150, $left: 633);
+      background-image: url(images/sec03-title.png);
+
+      @include screen("mobile") {
+        @include to-percent-m($h-m, $parent-w: $w-m, $w: 982, $h: 86, $top: 180, $left: 127);
+        background-image: url(images/sec03-title-m.png);
+      }
+    }
+
+    .bear {
+      position: absolute;
+      @include to-percent($h, $w: 602, $top: 310, $left: 349);
+      @include screen("mobile") {
+        @include to-percent-m($h-m, $parent-w: $w-m, $w: 933, $top: 397, $left: 162);
+      }
+    }
+
+    .bear-message {
+      position: absolute;
+      @include to-percent($h, $w: 507, $top: 1924, $left: 360);
+      @include screen("mobile") {
+        @include to-percent-m($h-m, $parent-w: $w-m, $w: 1050, $top: 4572, $left: 97);
+      }
+      figcaption {
+        @include sr-only;
+      }
+    }
+
+    .bear-spotlight {
+      position: absolute;
+      @include to-percent($h, $w: 555, $top: 1896, $left: 976);
+    }
+
+    .profiles {
+      > li {
+        position: absolute;
+        display: block;
+        > p {
+          @include sr-only;
+        }
+        @include res-bg;
+        @for $i from 1 through 5 {
+          &.profile#{$i} {
+            background-image: url(images/sec03-bear#{$i}.png);
+          }
+        }
+
+        &.profile1 {
+          @include to-percent($h, $w: 493, $h: 403, $top: 326, $left: 1052);
+        }
+        &.profile2 {
+          @include to-percent($h, $w: 671, $h: 328, $top: 840, $left: 300);
+        }
+        &.profile3 {
+          @include to-percent($h, $w: 372, $h: 404, $top: 865, $left: 1096);
+        }
+        &.profile4 {
+          @include to-percent($h, $w: 493, $h: 334, $top: 1372, $left: 327);
+        }
+        &.profile5 {
+          @include to-percent($h, $w: 642, $h: 335, $top: 1393, $left: 916);
+        }
+
+        @include screen("mobile") {
+          @for $i from 1 through 5 {
+            &.profile#{$i} {
+              background-image: url(images/sec03-bear#{$i}-m.png);
+            }
+          }
+
+          &.profile1 {
+            @include to-percent-m($h-m, $parent-w: $w-m, $w: 982, $h: 607, $top: 1235, $left: 105);
+          }
+          &.profile2 {
+            @include to-percent-m($h-m, $parent-w: $w-m, $w: 1004, $h: 560, $top: 1956, $left: 94);
+          }
+          &.profile3 {
+            @include to-percent-m($h-m, $parent-w: $w-m, $w: 1056, $h: 449, $top: 2575, $left: 85);
+          }
+          &.profile4 {
+            @include to-percent-m($h-m, $parent-w: $w-m, $w: 1031, $h: 575, $top: 3113, $left: 116);
+          }
+          &.profile5 {
+            @include to-percent-m($h-m, $parent-w: $w-m, $w: 1047, $h: 590, $top: 3781, $left: 62);
+          }
+        }
+      }
+    }
+  }
+}
