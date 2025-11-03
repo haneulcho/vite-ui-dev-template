@@ -1,0 +1,51 @@
+.#{$app-name} {
+  .floating-button {
+    position: fixed;
+    z-index: 10;
+    top: 190px;
+    right: -5px;
+    transition:
+      transform 300ms ease,
+      filter 300ms ease;
+    width: vw(303px, 1920);
+    min-width: 150px;
+    max-width: 303px;
+
+    &:hover {
+      filter: brightness(1.04) contrast(1.07);
+      animation: bounce 0.8s ease-in-out infinite;
+      animation-fill-mode: forwards;
+    }
+
+    @include screen("mobile") {
+      top: unset;
+      right: unset;
+      bottom: 0;
+      width: 100%;
+      min-width: auto;
+      max-width: none;
+      padding: 0 vw(17px);
+      a {
+        @include flex-only-center;
+        width: fit-content;
+        margin: 0 auto;
+      }
+      a > img.only-mo {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -7px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}

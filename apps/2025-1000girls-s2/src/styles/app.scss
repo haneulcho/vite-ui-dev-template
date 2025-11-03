@@ -1,0 +1,90 @@
+.#{$app-name} {
+  * {
+    font-family: $base-font-system;
+  }
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  min-width: $min-width;
+
+  .section-bg {
+    width: 100%;
+    max-width: $max-width;
+    pointer-events: none;
+    margin: 0 auto;
+    // opacity: 0;
+  }
+
+  .section1 {
+    // height: 960px;
+    background: url(images/sec01-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section2 {
+    // height: 1326px;
+    background: url(images/sec02-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+
+  .section3 {
+    // height: 2587px;
+    background: url(images/sec03-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section4 {
+    // height: 1143px;
+    background: url(images/sec04-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section5 {
+    // height: 650px;
+    background: url(images/sec05-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section6 {
+    // height: 940px;
+    background: url(images/sec06-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section7 {
+    // height: 1200px;
+    background: url(images/sec07-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section8 {
+    // height: 760px;
+    background: url(images/sec08-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+  .section9 {
+    // height: 957px;
+    background: url(images/sec09-bg.jpg) no-repeat 50% 0;
+    background-size: cover;
+  }
+
+  .app-section {
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    .only-mo {
+      width: 100%;
+    }
+  }
+
+  .app-inner {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    max-width: $max-width;
+    &:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  }
+}
