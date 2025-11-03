@@ -16,7 +16,7 @@
       margin: 0 auto;
       overflow: visible;
 
-      > h2 {
+      .app-section-title {
         position: absolute;
         @include hide-text;
         @include res-bg;

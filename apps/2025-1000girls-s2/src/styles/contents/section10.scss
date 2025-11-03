@@ -22,7 +22,7 @@
       padding: min(vw(122px, $w), 122px) min(vw(35px, $w), 35px) min(vw(150px, $w), 150px);
       transform: translateX(0);
 
-      > h2 {
+      .app-section-title {
         @include hide-text;
         @include res-bg;
         width: min(vw(739px, $w), 739px);

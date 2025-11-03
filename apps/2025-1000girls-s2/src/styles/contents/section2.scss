@@ -5,7 +5,7 @@
     $w-m: 1236;
     $h-m: 3878;
 
-    .app-inner > h2 {
+    .app-section-title {
       position: absolute;
       @include hide-text;
       @include res-bg;

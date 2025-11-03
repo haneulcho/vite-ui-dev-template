@@ -9,7 +9,7 @@
       max-width: none;
     }
 
-    .app-inner > h2 {
+    .app-section-title {
       position: absolute;
       @include hide-text;
       @include res-bg;

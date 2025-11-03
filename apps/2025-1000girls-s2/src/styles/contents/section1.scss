@@ -42,24 +42,35 @@
           height: min(vw(144px, 1920), 144px);
           margin-top: 12%;
 
-          @include res-bg;
-          background-image: url(images/sec01-btn.png);
-          > span {
-            @include hide-text;
-          }
-          .arrow {
-            width: percent(53, 489);
-            height: percent(15, 144);
-            margin-top: percent(55, 489);
-            margin-left: auto;
-            margin-right: percent(52, 489);
-            transition: transform 300ms ease;
-            @include res-bg;
-            background-image: url(images/sec01-btn-arrow.png);
-          }
+          a {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
 
-          &:hover .arrow {
-            transform: translateX(10%);
+            @include res-bg;
+            background-image: url(images/sec01-btn.png);
+            transition: filter 0.25s ease;
+            > span {
+              @include hide-text;
+            }
+            .arrow {
+              width: percent(53, 489);
+              height: percent(15, 144);
+              margin-top: percent(55, 489);
+              margin-left: auto;
+              margin-right: percent(52, 489);
+              transition: transform 300ms ease;
+              @include res-bg;
+              background-image: url(images/sec01-btn-arrow.png);
+            }
+
+            &:hover {
+              filter: brightness(1.04) contrast(1.07);
+              .arrow {
+                transform: translateX(10%);
+              }
+            }
           }
         }
 
@@ -81,14 +92,16 @@
             margin-top: 6.5%;
             margin-left: auto;
             margin-right: auto;
-            background-image: url(images/sec01-btn-m.png);
 
-            .arrow {
-              width: percent(88, 853);
-              height: percent(22, 252);
-              margin-top: percent(98, 853);
-              margin-right: percent(88, 853);
-              background-image: url(images/sec01-btn-arrow-m.png);
+            > a {
+              background-image: url(images/sec01-btn-m.png);
+              .arrow {
+                width: percent(88, 853);
+                height: percent(22, 252);
+                margin-top: percent(98, 853);
+                margin-right: percent(88, 853);
+                background-image: url(images/sec01-btn-arrow-m.png);
+              }
             }
           }
         }

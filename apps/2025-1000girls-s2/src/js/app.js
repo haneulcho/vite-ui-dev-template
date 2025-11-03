@@ -163,6 +163,9 @@ $(document).on('ready', function () {
       $this.addClass('leave');
     }, delay);
   });
+
+  // AOS 라이브러리
+  AOS.init();
 });
 
 document.addEventListener('DOMContentLoaded', () => {
