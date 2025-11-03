@@ -3,13 +3,13 @@
     position: fixed;
     z-index: 10;
     top: 190px;
-    right: 15px;
+    right: -5px;
     transition:
       transform 300ms ease,
       filter 300ms ease;
-    width: 14vw;
-    min-width: 100px;
-    max-width: 206px;
+    width: vw(303px, 1920);
+    min-width: 150px;
+    max-width: 303px;
 
     &:hover {
       filter: brightness(1.04) contrast(1.07);

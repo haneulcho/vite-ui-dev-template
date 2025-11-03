@@ -162,7 +162,8 @@
           }
 
           .answer-contents {
-            @include flex-row;
+            display: flex;
+            flex-flow: row nowrap;
             padding: 3.5rem 4.5rem 3.1rem;
             gap: 30px;
 
