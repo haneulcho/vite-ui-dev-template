@@ -22,6 +22,82 @@ const initSwiperSlider = () => {
       },
     },
   });
+
+  const section7Swiper = new Swiper('.section7 .slider-wrapper', {
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 25,
+    loop: true,
+    speed: 7500,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: true,
+    },
+    freeMode: true,
+    freeModeMomentum: false,
+    allowTouchMove: true,
+    pagination: false,
+    navigation: false,
+    breakpoints: {
+      0: {
+        spaceBetween: 18,
+      },
+      1024: {
+        spaceBetween: 25,
+      },
+    },
+  });
+
+  section7Swiper.on('touchEnd', () => {
+    if (section7Swiper.autoplay && typeof section7Swiper.autoplay.resume === 'function') {
+      section7Swiper.autoplay.resume();
+    } else if (section7Swiper.autoplay && typeof section7Swiper.autoplay.start === 'function') {
+      section7Swiper.autoplay.start();
+    }
+  });
+
+  const section8Swiper = new Swiper('.section8 .slider-wrapper', {
+    slidesPerView: 'auto',
+    centeredSlides: false,
+    spaceBetween: '1.4%',
+    loop: true,
+    speed: 800,
+    pagination: {
+      el: '.section8 .swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.section8 .swiper-button-next',
+      prevEl: '.section8 .swiper-button-prev',
+    },
+    breakpoints: {
+      768: {
+        centeredSlides: true,
+        spaceBetween: '42%',
+      },
+    },
+  });
+
+  const section9Swiper = new Swiper('.section9 .slider-wrapper', {
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 15,
+    loop: true,
+    speed: 800,
+    pagination: {
+      el: '.section9 .swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.section9 .swiper-button-next',
+      prevEl: '.section9 .swiper-button-prev',
+    },
+    breakpoints: {
+      768: {
+        spaceBetween: '42%',
+      },
+    },
+  });
 };
 
 $(document).on('ready', function () {
