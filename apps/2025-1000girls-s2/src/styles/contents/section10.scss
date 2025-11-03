@@ -81,6 +81,7 @@
 
         .faq-tab {
           height: min(vw(120px, $w-m), 40px);
+          min-height: 40px;
           font-size: fluid-font(24px, $min: 16px);
           border-radius: min(vw(12px, $w-m), 12px);
         }
@@ -132,7 +133,7 @@
               line-height: 1.4;
               font-size: fluid-font(24px, $min: 18px);
               margin-top: 3px;
-              gap: 20px;
+              gap: 2.6rem;
               > span {
                 align-self: flex-start;
                 color: #de6233;
@@ -173,7 +174,6 @@
             }
 
             p {
-              flex: 1 1 0%;
               color: #2c201c;
               line-height: 1.7;
               font-weight: 300;
@@ -182,6 +182,22 @@
               strong {
                 font-weight: bold !important;
               }
+            }
+
+            a[id^="faq-btn"]:has(img) {
+              display: block;
+              width: fit-content;
+              margin-top: 24px;
+              transition: all ease 400ms;
+
+              &:hover {
+                filter: brightness(1.04) contrast(1.07);
+              }
+            }
+
+            .faq-bear-size-guide {
+              margin-top: 24px;
+              margin-bottom: 15px;
             }
           }
         }
@@ -232,7 +248,17 @@
               }
 
               p {
+                flex: 1 0 0;
                 font-size: fluid-font(16px, $min: 14px);
+              }
+
+              #faq-btn-temp-donate {
+                width: 180px;
+                margin-top: 20px;
+              }
+
+              .faq-bear-size-guide {
+                max-width: min(90%, 220px);
               }
             }
           }

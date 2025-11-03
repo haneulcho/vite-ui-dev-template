@@ -133,10 +133,23 @@ $(document).on('ready', function () {
     const isExpanded = $button.attr('aria-expanded') === 'true';
     const nextExpanded = !isExpanded;
 
-    $button.attr('aria-expanded', String(nextExpanded));
-    $currentLi.toggleClass('active', nextExpanded);
-    $currentAnswer.attr('aria-hidden', String(!nextExpanded));
-    $currentAnswer.stop(true, true).slideToggle(300);
+    const $faqList = $currentLi.closest('.faq-list');
+    $faqList.find('li').each(function () {
+      const $li = $(this);
+      const $questionBtn = $li.find('.question');
+      const $answerDiv = $li.find('.answer');
+      $questionBtn.attr('aria-expanded', 'false');
+      $li.removeClass('active');
+      $answerDiv.attr('aria-hidden', 'true');
+      $answerDiv.stop(true, true).slideUp(300);
+    });
+
+    if (nextExpanded) {
+      $button.attr('aria-expanded', 'true');
+      $currentLi.addClass('active');
+      $currentAnswer.attr('aria-hidden', 'false');
+      $currentAnswer.stop(true, true).slideDown(300);
+    }
   });
 });
 
