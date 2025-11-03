@@ -151,6 +151,18 @@ $(document).on('ready', function () {
       $currentAnswer.stop(true, true).slideDown(300);
     }
   });
+
+  // 소녀를 구한 위드베어
+  $(document).on('click', '.section4 button.bear', function (e) {
+    e.preventDefault();
+    const $this = $(this);
+    const delay = $(window).width() < 768 ? 1450 : 1850;
+
+    $this.parent('.girl').addClass('active');
+    setTimeout(() => {
+      $this.addClass('leave');
+    }, delay);
+  });
 });
 
 document.addEventListener('DOMContentLoaded', () => {

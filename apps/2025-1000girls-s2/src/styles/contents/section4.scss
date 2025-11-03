@@ -43,20 +43,16 @@
         border: none;
         z-index: 2;
         transition:
-          transform 1.5s ease-in-out,
+          transform 1.7s ease-in-out,
           opacity 500ms ease;
+
         @include to-percent-m(430, $parent-w: 1000, $w: 208, $h: 274, $top: 78, $left: -100);
+
         @include screen("mobile") {
+          transition:
+            transform 1.2s ease-in-out,
+            opacity 500ms ease;
           @include to-percent-m(505, $parent-w: 970, $w: 306, $h: 404, $top: 50, $left: -70);
-        }
-
-        &.leave {
-          opacity: 0;
-          transform: translateY(10px);
-
-          > img {
-            animation: none;
-          }
         }
 
         > img {
@@ -69,7 +65,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        transition: opacity 2s ease-in-out;
+        transition: opacity 1.5s ease-in-out;
         &.before {
           opacity: 1;
           z-index: 1;
@@ -87,16 +83,23 @@
           @include screen("mobile") {
             transform: translateX(272%);
           }
+
+          &.leave {
+            pointer-events: none;
+            opacity: 0;
+
+            > img {
+              animation-play-state: paused;
+            }
+          }
         }
 
         .girl-photo {
           &.before {
             opacity: 0;
-            z-index: 0;
           }
           &.after {
             opacity: 1 !important;
-            z-index: 1 !important;
           }
         }
       }
@@ -151,7 +154,7 @@
     transform: rotate(0deg);
   }
   50% {
-    transform: rotate(5deg);
+    transform: rotate(6deg);
   }
   100% {
     transform: rotate(0deg);
