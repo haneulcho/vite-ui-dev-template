@@ -66,6 +66,26 @@ jobs:
         if: steps.changed-apps.outputs.has_changes == 'true'
         run: echo "${{ steps.changed-apps.outputs.apps_json }}"
 
+      - name: Checkout previous deployment
+        if: steps.changed-apps.outputs.has_changes == 'true'
+        continue-on-error: true
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 1
+
+      - name: Restore existing dist
+        if: steps.changed-apps.outputs.has_changes == 'true'
+        run: |
+          if [ -d gh-pages ]; then
+            mkdir -p dist
+            rsync -a --exclude='.git/' gh-pages/ dist/
+            rm -rf gh-pages
+          else
+            mkdir -p dist
+          fi
+
       - name: Build changed apps
         if: steps.changed-apps.outputs.has_changes == 'true'
         env:

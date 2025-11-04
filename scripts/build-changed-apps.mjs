@@ -16,8 +16,7 @@ if (!Array.isArray(apps) || apps.length === 0) {
   process.exit(0);
 }
 
-// 루트 dist를 초기화하고 새로 생성한다.
-rmSync('dist', { recursive: true, force: true });
+// 루트 dist가 없다면 생성한다.
 mkdirSync('dist', { recursive: true });
 
 // 변경된 앱 목록을 순회하면서 개별 빌드/복사 작업을 수행한다.
