@@ -1,0 +1,52 @@
+.#{$app-name} {
+  .section6 {
+    overflow: inherit;
+    padding-left: clamp(20px, 7vw, 132px);
+    padding-right: clamp(20px, 7vw, 132px);
+    padding-top: 186px;
+    padding-bottom: 186px;
+
+    .row {
+      display: flex;
+      gap: clamp(20px, 3vw, 50px);
+
+      .left {
+        img {
+          position: sticky;
+          top: 186px;
+          width: clamp(300px, 40vw, 691px);
+        }
+      }
+
+      .right {
+        flex: 1;
+      }
+
+
+    }
+
+
+
+    @include screen("mobile") {
+      padding-top: 0;
+      padding-bottom: 15%;
+      padding-left: 0;
+      padding-right: 0;
+
+      .row {
+        display: block;
+
+        .left {
+          img {
+            position: static;
+            width: 100%;
+          }
+        }
+
+        .insta_area {
+          padding: 20px;
+        }
+      }
+    }
+  }
+}

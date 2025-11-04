@@ -1,0 +1,35 @@
+@keyframes fadeBg {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bgChange {
+  0% {
+    background-image: url("/images/section01-bg01.jpg");
+  }
+
+  50% {
+    background-image: url("/images/section01-bg02.jpg");
+  }
+
+  100% {
+    background-image: url("/images/section01-bg01.jpg");
+  }
+}
+
+@keyframes ripppleOut {
+  100% {
+    transform: scale(1.05);
+    // scale: 1.025;
+    border-color: #ff5200;
+    height: 100px;
+    opacity: 0;
+  }
+}

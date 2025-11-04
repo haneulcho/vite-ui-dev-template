@@ -1,0 +1,35 @@
+.#{$app-name} {
+  @media screen and (max-width: #{$breakpoint-tablet - 1px}) {
+    .only-mo {
+      display: block !important;
+    }
+    .only-pc {
+      display: none !important;
+    }
+  }
+
+  @media screen and (min-width: #{$breakpoint-tablet}) {
+    .only-mo {
+      display: none;
+    }
+    .only-pc {
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: #{$breakpoint-tablet}) and (max-width: 1330px) {
+    .section8 {
+      .button-group {
+        @include to-percent(1003, $w: 900, $top: 692, $left: 415);
+
+        .button-inner {
+          gap: 0.95rem;
+          > span:last-child::after {
+            @include pseudo(1rem, 1rem, relative);
+            margin-left: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

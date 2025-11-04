@@ -1,0 +1,179 @@
+.#{$app-name} {
+  .section5 {
+    padding-left: clamp(20px, 7vw, 132px);
+    padding-right: clamp(20px, 7vw, 132px);
+    padding-top: 170px;
+
+    h3 {
+      font-size: clamp(2.8rem, 3vw, 5.5rem);
+      line-height: clamp(40px, 4vw, 76px);
+      margin-bottom: clamp(40px, 4vw, 100px);
+      font-weight: 700;
+    }
+
+    ul {
+      display: flex;
+      gap: clamp(0px, 0.5vw, 72px);
+
+      li {
+        flex: 1;
+
+        h3 {
+          font-weight: 800;
+          font-size: clamp(2rem, 2.5vw, 3.5rem);
+          margin-top: clamp(16px, 4vw, 40px);
+          margin-bottom: 10px;
+        }
+
+        p {
+          font-weight: 600;
+          font-size: clamp(1.6rem, 1.5vw, 2.3rem);
+          line-height: clamp(28px, 3vw, 40px);
+          letter-spacing: -0.5px;
+        }
+
+        &+li {
+          margin-top: 140px;
+
+          &+li {
+            margin-top: 280px;
+          }
+        }
+      }
+    }
+
+    .buttonline {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-top: 90px;
+
+      &:after,
+      &:before {
+        flex: 1;
+        content: '';
+        height: 1px;
+        width: 516px;
+        background-color: #959191;
+      }
+
+      .btn {
+        flex: none;
+        display: inline-flex;
+        justify-content: space-between;
+        width: clamp(300px, 30vw, 462px);
+
+        height: clamp(68px, 8vw, 100px);
+        border-radius: 100px;
+        font-size: clamp(1.6rem, 2vw, 2.7rem);
+        font-weight: 700;
+        align-items: center;
+        border: 1px solid #000;
+        padding-left: clamp(40px, 3vw, 74px);
+        padding-right: clamp(30px, 3vw, 54px);
+
+
+        &:hover {
+          &:after {
+            transform: translateX(10px);
+          }
+        }
+
+        &:after {
+          transition: all .4s;
+          content: '';
+          display: block;
+          width: 11px;
+          height: 23px;
+          background: url(images/ico-btnArrow.png) no-repeat center;
+          background-size: contain;
+
+        }
+      }
+    }
+
+
+    @include screen("mobile") {
+      padding: 20% 0 20% 0;
+
+      h3 {
+        padding-left: 20px;
+      }
+
+      ul {
+        display: block;
+
+        li {
+          max-width: 430px;
+          margin: auto;
+
+          img {
+            display: block;
+            width: 90%;
+
+          }
+
+          h3 {
+            padding-left: 43px;
+          }
+
+          p {
+            padding-left: 80px;
+          }
+
+          &+li {
+            margin-top: 40px;
+
+            img {
+              margin: auto;
+            }
+
+            &+li {
+              img {
+                margin-right: 0;
+              }
+
+              margin-top: 40px;
+            }
+          }
+        }
+      }
+
+      .buttonline {
+        display: block;
+        margin-top: 46px;
+        padding: 0 20px;
+
+        text-align: center;
+
+        &:after,
+        &:before {
+          content: none;
+        }
+
+        .btn {
+          width: 100%;
+          border: 2px solid #000;
+          max-width: 430px;
+
+          &:hover {
+            &:after {
+              transform: translateX(10px);
+            }
+          }
+
+          &:after {
+            transition: all .4s;
+            content: '';
+            display: block;
+            width: 11px;
+            height: 23px;
+            background: url(images/ico-btnArrow.png) no-repeat center;
+            background-size: contain;
+
+          }
+        }
+      }
+    }
+  }
+}

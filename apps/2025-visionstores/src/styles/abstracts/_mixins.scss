@@ -1,0 +1,317 @@
+@mixin rem-baseline($zoom: 100%) {
+  font-size: $zoom / 16px * $rem-baseline;
+}
+
+@mixin rem($properties, $values...) {
+  @if (type-of($properties) == "map") {
+    @each $property in map-keys($properties) {
+      @include rem($property, map-get($properties, $property));
+    }
+  } @else {
+    @each $property in $properties {
+      @if ($rem-fallback or $rem-px-only) {
+        #{$property}: rem-convert(px, $values...);
+      }
+      @if (not $rem-px-only) {
+        #{$property}: rem-convert(rem, $values...);
+      }
+    }
+  }
+}
+
+@mixin on-event($self: false) {
+  @if ($self) {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+@mixin screen($size) {
+  @if ($size == "mobile-small") {
+    @media screen and (max-width: #{$breakpoint-mobile - 1px}) {
+      @content;
+    }
+  } @else if ($size == "mobile") {
+    @media screen and (max-width: #{$breakpoint-tablet - 1px}) {
+      @content;
+    }
+  } @else if ($size == "tablet") {
+    @media screen and (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
+      @content;
+    }
+  } @else if ($size == "desktop") {
+    @media screen and (min-width: #{$breakpoint-desktop}) {
+      @content;
+    }
+  } @else if ($size == "mobile-large") {
+    @media screen and (min-width: #{$breakpoint-tablet}) {
+      @content;
+    }
+  }
+}
+
+@mixin to-percent($parent-h, $w: null, $h: null, $top: null, $left: null, $mobile: false) {
+  $ref-width: if($mobile == true, $breakpoint-mobile, $max-width);
+
+  @if $w != null {
+    width: percent($w, parse-int($ref-width));
+  }
+  @if $h != null {
+    height: percent($h, $parent-h);
+  }
+  @if $top != null {
+    top: percent($top, $parent-h);
+  }
+  @if $left != null {
+    left: percent($left, parse-int($ref-width));
+  }
+}
+
+@mixin to-percent-m($parent-h, $parent-w: 360, $w: null, $h: null, $top: null, $left: null) {
+  $ref-width: $parent-w;
+
+  @if $w != null {
+    width: percent($w, parse-int($ref-width));
+  }
+  @if $h != null {
+    height: percent($h, $parent-h);
+  }
+  @if $top != null {
+    top: percent($top, $parent-h);
+  }
+  @if $left != null {
+    left: percent($left, parse-int($ref-width));
+  }
+}
+
+@mixin sr-only($focusable: false) {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+
+  @if ($focusable) {
+    &:active,
+    &:focus {
+      position: static;
+      overflow: visible;
+      width: auto;
+      height: auto;
+      margin: 0;
+      white-space: inherit;
+      clip: auto;
+    }
+  }
+}
+
+@mixin hide-text($display: block) {
+  @if ($display != "flex") {
+    display: $display;
+  }
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+@mixin pseudo($width: 100%, $height: 100%, $pos: absolute, $display: block, $content: "") {
+  content: $content;
+  position: $pos;
+  display: $display;
+  width: $width;
+  height: $height;
+}
+
+@mixin clearfix {
+  *zoom: 1;
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+@mixin image-button($display: block) {
+  position: relative;
+  @include hide-text($display);
+}
+
+@mixin sprite($x, $y, $color: transparent) {
+  background: image($base-sprite-image-url) no-repeat $color $x $y;
+  background-size: $base-sprite-image-width / 2 $base-sprite-image-height / 2;
+}
+
+@mixin font(
+  $size,
+  $variant: regular,
+  $group: base,
+  $important: false,
+  $properties: family weight,
+  $font-stack: $base-font-stack
+) {
+  $font-properties: map-deep-get($font-stack, $group, $variant);
+
+  @if (type-of($font-properties) == "map") {
+    @each $property, $values in $font-properties {
+      @if contains($properties, $property) {
+        @if (
+          $property != family or ($property == family and $group != noto) or ($group == noto and $important == true)
+        ) {
+          font-#{$property}: map-get($font-properties, $property);
+        }
+      }
+    }
+    @if ($size) {
+      font-size: rem($size);
+    }
+  }
+}
+
+@mixin text-shorten {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-shorten-multi($line: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+@mixin text-selection($color-selection, $color-selection-bg) {
+  ::-moz-selection {
+    background: $color-selection-bg;
+    color: $color-selection;
+    text-shadow: none;
+  }
+  ::selection {
+    background: $color-selection-bg;
+    color: $color-selection;
+    text-shadow: none;
+  }
+}
+
+@mixin shimmer {
+  border-radius: 10px;
+  background-color: #e5e5e5;
+  background-size: 750px 104px;
+  background-image: linear-gradient(to right, #e5e5e5 0%, #dddddd 20%, #e5e5e5 40%, #e5e5e5 100%);
+  background-repeat: no-repeat;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeholderShimmer;
+  animation-timing-function: linear;
+}
+
+@mixin shimmer-no-radius {
+  background-color: #e5e5e5;
+  background-size: 1250px 500px;
+  background-image: linear-gradient(to right, #e5e5e5 0%, #dddddd 20%, #e5e5e5 40%, #e5e5e5 100%);
+  background-repeat: no-repeat;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeholderShimmer;
+  animation-timing-function: linear;
+}
+
+@mixin placeholder($color: #c8c8c8) {
+  input::-webkit-input-placeholder {
+    color: $color;
+  }
+  input:-ms-input-placeholder {
+    color: $color;
+  }
+  input::placeholder {
+    color: $color;
+    opacity: 1;
+  }
+  textarea::placeholder {
+    color: $color;
+    opacity: 1;
+  }
+  textarea::-webkit-input-placeholder {
+    color: $color;
+  }
+  textarea:-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+@mixin flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-only-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-row-center {
+  @include flex-row;
+  @include flex-center;
+}
+
+@mixin flex-column-center {
+  @include flex-column;
+  @include flex-center;
+}
+
+@mixin flex-row-center-v {
+  @include flex-row;
+  align-items: center;
+}
+
+@mixin flex-row-center-h {
+  @include flex-row;
+  justify-content: center;
+}
+
+@mixin flex-column-center-v {
+  @include flex-column;
+  justify-content: center;
+}
+
+@mixin flex-column-center-h {
+  @include flex-column;
+  align-items: center;
+}
+
+@mixin res-bg {
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+}

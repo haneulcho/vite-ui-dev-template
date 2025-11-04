@@ -1,0 +1,51 @@
+.#{$app-name} {
+  font-size: $base-font-size;
+  min-width: $min-width;
+  background: $background-color;
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-style: -ms-autohiding-scrollbar;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  ::selection {
+    @if ($selection-color) {
+      background-color: $selection-color;
+      text-shadow: none;
+    }
+  }
+
+  audio,
+  canvas,
+  iframe,
+  svg,
+  video {
+    vertical-align: middle;
+  }
+
+  img:not(.section-bg) {
+    height: auto;
+    max-width: 100%;
+  }
+
+  option,
+  optgroup {
+    color: initial;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+body:has(.#{$app-name}).locked-scroll {
+  overflow: hidden;
+  pointer-events: none;
+}

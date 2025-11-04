@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+// $app-name 변수를 활용하여 네임스페이스 하위에만 reset 등 특정 스타일 적용
+$app-name: "visionStore" !default;
+$max-width: 1680px;
+// $breakpoint-mobile-small: 320px !default;
+// $breakpoint-mobile: 360px !default;
+// $breakpoint-tablet: 720px !default;
+// $breakpoint-desktop: 1280px !default;
+
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+
+@import "vendors/font";
+
+@import "base/base";
+@import "base/helpers";
+@import "base/animations";
+
+@import "app";
+
+@import "contents/section1";
+@import "contents/section2";
+@import "contents/section3";
+@import "contents/section4";
+@import "contents/section5";
+@import "contents/section6";
+@import "contents/section7";
+@import "contents/section8";
+@import "contents/section9";
+
+@import "app_responsive";

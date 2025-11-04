@@ -1,0 +1,122 @@
+@mixin btn-common() {
+  @include flex-only-center;
+  border-radius: 4px;
+  color: $btn-text-color;
+  &:hover:not(.disabled) {
+    color: $color-white;
+  }
+  &:disabled,
+  &.disabled {
+    cursor: no-drop;
+    color: $btn-text-disable-color;
+  }
+  transition: all 300ms ease;
+}
+
+@mixin btn-medium() {
+  @include btn-common;
+  font-size: 13px;
+  line-height: 18px;
+  padding: 10px 16px;
+}
+
+@mixin btn-small() {
+  @include btn-common;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 7px 12px;
+}
+
+@mixin btn-large() {
+  @include btn-common;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 15px 24px;
+  &:hover:not(.disabled) {
+    font-weight: bold;
+  }
+}
+
+@mixin btn-style-default() {
+  background-color: #787f99;
+  &:hover:not(.disabled) {
+    background-color: #656d89;
+  }
+  &:disabled,
+  &.disabled {
+    background-color: rgba(58, 58, 66, 0.5);
+  }
+}
+
+@mixin btn-style-primary() {
+  background-color: #5070de;
+  &:hover:not(.disabled) {
+    background-color: #4564d0;
+  }
+  &:disabled,
+  &.disabled {
+    background-color: rgba(58, 58, 66, 0.5);
+  }
+}
+
+@mixin btn-style-l2m() {
+  background-color: #944a1b;
+  &:hover:not(.disabled) {
+    background-color: #844218;
+  }
+  &:disabled,
+  &.disabled {
+    background-color: #36363f;
+  }
+}
+
+@mixin btn-style-lremaster() {
+  background-color: #aa8060;
+  &:hover:not(.disabled) {
+    background-color: #9f7250;
+  }
+  &:disabled,
+  &.disabled {
+    background-color: #36363f;
+  }
+}
+
+.btn-medium {
+  @include btn-medium;
+  @include btn-style-default;
+  &--primary {
+    @include btn-style-primary;
+  }
+  &--l2m {
+    @include btn-style-l2m;
+  }
+  &--lremaster {
+    @include btn-style-lremaster;
+  }
+}
+.btn-small {
+  @include btn-small;
+  @include btn-style-default;
+  &--primary {
+    @include btn-style-primary;
+  }
+  &--l2m {
+    @include btn-style-l2m;
+  }
+  &--lremaster {
+    @include btn-style-lremaster;
+  }
+}
+.btn-large {
+  @include btn-large;
+  @include btn-style-default;
+  &--primary {
+    @include btn-style-primary;
+  }
+  &--l2m {
+    @include btn-style-l2m;
+  }
+  &--lremaster {
+    @include btn-style-lremaster;
+  }
+}
