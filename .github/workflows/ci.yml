@@ -70,6 +70,7 @@ jobs:
         if: steps.changed-apps.outputs.has_changes == 'true'
         env:
           APPS_JSON: ${{ steps.changed-apps.outputs.apps_json }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: node ./scripts/build-changed-apps.mjs
 
       - name: Upload artifact
