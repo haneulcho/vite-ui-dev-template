@@ -9,8 +9,10 @@
   "scripts": {
     "build": "turbo run build",
     "build:chosen": "turbo run build --filter=@repo/2025-chosen",
+    "build:1000girls": "turbo run build --filter=@repo/2025-1000girls-s2",
     "dev": "turbo run dev",
     "dev:chosen": "turbo run dev --filter=@repo/2025-chosen",
+    "dev:1000girls": "turbo run dev --filter=@repo/2025-1000girls-s2",
     "lint": "turbo run lint",
     "format": "prettier --write --cache --ignore-unknown \"**/*.{js,jsx,ts,tsx,md,css,scss}\"",
     "clean": "turbo run clean && rm -rf node_modules && pnpm i"
