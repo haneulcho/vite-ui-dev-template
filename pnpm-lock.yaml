@@ -122,9 +122,6 @@ importers:
       vite:
         specifier: ^6.0.0
         version: 6.4.1(sass@1.93.2)(terser@5.44.0)
-      vite-plugin-include-html:
-        specifier: ^1.0.0
-        version: 1.0.0
 
   packages/config-eslint:
     dependencies:
