@@ -71,8 +71,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: dist
-          key: monorepo-dist
-          restore-keys: monorepo-dist
+          key: "${{ runner.os }}-monorepo-dist-${{ github.sha }}"
+          restore-keys: |
+            ${{ runner.os }}-monorepo-dist-
 
       - name: Build changed apps
         if: steps.changed-apps.outputs.has_changes == 'true'
