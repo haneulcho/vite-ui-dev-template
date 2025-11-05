@@ -9,9 +9,7 @@
     display: table;
   }
 
-  .hide-text {
-    @include hide-text;
-  }
+
 
   .blind {
     position: absolute;
@@ -41,6 +39,7 @@
     padding-top: 56.25%;
     background: #eee;
   }
+
   .youtube-iframe {
     position: absolute;
     top: 0;

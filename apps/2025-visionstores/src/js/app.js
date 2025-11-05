@@ -193,7 +193,6 @@
 
     // 초기화
     initSwiperSlider();
-    switchImages();
     handleScrollEvents();
 
     // 이벤트: 패시브 + rAF 스로틀
