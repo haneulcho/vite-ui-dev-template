@@ -18,6 +18,10 @@
   @return (parse-int($px) / $base) * 100vw;
 }
 
+@function clp($min, $max, $base: 1920) {
+  @return clamp($min, vw($base), $max);
+}
+
 @function fluid-font($target, $min: null, $max: null, $base: 1920) {
   $vw-value: calc(100vw * #{parse-int($target)} / #{$base});
 

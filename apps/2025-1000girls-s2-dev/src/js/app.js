@@ -59,7 +59,7 @@ const initSwiperSlider = () => {
   const section8Swiper = new Swiper('.section8 .slider-wrapper', {
     slidesPerView: 'auto',
     centeredSlides: false,
-    spaceBetween: '1.4%',
+    spaceBetween: 23,
     loop: true,
     speed: 800,
     pagination: {
@@ -73,7 +73,7 @@ const initSwiperSlider = () => {
     breakpoints: {
       768: {
         centeredSlides: true,
-        spaceBetween: '42%',
+        spaceBetween: 16,
       },
     },
   });
