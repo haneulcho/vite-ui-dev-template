@@ -1,0 +1,124 @@
+.#{$app-name} {
+  .section1 {
+    $sec-height: 960;
+    $sec-height-m: 695;
+
+    .app-inner {
+      padding: vw(51px, 1920) min(vw(82px, 1920), 82px) 0;
+      @include screen("mobile") {
+        padding: 0;
+      }
+    }
+
+    .visual {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 1755px;
+      margin: 0 auto;
+      &-bg {
+        position: absolute;
+        width: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .title-wrapper {
+        position: absolute;
+        width: min(vw(487px, 1920), 487px);
+        margin-top: min(vw(149px, 1920), 149px);
+        margin-left: min(vw(209px, 1920), 209px);
+
+        .sub-title {
+          margin-left: 3.5%;
+        }
+        .main-title {
+          margin-top: 6.4%;
+        }
+        .btn-support {
+          position: relative;
+          display: block;
+          width: min(vw(489px, 1920), 489px);
+          height: min(vw(144px, 1920), 144px);
+          margin-top: 12%;
+
+          a {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            @include res-bg;
+            background-image: url(images/sec01-btn.png);
+            transition: filter 0.25s ease;
+            > span {
+              @include hide-text;
+            }
+            .arrow {
+              width: percent(53, 489);
+              height: percent(15, 144);
+              margin-top: percent(55, 489);
+              margin-left: auto;
+              margin-right: percent(52, 489);
+              transition: transform 300ms ease;
+              @include res-bg;
+              background-image: url(images/sec01-btn-arrow.png);
+            }
+
+            &:hover {
+              filter: brightness(1.04) contrast(1.07);
+              .arrow {
+                transform: translateX(10%);
+              }
+            }
+          }
+        }
+
+        @include screen("mobile") {
+          width: min(100%, percent(914, 1236));
+          margin: percent(131, 1236) percent(162, 1236) 0;
+
+          .sub-title {
+            max-width: percent(889, 914);
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .btn-support {
+            width: percent(853, 914);
+            height: min(vw(252px, 1236), 252px);
+            min-width: 222px;
+            min-height: 84px;
+            margin-top: 6.5%;
+            margin-left: auto;
+            margin-right: auto;
+
+            > a {
+              background-image: url(images/sec01-btn-m.png);
+              .arrow {
+                width: percent(88, 853);
+                height: percent(22, 252);
+                margin-top: percent(98, 853);
+                margin-right: percent(88, 853);
+                background-image: url(images/sec01-btn-arrow-m.png);
+              }
+            }
+          }
+        }
+      }
+      .bubble {
+        position: absolute;
+        display: block;
+        width: min(vw(229px, 1920), 229px);
+        top: min(vw(185px, 1920), 185px);
+        left: percent(828, 1755);
+
+        @include screen("mobile") {
+          width: percent(427, 1236);
+          top: percent(1247, 2085);
+          left: percent(446, 1236);
+        }
+      }
+    }
+  }
+}
