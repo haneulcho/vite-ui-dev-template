@@ -4,23 +4,64 @@
     $h: 1326;
     $w-m: 1236;
     $h-m: 3878;
+    background-color: #fffcf9;
+    padding-top: clamp(50px, 5vw, 90px);
+    padding-bottom: clamp(120px, 5vw, 170px);
+
+    .app-inner {
+      position: static;
+      transform: none;
+      margin: auto;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
 
     .app-section-title {
-      position: absolute;
-      @include hide-text;
-      @include res-bg;
-      @include to-percent($h, $w: 440, $h: 51, $top: 189, $left: 1017);
-      background-image: url(images/sec02-title.png);
+      font-weight: 700;
+      font-size: clamp(2.6rem, 3vw, 5rem);
+      margin-bottom: 40px;
 
-      @include screen("mobile") {
-        @include to-percent-m($h-m, $parent-w: $w-m, $w: 790, $h: 92, $top: 180, $left: 222);
-        background-image: url(images/sec02-title-m.png);
+    }
+
+    .cont {
+      max-width: 1200px;
+      margin: auto;
+      width: 100%;
+
+      .row {
+        display: flex;
+        justify-content: center;
+        gap: clamp(40px, 3vw, 100px);
+
+        &+.row {
+          margin-top: 50px;
+
+          .columm {
+            justify-content: start;
+          }
+        }
+
+        .columm {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          // flex: 1;
+        }
       }
     }
 
+
+
+
     .messages {
-      position: absolute;
+      position: relative;
       padding-left: min(vw(106px, $w), 106px);
+
+      >li {
+        &+li {
+          margin-top: clamp(19px, 1.5vw, 32px);
+        }
+      }
 
       &::before {
         @include pseudo(min(vw(101px, $w), 101px), min(vw(101px, $w), 101px));
@@ -28,112 +69,32 @@
         top: min(vw(27px, $w), 27px);
         left: min(vw(0, $w), 0px);
         background-image: url(images/sec02-bear-profile.png);
+
       }
 
-      > li {
-        margin-bottom: vw(-16.5px, $w);
-        > p {
-          @include sr-only;
-        }
-        @include res-bg;
-        @for $i from 1 through 4 {
-          &.msg#{$i} {
-            background-image: url(images/sec02-message#{$i}.png);
-          }
-        }
-      }
+      p {
+        font-weight: 300;
+        font-size: clamp(1.5rem, 1.5vw, 2.2rem);
+        line-height: clamp(20px, 2vw, 34px);
+        background-color: #fff;
+        border-radius: 45px 45px 45px 0;
+        box-shadow: 8px 0px 32px 0px rgba(101, 80, 56, 0.09);
+        padding: 28px 40px;
+        margin-left: clamp(15px, 1vw, 26px);
 
-      &1 {
-        @include to-percent($h, $w: 600, $top: 278, $left: 1019);
-        > li {
-          &.msg1 {
-            width: min(vw(454px, $w), 454px);
-            height: min(vw(167px, $w), 167px);
-          }
+        b {
+          font-weight: 700;
         }
       }
 
-      &2 {
-        @include to-percent($h, $w: 600, $top: 650, $left: 391);
-        > li {
-          &.msg2 {
-            width: min(vw(433px, $w), 433px);
-            height: min(vw(161px, $w), 161px);
-          }
-          &.msg3 {
-            width: min(vw(433px, $w), 433px);
-            height: min(vw(161px, $w), 161px);
-          }
-          &.msg4 {
-            width: min(vw(433px, $w), 433px);
-            height: min(vw(190px, $w), 190px);
-          }
-        }
-      }
-
-      @include screen("mobile") {
-        padding-left: min(vw(249px, $w-m), 249px);
-
-        &::before {
-          @include pseudo(min(vw(257px, $w-m), 257px), min(vw(256px, $w-m), 256px));
-          top: min(vw(27px, $w-m), 27px);
-          background-image: url(images/sec02-bear-profile-m.png);
-        }
-
-        > li {
-          margin-bottom: 0;
-          @for $i from 1 through 4 {
-            &.msg#{$i} {
-              background-image: url(images/sec02-message#{$i}-m.png);
-            }
-          }
-        }
-
-        &1 {
-          @include to-percent-m($h-m, $parent-w: $w-m, $w: 1090, $top: 330, $left: 69);
-          > li {
-            &.msg1 {
-              width: min(vw(851px, $w-m), 851px);
-              height: min(vw(306px, $w-m), 306px);
-            }
-          }
-        }
-
-        &2 {
-          @include to-percent-m($h-m, $parent-w: $w-m, $w: 1090, $top: 1509, $left: 69);
-          > li {
-            &.msg2 {
-              width: min(vw(851px, $w-m), 851px);
-              height: min(vw(306px, $w-m), 306px);
-            }
-            &.msg3 {
-              width: min(vw(851px, $w-m), 851px);
-              height: min(vw(306px, $w-m), 306px);
-            }
-            &.msg4 {
-              width: min(vw(851px, $w-m), 851px);
-              height: min(vw(386px, $w-m), 386px);
-            }
-          }
-        }
-      }
     }
 
     .bear {
-      position: absolute;
-      @include to-percent($h, $w: 553, $top: 55, $left: 370);
-      @include screen("mobile") {
-        @include to-percent-m($h-m, $parent-w: $w-m, $w: 1058, $top: 726, $left: 90);
-      }
+      width: clamp(200px, 30vw, 553px);
     }
 
     .shorts {
-      position: absolute;
-      @include to-percent($h, $w: 553, $top: 625, $left: 1015);
-
-      @include screen("mobile") {
-        @include to-percent-m($h-m, $parent-w: $w-m, $w: 1055, $top: 2644, $left: 90);
-      }
+      width: clamp(260px, 30vw, 553px);
 
       &-frame {
         position: relative;
@@ -142,6 +103,7 @@
         height: 0;
         padding-top: 66.25%;
         border-radius: vw(50px, $w);
+
         iframe {
           position: absolute;
           top: -3px;
@@ -153,6 +115,7 @@
 
         @include screen("mobile") {
           border-radius: vw(50px, $w-m);
+
           iframe {
             top: -2px;
             height: 102%;
@@ -160,5 +123,49 @@
         }
       }
     }
+
+    @include screen("mobile") {
+      padding-bottom: 15%;
+
+      .cont {
+        .row {
+          flex-direction: column;
+
+          &:first-child {
+            flex-direction: column-reverse;
+          }
+
+          .columm {
+            display: block;
+
+
+          }
+        }
+      }
+
+      .messages {
+        padding-left: 60px;
+
+        p {
+          padding: 18px 18px 18px 26px;
+          border-radius: 24px 24px 24px 0;
+        }
+
+        &::before {
+          width: 60px;
+          height: 60px;
+        }
+      }
+
+      .bear {
+        width: 100%;
+      }
+
+      .shorts {
+        width: 100%;
+      }
+    }
   }
+
+
 }

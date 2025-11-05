@@ -94,7 +94,7 @@ const initSwiperSlider = () => {
     },
     breakpoints: {
       768: {
-        spaceBetween: '42%',
+        // spaceBetween: '42%',
       },
     },
   });
