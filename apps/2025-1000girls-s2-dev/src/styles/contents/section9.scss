@@ -4,40 +4,52 @@
     $h: 957;
     $w-m: 1236;
     $h-m: 2630;
+    padding-top: clamp(80px, 4vw, 140px);
+    padding-bottom: clamp(120px, 4vw, 190px);
+    background-color: #fffcf9;
 
     .app-inner {
+      position: static;
+      transform: none;
       max-width: none;
     }
 
     .app-section-title {
-      position: absolute;
-      @include hide-text;
-      @include res-bg;
-      @include to-percent($h, $w: 803, $h: 93, $top: 135, $left: 558);
-      background-image: url(images/sec09-title.png);
+      font-weight: 700;
+      font-size: clamp(2.2rem, 3vw, 5rem);
+      line-height: clamp(28px, 3.5vw, 64px);
+      // padding-bottom: clamp(10px, 1.5vw, 20px);
+      text-align: center;
+      color: #2c201c;
 
-      @include screen("mobile") {
-        @include to-percent-m($h-m, $parent-w: $w-m, $w: 906, $h: 299, $top: 118, $left: 165);
-        background-image: url(images/sec09-title-m.png);
+      strong {
+        color: #e65219;
+        font-weight: 700;
       }
     }
 
-    .message {
-      position: absolute;
-      @include hide-text;
-      @include res-bg;
-      @include to-percent($h, $w: 722, $h: 135, $top: 233, $left: 617);
-      background-image: url(images/sec09-message.png);
+    .bear-message {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      text-align: left;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 1.5vw, 2.2rem);
+      line-height: clamp(19px, 2vw, 34px);
+      color: #2c201c;
+      gap: clamp(6px, 2vw, 18px);
+      padding-bottom: clamp(30px, 2vw, 65px);
 
-      @include screen("mobile") {
-        @include to-percent-m($h-m, $parent-w: $w-m, $w: 1000, $h: 231, $top: 538, $left: 104);
-        background-image: url(images/sec09-message-m.png);
+
+      img {
+        flex: none;
+        width: clamp(42px, 6vw, 91px);
       }
     }
 
     .stories {
       position: relative;
-      margin-top: min(vw(408px, $w), 408px);
+      margin-top: 44px;
       width: 100%;
 
       .swiper-buttons {
@@ -45,7 +57,7 @@
         top: 33.5%;
         left: 50%;
         transform: translateX(-50%);
-        width: min(vw(712px, $w), 712px);
+        width: 680px;
         z-index: 10;
       }
 
@@ -54,14 +66,15 @@
         @include res-bg;
         @include hide-text;
         top: 0;
-        width: min(vw(54px, $w), 54px);
-        height: min(vw(54px, $w), 54px);
+        width: 54px;
+        height: 54px;
         transition: transform 300ms ease;
 
         &:hover {
           filter: brightness(1.04) contrast(1.07);
         }
       }
+
       .swiper-button-prev {
         left: 0;
         background-image: url(images/btn-prev-2.png);
@@ -70,6 +83,7 @@
           transform: translateX(-3px);
         }
       }
+
       .swiper-button-next {
         right: 0;
         background-image: url(images/btn-next-2.png);
@@ -79,24 +93,16 @@
         }
       }
 
-      @include screen("mobile") {
-        opacity: 1;
-        margin-top: min(vw(900px, $w-m), 900px);
-
-        .swiper-buttons {
-          display: none;
-        }
-      }
     }
 
     .slider-wrapper {
       width: 100%;
 
       .swiper-slide {
-        width: min(vw(624px, $w), 624px);
+        width: 602px;
 
-        > h3,
-        > p {
+        >h3,
+        >p {
           @include sr-only;
         }
       }
@@ -108,34 +114,118 @@
       }
 
       .swiper-pagination-bullet {
-        border-radius: 30px;
         background: #bfbab6;
         opacity: 1;
-        width: min(vw(39px, $w), 39px);
-        height: min(vw(9px, $w), 9px);
-        margin: 0 min(vw(6px, $w), 6px);
+
         &.swiper-pagination-bullet-active {
           background: #2c201c !important;
         }
       }
 
-      @include screen("mobile") {
-        width: 100%;
+
+    }
+
+    .cont {
+      border: 2px solid #2c201c;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+
+      .img {
+        flex: none;
+        width: 324px;
+        border-right: 2px solid #2c201c;
+
+        img {
+          width: 100%;
+        }
+
+      }
+
+      .inner {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .info {
+
+
+        h3 {
+          color: #441f14;
+          font-size: clamp(2.1rem, 2vw, 3rem);
+          line-height: 1;
+          font-weight: 700;
+          margin-bottom: clamp(22px, 2vw, 30px);
+        }
+
+        p {
+          color: #441f14;
+          font-weight: 300;
+          font-size: clamp(1.5rem, 1.5vw, 1.75rem);
+          line-height: 1.4;
+        }
+      }
+    }
+
+    @include screen("mobile") {
+      padding-top: 15%;
+      padding-bottom: 15%;
+
+      .app-section-title {
+        margin-bottom: 10px;
+      }
+
+      .slider-wrapper {
+        margin-bottom: 20px;
 
         .swiper-slide {
-          width: min(vw(940px, $w-m), 940px);
+          width: 278px;
         }
 
         .swiper-pagination {
-          bottom: 0;
-          margin-top: min(vw(100px, $w-m), 100px);
+          margin-top: 36px;
         }
 
-        .swiper-pagination-bullet {
-          border-radius: 50px;
-          width: vw(122px, $w-m);
-          height: vw(27px, $w-m);
-          margin: 0 vw(15px, $w-m);
+
+      }
+
+      .cont {
+        border-radius: 17px;
+        flex-direction: column;
+
+        .img {
+          width: 100%;
+          border-right: none;
+          border-bottom: 2px solid #2c201c;
+
+        }
+
+        .inner {
+          width: 100%;
+        }
+
+        .info {
+          width: 100%;
+          padding-top: 30px;
+          padding-bottom: 40px;
+          padding-left: 28px;
+
+          h3 {
+            font-size: clamp(2.1rem, 2vw, 3rem);
+            line-height: 1;
+            font-weight: 700;
+            margin-bottom: clamp(22px, 2vw, 30px);
+          }
+
+          p {
+            font-weight: 300;
+            font-size: clamp(1.5rem, 1.5vw, 1.75rem);
+            line-height: 1.4;
+          }
         }
       }
     }
