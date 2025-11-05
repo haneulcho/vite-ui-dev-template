@@ -1,0 +1,107 @@
+.#{$app-name} {
+  .section3 {
+    padding-left: clamp(20px, 7vw, 132px);
+    padding-right: clamp(20px, 7vw, 132px);
+    padding-top: 100px;
+
+    .app-inner {
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+
+    }
+
+    .imgItem01 {
+      position: relative;
+      width: clamp(238px, 40vw, 576px);
+
+      .imgItem02 {
+        width: clamp(238px, 40vw, 576px);
+        position: absolute;
+        top: clamp(300px, 30vw, 540px);
+        left: 50%;
+      }
+    }
+
+    .imgItem03 {
+      width: clamp(321px, 40vw, 734px);
+      margin-left: auto;
+      margin-top: 364px;
+
+      position: relative;
+
+      .text {
+        position: absolute;
+        right: 70px;
+        bottom: 60px;
+      }
+
+    }
+
+    @include screen("mobile") {
+      padding: 0;
+
+      .app-inner {
+        display: block;
+        max-width: 430px;
+      }
+
+      .imgItem {
+        width: 100%;
+
+        img {
+          width: 66%;
+        }
+      }
+
+      .imgItem01 {
+
+        position: relative;
+
+        .text {
+          display: block;
+          margin-top: 30px;
+          width: 360px;
+          padding-left: 20px;
+
+
+        }
+
+        img {
+          float: left;
+        }
+
+        .imgItem02 {
+          width: 100%;
+          position: static;
+
+          img {
+            float: right;
+            margin-top: -18vh;
+          }
+        }
+      }
+
+      .imgItem03 {
+        width: 100%;
+        padding: 20px;
+
+        img {
+          width: 100%;
+          margin-top: 60px;
+        }
+
+        margin-left: auto;
+        margin-top: 364px;
+        position: static;
+
+        .text {
+          position: absolute;
+          right: 70px;
+          bottom: 60px;
+        }
+
+      }
+    }
+  }
+}

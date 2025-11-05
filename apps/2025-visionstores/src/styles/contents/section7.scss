@@ -1,0 +1,118 @@
+.#{$app-name} {
+  .section7 {
+    padding-left: clamp(20px, 7vw, 132px);
+    padding-right: clamp(20px, 7vw, 132px);
+    padding-bottom: 140px;
+
+    .swiperSec07 {
+      position: relative;
+      overflow: hidden;
+
+      .inner {
+        display: flex;
+        gap: clamp(30px, 4vw, 86px);
+
+        img {
+          width: clamp(400px, 40vw, 960px);
+        }
+
+        .left {
+          flex: none;
+        }
+
+        .right {
+          display: flex;
+          flex-direction: column;
+          justify-content: end;
+          padding-bottom: clamp(32px, 4vw, 120px);
+
+
+          h4 {
+            font-size: clamp(2rem, 2.6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: clamp(16px, 1.5vw, 30px);
+          }
+
+          p {
+            font-size: clamp(1.6rem, 1.5vw, 2.1rem);
+            line-height: clamp(28px, 2vw, 35px);
+            font-weight: 400;
+          }
+        }
+      }
+
+      h3 {
+        position: absolute;
+        width: clamp(400px, 40vw, 960px);
+        left: clamp(400px, 40vw, 960px);
+        padding-left: clamp(30px, 4vw, 86px);
+        font-size: clamp(2.8rem, 4.5vw, 6.8rem);
+        line-height: 1;
+        font-weight: 700;
+
+        span {
+          display: block;
+          font-size: clamp(1.8rem, 2.5vw, 3.2rem);
+          font-weight: 400;
+          margin-bottom: clamp(12px, 1vw, 30px);
+        }
+      }
+    }
+
+    .swiper-pagination {
+      // width: clamp(400px, 40vw, 960px);
+      position: absolute;
+      bottom: 0;
+      left: clamp(400px, 40vw, 960px);
+      margin-top: clamp(20px, 4vw, 66px);
+      justify-content: start;
+      padding-left: clamp(30px, 4vw, 86px);
+    }
+
+    @include screen("mobile") {
+      padding: 0 0 15%;
+
+
+
+      .swiperSec07 {
+
+        .inner {
+          display: block;
+
+          img {
+            width: 100%;
+          }
+
+          .right {
+
+            display: block;
+            padding: 20px 20px 0;
+
+            p br {
+              display: block !important;
+            }
+          }
+        }
+
+        h3 {
+          position: static;
+          width: 100%;
+          padding-left: 20px;
+          padding-bottom: 24px;
+        }
+      }
+
+      .swiper-pagination {
+        position: static;
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .visionStore .section7 .swiperSec07 .inner .right p br {
+    display: none;
+  }
+}

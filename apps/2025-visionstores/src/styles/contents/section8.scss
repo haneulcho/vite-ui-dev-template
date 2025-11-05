@@ -1,0 +1,120 @@
+.#{$app-name} {
+  .section8 {
+    padding-left: clamp(20px, 7vw, 132px);
+    padding-right: clamp(20px, 7vw, 132px);
+    padding-top: clamp(48px, 7vw, 124px);
+    min-height: clamp(767px, 30vw, 806px);
+    background-image: url(images/sec08-bg.jpg);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+
+    .app-inner {
+      text-align: left;
+      justify-content: start;
+    }
+
+    .info {
+      width: 50%;
+      text-align: center;
+
+      h3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #fff;
+        font-size: clamp(4.5rem, 3vw, 8.2rem);
+        font-weight: 700;
+        text-align: center;
+        line-height: 1;
+        margin-bottom: clamp(20px, 2vw, 70px);
+
+        &::before {
+          content: '';
+          width: 34px;
+          height: 34px;
+          background: url(images/ico-titsymbol.png) no-repeat center;
+          background-size: contain;
+          margin-bottom: clamp(10px, 1vw, 18px);
+        }
+      }
+
+      a {
+        color: #fff;
+        border-bottom: 1px solid #fff;
+        font-size: clamp(1.6rem, 3vw, 2.5rem);
+      }
+
+      p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        font-size: clamp(1.6rem, 3vw, 2.5rem);
+        line-height: clamp(28px, 3.5vw, 40px);
+        font-weight: 300;
+
+        &:after {
+          content: '';
+          width: 1px;
+          height: 122px;
+          background-color: #fff;
+          opacity: 0.8;
+          margin-bottom: clamp(10px, 1vw, 30px);
+          margin-top: clamp(10px, 1vw, 30px);
+        }
+
+        b {
+          font-weight: 600;
+        }
+      }
+    }
+
+
+
+
+    @include screen("mobile") {
+      background-image: none;
+      position: relative;
+      padding: 0;
+
+      .app-inner {
+
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        left: 50%;
+        top: 4.5vh;
+        transform: translate(-50%);
+      }
+
+      .info {
+        width: 100%;
+        min-width: 300px;
+
+        h3 {
+          width: fit-content;
+
+          &::before {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 0;
+          }
+        }
+
+
+
+        p {
+          &:after {
+            height: 22px;
+          }
+
+          b {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

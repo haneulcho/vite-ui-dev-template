@@ -1,0 +1,195 @@
+.#{$app-name} {
+  .section1 {
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+
+    .bg {
+      width: 100%;
+    }
+
+    .app-inner {
+      width: 100%;
+      position: absolute;
+      top: 90px;
+      padding: 0 40px;
+
+      .headline {
+        max-width: 1320px;
+        margin: auto;
+
+
+        h2 {
+          display: flex;
+          flex-direction: column;
+
+          .label {
+            span {
+              display: inline-block;
+              color: #75341f;
+              font-size: clamp(1.3rem, 1.5vw, 2rem);
+              line-height: 1;
+              padding-bottom: 18px;
+              border-bottom: 2px solid #b0886a;
+              margin-bottom: clamp(16px, 3vw, 38px);
+              font-weight: 600;
+              letter-spacing: 1px;
+            }
+          }
+
+          .tit {
+            color: #5c3427;
+            font-size: clamp(3.8rem, 5vw, 7.7rem);
+            line-height: 1.2;
+            font-weight: 800;
+          }
+        }
+
+        p {
+          margin-top: 18px;
+          color: #333333;
+          font-size: clamp(1.7rem, 2vw, 2.5rem);
+          line-height: clamp(25px, 3vw, 43px);
+        }
+      }
+    }
+
+
+
+    .swiperSec01 {
+      position: absolute;
+      z-index: 0;
+      left: 50px;
+      bottom: 5vw;
+
+      .swiper-wrapper {
+        -webkit-transition-timing-function: linear !important;
+        -o-transition-timing-function: linear !important;
+        transition-timing-function: linear !important;
+        height: auto;
+      }
+
+      .swiper-slide {
+        width: fit-content;
+
+        .inner {
+
+          background-color: rgba(255, 255, 255, 0.85);
+          padding-left: clamp(10px, 1vw, 24px);
+          padding-right: clamp(10px, 1vw, 24px);
+          padding-top: clamp(18px, 2vw, 40px);
+          padding-bottom: clamp(34px, 6vw, 82px);
+
+          img {
+            width: clamp(196px, 30vw, 463px);
+            // height: clamp(137px, 30vw, 321px);
+          }
+        }
+      }
+    }
+
+    @include screen("mobile") {
+      .app-inner {
+        top: 30px;
+        padding: 0 20px;
+
+        .headline {
+          max-width: 100%;
+
+          h2 {
+            text-align: center;
+
+            .label {
+              span {
+                padding-bottom: 10px;
+                border-bottom: 1px solid #75341f;
+              }
+            }
+
+            .tit {
+              font-size: clamp(3.8rem, 8vw, 7.7rem);
+            }
+          }
+
+          p {
+            margin-top: 10px;
+            text-align: center;
+            font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+            line-height: clamp(25px, 5vw, 43px);
+          }
+        }
+      }
+
+      .swiperSec01 {
+        left: 28px;
+        bottom: 72px;
+      }
+    }
+  }
+
+  .banner {
+    background-image: url(images/banner-bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    // padding: 144px 0 170px;
+    padding-top: clamp(64px, 10vw, 144px);
+    padding-bottom: clamp(64px, 10vw, 170px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+      color: #fff;
+      font-size: clamp(2.5rem, 3vw, 5.4rem);
+      font-weight: 700;
+
+      .btm {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-left: clamp(30px, 7vw, 210px);
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        font-size: clamp(1.4rem, 2vw, 2.5rem);
+        font-weight: 400;
+        gap: 20px;
+
+        &:before {
+          content: '';
+          width: 118px;
+          height: 1px;
+          background-color: #fff;
+          opacity: 0.5;
+
+        }
+      }
+    }
+
+    @include screen("mobile") {
+
+
+
+      h3 {
+        .btm {
+          margin-top: 6px;
+          display: block;
+        }
+
+        span {
+          margin-top: 24px;
+          justify-content: end;
+
+
+          &:before {
+            width: 68px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

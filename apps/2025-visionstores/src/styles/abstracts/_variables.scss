@@ -1,0 +1,47 @@
+// Container
+// -----------------------------------------------------------------------------
+$min-width: 320px !default;
+$max-width: 1680px !default;
+$artboard-width: 1200px !default;
+$container-padding: 0 !default;
+$full-height: calc(var(--vh, 1vh) * 100) !default;
+
+// -----------------------------------------------------------------------------
+// Breakpoint
+// -----------------------------------------------------------------------------
+$breakpoint-mobile-small: 320px !default;
+$breakpoint-mobile: 360px !default;
+$breakpoint-tablet: 720px !default;
+$breakpoint-desktop: 1280px !default;
+
+// -----------------------------------------------------------------------------
+// Color
+// -----------------------------------------------------------------------------
+$background-color: #fff !default;
+$input-text-error-color: #b94444 !default;
+$selection-color: transparent !default;
+$color-white: white !default;
+$color-black: #000 !default;
+
+
+
+// -----------------------------------------------------------------------------
+// Typography
+// -----------------------------------------------------------------------------
+$base-font-size: 16px !default;
+$base-letter-spacing: 0;
+$base-font-system: Pretendard,
+  Noto Sans KR,
+  Noto Sans,
+  -apple-system,
+  BlinkMacSystemFont,
+  Roboto,
+  "Apple SD Gothic Neo",
+  "Helvetica Neue",
+  Helvetica,
+  Arial,
+  "Malgun Gothic",
+  "맑은 고딕",
+  Dotum,
+  "돋움",
+  sans-serif !default;
