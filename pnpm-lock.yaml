@@ -86,7 +86,7 @@ importers:
         specifier: ^6.0.0
         version: 6.4.1(sass@1.93.2)(terser@5.44.0)
 
-  apps/2025-visionstore:
+  apps/2025-visionstores:
     dependencies:
       '@repo/styles':
         specifier: workspace:*
