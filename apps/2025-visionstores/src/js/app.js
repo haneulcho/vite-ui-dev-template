@@ -52,50 +52,114 @@
       });
     }
 
-    const sec02El = document.querySelector('.swiperSec02');
-    if (sec02El) {
-      new Swiper(sec02El, {
-        loop: true,
-        slidesPerView: 1,
-        spaceBetween: 0,
-        speed: 1000,
-        autoplay: { delay: 3000 },
-        navigation: {
-          nextEl: '.swiperSec02-next',
-          prevEl: '.swiperSec02-prev',
-        },
-        pagination: {
-          el: '.swiperSec02-pagination',
-          clickable: true,
-        },
-        grabCursor: true,
-        effect: "creative",
-        creativeEffect: {
-          prev: {
-            shadow: true,
-            translate: ["-20%", 0, -1],
+    // 섹션2는 화면 진입 시에만 초기화
+    const sec02Section = document.querySelector('.section2');
+    if (sec02Section) {
+      let sec02Inited = false;
+      const initSec02 = () => {
+        if (sec02Inited) return;
+        const sec02El = document.querySelector('.swiperSec02');
+        if (!sec02El) return;
+        sec02Inited = true;
+        new Swiper(sec02El, {
+          loop: true,
+          slidesPerView: 1,
+          spaceBetween: 0,
+          speed: 1000,
+          autoplay: { delay: 3000 },
+          navigation: {
+            nextEl: '.swiperSec02-next',
+            prevEl: '.swiperSec02-prev',
           },
-          next: {
-            translate: ["100%", 0, 0],
+          pagination: {
+            el: '.swiperSec02-pagination',
+            clickable: true,
           },
-        },
-      });
+          grabCursor: true,
+          effect: "creative",
+          creativeEffect: {
+            prev: {
+              shadow: true,
+              translate: ["-20%", 0, -1],
+            },
+            next: {
+              translate: ["100%", 0, 0],
+            },
+          },
+        });
+      };
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              initSec02();
+              obs.disconnect();
+            }
+          });
+        }, { root: null, threshold: 0.25 });
+        observer.observe(sec02Section);
+      } else {
+        // 폴백: 스크롤 체크
+        const onScrollCheck = withRaf(() => {
+          const rect = sec02Section.getBoundingClientRect();
+          const inView = rect.top < window.innerHeight * 0.75 && rect.bottom > 0;
+          if (inView) {
+            initSec02();
+            window.removeEventListener('scroll', onScrollCheck);
+          }
+        });
+        window.addEventListener('scroll', onScrollCheck, { passive: true });
+        onScrollCheck();
+      }
     }
 
-    const sec04El = document.querySelector('.swiperSec04');
-    if (sec04El) {
-      new Swiper(sec04El, {
-        loop: false,
-        slidesPerView: 1,
-        spaceBetween: 24,
-        speed: 1000,
-        autoHeight: false,
-        autoplay: { delay: 5000 },
-        pagination: {
-          el: '.swiperSec04-pagination',
-          clickable: true,
-        },
-      });
+
+    // 섹션4는 화면 진입 시에만 초기화
+    const sec04Section = document.querySelector('.section4');
+    if (sec04Section) {
+      let sec04Inited = false;
+      const initSec04 = () => {
+        if (sec04Inited) return;
+        const sec04El = document.querySelector('.swiperSec04');
+        if (!sec04El) return;
+        sec04Inited = true;
+        new Swiper(sec04El, {
+          loop: false,
+          slidesPerView: 1,
+          spaceBetween: 24,
+          speed: 1000,
+          autoHeight: false,
+          autoplay: { delay: 5000 },
+          pagination: {
+            el: '.swiperSec04-pagination',
+            clickable: true,
+          },
+        });
+      };
+
+      if ('IntersectionObserver' in window) {
+        const observer04 = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              initSec04();
+              obs.disconnect();
+            }
+          });
+        }, { root: null, threshold: 0.2 });
+        observer04.observe(sec04Section);
+      } else {
+        const onScrollCheck04 = withRaf(() => {
+          const rect = sec04Section.getBoundingClientRect();
+          const inView = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+          if (inView) {
+            initSec04();
+            window.removeEventListener('scroll', onScrollCheck04);
+          }
+        });
+        window.addEventListener('scroll', onScrollCheck04, { passive: true });
+        onScrollCheck04();
+      }
     }
 
     const sec07El = document.querySelector('.swiperSec07');
@@ -137,7 +201,7 @@
   const updateParallax = (scrollTop, mobile) => {
     $('.parallax').each(function () {
       const $item = $(this);
-      const speed = Number($item.data('speed')) || 1;
+      const speed = Number($item.attr('data-speed')) || 1;
       const y = scrollTop / speed;
 
       // 현재 로직은 모바일/데스크톱 동일 동작
@@ -175,7 +239,20 @@
     });
   };
 
+  // 섹션2 파랄랙스 속도: 모바일 10, 데스크톱 5
+  const setParallaxSpeedForViewport = () => {
+    const target = document.querySelector('.section2 .imgItem02.parallax');
+    if (!target) return;
+    const desired = isMobile() ? 10 : 5;
+    const current = Number(target.getAttribute('data-speed'));
+    if (current !== desired) {
+      target.setAttribute('data-speed', String(desired));
+    }
+  };
+
   const handleResize = withRaf(() => {
+    // 섹션2 파랄랙스 속도 모바일/PC에 맞게 동기화
+    setParallaxSpeedForViewport();
     switchImages();
     handleScrollEvents(); // 레이아웃 변동 시 패럴럭스 위치도 갱신
   });
@@ -192,6 +269,7 @@
     if (wrap) wrap.style.overflow = 'inherit';
 
     // 초기화
+    setParallaxSpeedForViewport();
     initSwiperSlider();
     handleScrollEvents();
 
