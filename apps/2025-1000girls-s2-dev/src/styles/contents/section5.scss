@@ -1,0 +1,141 @@
+.#{$app-name} {
+  .section5 {
+    $w: 1920;
+    $h: 650;
+    $w-m: 1236;
+    $h-m: 2122;
+
+    .bear-story {
+      position: relative;
+      margin: min(vw(116px, $w), 116px) auto 0;
+      width: min(vw(1070px, $w), 1070px);
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        @include res-bg;
+        @include hide-text;
+        top: 34.4%;
+        width: min(vw(51px, $w), 51px);
+        height: min(vw(51px, $w), 51px);
+        overflow: visible;
+        transition: transform 300ms ease;
+      }
+      .swiper-button-prev {
+        left: -6.4%;
+        background-image: url(images/btn-prev.png);
+
+        &:hover {
+          transform: translateX(-3px);
+        }
+      }
+      .swiper-button-next {
+        right: -6.4%;
+        background-image: url(images/btn-next.png);
+
+        &:hover {
+          transform: translateX(3px);
+        }
+      }
+
+      @include screen("mobile") {
+        margin: 0 auto;
+        width: auto;
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          top: 47%;
+          width: vw(124px, $w-m);
+          height: vw(124px, $w-m);
+        }
+        .swiper-button-prev {
+          left: 2.2%;
+          background-image: url(images/btn-prev-m.png);
+        }
+        .swiper-button-next {
+          right: 2.2%;
+          background-image: url(images/btn-next-m.png);
+        }
+      }
+    }
+
+    .slider-wrapper {
+      border-radius: vw(8px);
+      width: min(vw(1070px, $w), 1070px);
+
+      .swiper-slide {
+        width: 100%;
+        height: min(vw(420px, $w), 420px);
+
+        .story-wrap {
+          position: relative;
+          @include flex-row;
+          justify-content: space-between;
+          gap: min(vw(46px, $w), 46px);
+          width: 100%;
+          height: 100%;
+
+          img {
+            width: percent(602px, 1070px);
+            height: 100%;
+          }
+
+          .message {
+            > p {
+              @include sr-only;
+            }
+            @include res-bg;
+            width: percent(420px, 1070px);
+            height: 100%;
+          }
+
+          @for $i from 1 through 3 {
+            &.story#{$i} .message {
+              background-image: url(images/sec05-card#{$i}-message.png);
+            }
+          }
+        }
+      }
+
+      .swiper-pagination {
+        position: relative;
+        bottom: 0;
+        margin-top: min(vw(33px, $w), 33px);
+      }
+
+      .swiper-pagination-bullet {
+        border-radius: 30px;
+        background: #bfbab6;
+        opacity: 1;
+        width: min(vw(35px, $w), 35px);
+        height: min(vw(8px, $w), 8px);
+        margin: 0 min(vw(5px, $w), 5px);
+        &.swiper-pagination-bullet-active {
+          background: #2c201c !important;
+        }
+      }
+
+      @include screen("mobile") {
+        margin-top: min(vw(176px, $w-m), 176px);
+        width: 100%;
+
+        .swiper-slide {
+          width: 100%;
+          padding: 0 min(vw(89.5px, $w-m), 89.5px);
+          height: auto;
+        }
+
+        .swiper-pagination {
+          bottom: 0;
+          margin-top: min(vw(177px, $w-m), 177px);
+        }
+
+        .swiper-pagination-bullet {
+          border-radius: 50px;
+          width: vw(122px, $w-m);
+          height: vw(27px, $w-m);
+          margin: 0 vw(15px, $w-m);
+        }
+      }
+    }
+  }
+}

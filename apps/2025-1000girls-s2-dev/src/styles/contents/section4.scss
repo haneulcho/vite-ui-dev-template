@@ -1,0 +1,169 @@
+.#{$app-name} {
+  .section4 {
+    $w: 1920;
+    $h: 1143;
+    $w-m: 1236;
+    $h-m: 1744;
+
+    .app-section-title {
+      position: absolute;
+      @include hide-text;
+      @include res-bg;
+      @include to-percent($h, $w: 704, $h: 113, $top: 120, $left: 624);
+      background-image: url(images/sec04-title.png);
+
+      @include screen("mobile") {
+        @include to-percent-m($h-m, $parent-w: $w-m, $w: 1021, $h: 170, $top: 180, $left: 104);
+        background-image: url(images/sec04-title-m.png);
+      }
+    }
+
+    .bear-message {
+      position: absolute;
+      @include hide-text;
+      @include res-bg;
+      @include to-percent($h, $w: 494, $h: 111, $top: 248, $left: 748);
+      background-image: url(images/sec04-message.png);
+
+      @include screen("mobile") {
+        @include to-percent-m($h-m, $parent-w: $w-m, $w: 1042, $h: 178, $top: 411, $left: 96);
+        background-image: url(images/sec04-message-m.png);
+      }
+    }
+
+    .girl {
+      position: absolute;
+      @include to-percent($h, $w: 1000, $h: 430, $top: 415, $left: 476);
+      @include screen("mobile") {
+        @include to-percent-m($h-m, $parent-w: $w-m, $w: 970, $h: 505, $top: 690, $left: 90);
+      }
+
+      .bear {
+        position: absolute;
+        border: none;
+        z-index: 2;
+        transition:
+          transform 1.7s ease-in-out,
+          opacity 500ms ease;
+
+        @include to-percent-m(430, $parent-w: 1000, $w: 208, $h: 274, $top: 78, $left: -100);
+
+        @include screen("mobile") {
+          transition:
+            transform 1.2s ease-in-out,
+            opacity 500ms ease;
+          @include to-percent-m(505, $parent-w: 970, $w: 306, $h: 404, $top: 50, $left: -70);
+        }
+
+        > img {
+          animation: bearMotion 1s ease infinite;
+          transform-origin: center center;
+        }
+      }
+
+      .girl-photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 1.5s ease-in-out;
+        &.before {
+          opacity: 1;
+          z-index: 1;
+        }
+        &.after {
+          opacity: 0;
+          z-index: 0;
+        }
+      }
+
+      &.active {
+        .bear {
+          transform: translateX(480%);
+
+          @include screen("mobile") {
+            transform: translateX(272%);
+          }
+
+          &.leave {
+            pointer-events: none;
+            opacity: 0;
+
+            > img {
+              animation-play-state: paused;
+            }
+          }
+        }
+
+        .girl-photo {
+          &.before {
+            opacity: 0;
+          }
+          &.after {
+            opacity: 1 !important;
+          }
+        }
+      }
+    }
+
+    .btn-support {
+      position: absolute;
+      @include to-percent($h, $w: 416, $h: 122, $top: 911, $left: 768);
+      > a {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        @include res-bg;
+        background-image: url(images/btn-save-girl.png);
+        transition: filter 0.25s ease;
+        > span {
+          @include hide-text;
+        }
+        .arrow {
+          width: percent(46, 416);
+          height: percent(13, 122);
+          margin-top: percent(49, 416);
+          margin-left: auto;
+          margin-right: percent(66, 416);
+          transition: transform 300ms ease;
+          @include res-bg;
+          background-image: url(images/btn-save-girl-arrow.png);
+        }
+
+        &:hover {
+          filter: brightness(1.04) contrast(1.07);
+          .arrow {
+            transform: translateX(10%);
+          }
+        }
+      }
+
+      @include screen("mobile") {
+        @include to-percent-m($h-m, $parent-w: $w-m, $w: 928, $h: 270, $top: 1316, $left: 153);
+
+        > a {
+          background-image: url(images/btn-save-girl-m.png);
+          .arrow {
+            width: percent(95, 928);
+            height: percent(24, 270);
+            margin-top: percent(107, 928);
+            margin-right: percent(150, 928);
+            background-image: url(images/btn-support-bear-arrow-m.png);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes bearMotion {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
