@@ -14,8 +14,12 @@
   @return $n / ($n * 0 + 1);
 }
 
-@function vw($px, $base: 360) {
-  @return (parse-int($px) / $base) * 100vw;
+@function vw($val, $base: 360) {
+  @if (unit($val) == "rem") {
+    @return (parse-int($val * 10) / $base) * 100vw;
+  } @else {
+    @return (parse-int($val) / $base) * 100vw;
+  }
 }
 
 @function clp($min, $max, $base: 1920) {
