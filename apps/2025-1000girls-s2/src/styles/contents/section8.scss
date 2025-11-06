@@ -185,7 +185,7 @@
         width: min(vw(39px, $w), 39px);
         height: min(vw(9px, $w), 9px);
         margin: 0 min(vw(6px, $w), 6px);
-        &.swiper-pagination-bullet-active {
+        &.swiper-pagination-bullet.active {
           background: #2c201c !important;
         }
       }
