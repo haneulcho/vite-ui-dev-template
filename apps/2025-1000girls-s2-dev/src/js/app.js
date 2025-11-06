@@ -39,11 +39,11 @@ const initSwiperSlider = () => {
     pagination: false,
     navigation: false,
     breakpoints: {
-      0: {
-        spaceBetween: 18,
+      720: {
+        spaceBetween: 16,
       },
-      1024: {
-        spaceBetween: 25,
+      1200: {
+        spaceBetween: 14,
       },
     },
   });
@@ -59,7 +59,7 @@ const initSwiperSlider = () => {
   const section8Swiper = new Swiper('.section8 .slider-wrapper', {
     slidesPerView: 'auto',
     centeredSlides: false,
-    spaceBetween: '1.4%',
+    spaceBetween: 23,
     loop: true,
     speed: 800,
     pagination: {
@@ -71,9 +71,9 @@ const initSwiperSlider = () => {
       prevEl: '.section8 .swiper-button-prev',
     },
     breakpoints: {
-      768: {
+      720: {
         centeredSlides: true,
-        spaceBetween: '42%',
+        spaceBetween: 16,
       },
     },
   });

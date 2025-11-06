@@ -5,8 +5,10 @@
     $w-m: 1236;
     $h-m: 2040;
 
-    .app-inner {
-      max-width: none;
+    background-color: #fffcf9;
+
+    .inner {
+      position: relative;
     }
 
     .app-inner-contents {
@@ -16,24 +18,76 @@
       margin: 0 auto;
       overflow: visible;
 
-      .app-section-title {
-        position: absolute;
-        @include hide-text;
-        @include res-bg;
-        @include to-percent($h, $w: 242, $h: 413, $top: 146, $left: 190);
-        background-image: url(images/sec08-title.png);
+      .app-section-title-wrapper {
+        position: relative;
+        @include flex-column;
+        width: fit-content;
+        margin: clp(80px, 146px) 0 0 clp(30px, 190px);
+        padding-bottom: clp(115px, 130px);
 
         @include screen("mobile") {
-          @include to-percent-m($h-m, $parent-w: $w-m, $w: 1047, $h: 260, $top: 122, $left: 94);
-          background-image: url(images/sec08-title-m.png);
+          margin: 0 auto;
+          padding-bottom: 0;
+        }
+
+        .app-section-title {
+          @include flex-column;
+          font-weight: 700;
+          font-size: clp(2.4rem, 4.35rem);
+          line-height: 1.25;
+          color: #2c201c;
+
+          &--mobile {
+            display: none;
+          }
+          span {
+            display: block;
+          }
+          strong {
+            color: #e65219;
+            font-weight: 700;
+          }
+
+          &::after {
+            @include pseudo(clp(100px, 136px), clp(120px, 163px), relative);
+            margin-top: clp(10px, 31px);
+            background: url(images/sec08-title.png) no-repeat bottom left;
+            background-size: contain;
+          }
+
+          @include screen("mobile") {
+            flex-direction: row;
+            margin: clpm(35px, 40px) auto clpm(33px, 37px);
+
+            &--pc {
+              display: none;
+            }
+            &--mobile {
+              display: flex;
+              align-items: center;
+            }
+            &::after {
+              display: none;
+            }
+            &::before {
+              @include pseudo(clpm(64px, 73px), clpm(79px, 89px), relative);
+              background: url(images/sec08-title-m.png) no-repeat bottom left;
+              background-size: contain;
+              margin-top: 0;
+              margin-right: 10px;
+            }
+            .app-section-title--mobile-box {
+              @include flex-column;
+            }
+          }
         }
       }
 
       .swiper-buttons {
-        position: absolute;
-        top: 40%;
-        left: 10%;
-        @include to-percent($h, $w: 128, $top: 590, $left: 190);
+        @include flex-row;
+        position: relative;
+        margin-top: clp(24px, 32px);
+        gap: clp(10px, 15px);
         @include screen("mobile") {
           display: none;
         }
@@ -41,11 +95,11 @@
 
       .swiper-button-next,
       .swiper-button-prev {
+        position: static;
         @include res-bg;
         @include hide-text;
-        top: 0;
-        width: min(vw(57px, $w), 57px);
-        height: min(vw(57px, $w), 57px);
+        width: clp(40px, 57px);
+        height: clp(40px, 57px);
         transition: transform 300ms ease;
 
         &:hover {
@@ -53,7 +107,7 @@
         }
       }
       .swiper-button-prev {
-        left: 0;
+        order: 1;
         background-image: url(images/btn-prev-2.png);
 
         &:hover {
@@ -61,7 +115,7 @@
         }
       }
       .swiper-button-next {
-        right: 0;
+        order: 2;
         background-image: url(images/btn-next-2.png);
 
         &:hover {
@@ -72,26 +126,51 @@
 
     .keyrings {
       position: absolute;
-      top: min(vw(132px, $w), 132px);
+      top: -4px;
       left: percent(596, $w);
       width: calc(100vw - percent(596, $w));
 
       @include screen("mobile") {
-        opacity: 1;
-        top: min(vw(480px, $w-m), 480px);
-        left: unset;
+        position: relative;
         width: 100%;
+        top: 0;
+        left: 0;
       }
     }
 
     .slider-wrapper {
       width: 100%;
 
-      .swiper-slide {
-        width: min(vw(388px, $w), 388px);
+      .swiper-wrapper {
+        display: flex;
+        align-items: stretch;
+      }
 
-        > p {
-          @include sr-only;
+      .swiper-slide {
+        width: clp(300px, 388px);
+        height: auto;
+
+        .keyring-item {
+          @include flex-column;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          border: 2px solid #2c201c;
+          border-radius: 20px;
+          margin-bottom: 4px;
+
+          .keyring-image {
+            border-bottom: 2px solid #2c201c;
+          }
+
+          > p {
+            flex: 1;
+            padding: clp(25px, 36px) clp(36px, 45px);
+            font-size: clp(1.5rem, 2rem);
+            font-weight: 300;
+            line-height: 1.529;
+            color: #441f14;
+          }
         }
       }
 
@@ -115,21 +194,32 @@
         width: 100%;
 
         .swiper-slide {
-          width: min(vw(940px, $w-m), 940px);
+          width: clpm(260px, 274px);
+
+          .keyring-item {
+            border-radius: 17px;
+            margin-bottom: 4px;
+
+            > p {
+              padding: clpm(25px, 27px) clpm(28px, 30px) clpm(24px, 26px);
+              font-size: clpm(1.35rem, 1.6rem);
+              line-height: clpm(2rem, 2.1rem);
+            }
+          }
         }
 
         .swiper-pagination {
           display: block;
           position: relative;
           bottom: 0;
-          margin-top: min(vw(100px, $w-m), 100px);
+          margin: clpm(30px, 34px) auto clpm(10px, 15px);
         }
 
         .swiper-pagination-bullet {
           border-radius: 50px;
-          width: vw(122px, $w-m);
-          height: vw(27px, $w-m);
-          margin: 0 vw(15px, $w-m);
+          width: 35px;
+          height: 8px;
+          margin: 0 5px;
         }
       }
     }

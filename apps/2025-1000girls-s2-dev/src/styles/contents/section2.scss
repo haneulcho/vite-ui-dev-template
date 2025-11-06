@@ -21,6 +21,10 @@
       font-size: clamp(2.6rem, 3vw, 5rem);
       margin-bottom: 40px;
       color: #2c201c;
+
+      @include screen("mobile") {
+        text-align: center;
+      }
     }
 
     .cont {
@@ -33,7 +37,7 @@
         justify-content: center;
         gap: clamp(40px, 3vw, 100px);
 
-        &+.row {
+        & + .row {
           margin-top: 50px;
 
           .columm {
@@ -50,15 +54,12 @@
       }
     }
 
-
-
-
     .messages {
       position: relative;
       padding-left: min(vw(106px, $w), 106px);
 
-      >li {
-        &+li {
+      > li {
+        & + li {
           margin-top: clamp(19px, 1.5vw, 32px);
         }
       }
@@ -69,7 +70,6 @@
         top: min(vw(27px, $w), 27px);
         left: min(vw(0, $w), 0px);
         background-image: url(images/sec02-bear-profile.png);
-
       }
 
       p {
@@ -87,7 +87,6 @@
           font-weight: 700;
         }
       }
-
     }
 
     .bear {
@@ -138,8 +137,6 @@
 
           .columm {
             display: block;
-
-
           }
         }
       }
@@ -167,6 +164,4 @@
       }
     }
   }
-
-
 }
