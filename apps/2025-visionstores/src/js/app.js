@@ -31,6 +31,25 @@
     // 존재할 때만 안전하게 생성
     const sec01El = document.querySelector('.swiperSec01');
     if (sec01El) {
+      const wrapper = sec01El.querySelector('.swiper-wrapper');
+      if (wrapper) {
+        // 기존 슬라이드 복제하여 무한 루프 효과 강화 (화면이 클 때를 대비)
+        const originalSlides = wrapper.querySelectorAll('.swiper-slide');
+        const slideCount = originalSlides.length;
+
+        // 화면이 클 때를 대비해 슬라이드를 3-4번 복제 (총 12-16개)
+        // 이미 복제되지 않은 경우에만 복제
+        if (slideCount <= 12) {
+          const cloneCount = Math.max(3, Math.ceil(window.innerWidth / 400)); // 화면 크기에 따라 복제 개수 조정
+          for (let i = 0; i < cloneCount; i++) {
+            originalSlides.forEach((slide) => {
+              const clone = slide.cloneNode(true);
+              wrapper.appendChild(clone);
+            });
+          }
+        }
+      }
+
       // marquee 스타일 흐름
       new Swiper(sec01El, {
         loop: true,
@@ -49,6 +68,7 @@
         },
         watchSlidesProgress: true,
         preloadImages: true,
+        loopAdditionalSlides: 4, // 루프를 위한 추가 슬라이드 수
       });
     }
 
