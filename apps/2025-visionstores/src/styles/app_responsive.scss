@@ -19,3 +19,22 @@
     }
   }
 }
+
+
+@media (max-width: 1800px) {
+  .visionStore .section3 .imgItem01 .imgItem02 {
+    top: -30vh;
+  }
+}
+
+@media (max-width: 1280px) {
+  .visionStore .section3 .imgItem01 .imgItem02 {
+    top: -10vh;
+  }
+}
+
+@media (max-width: 375px) {
+  .visionStore .section3 .imgItem01 .imgItem02 img {
+    margin-top: -100vh;
+  }
+}

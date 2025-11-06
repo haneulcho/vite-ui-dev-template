@@ -11,6 +11,8 @@
       line-height: clamp(40px, 4vw, 76px);
       margin-bottom: clamp(40px, 4vw, 100px);
       font-weight: 700;
+      z-index: 1;
+      position: relative;
     }
 
     .swiperSec04 {

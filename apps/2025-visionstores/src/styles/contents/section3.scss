@@ -3,7 +3,8 @@
     padding-left: clamp(20px, 7vw, 132px);
     padding-right: clamp(20px, 7vw, 132px);
     padding-top: 100px;
-    overflow: inherit;
+    overflow-x: hidden;
+    overflow-y: inherit;
 
     .app-inner {
       margin: auto;
@@ -14,13 +15,14 @@
 
     .imgItem01 {
       position: relative;
-      width: clamp(200px, 30vw, 576px);
+      width: clamp(190px, 30vw, 576px);
       z-index: 1;
 
       .imgItem02 {
-        width: clamp(200px, 30vw, 576px);
+        width: clamp(190px, 30vw, 576px);
         position: absolute;
-        top: clamp(100px, 5vw, 540px);
+        // top: clamp(100px, 5vw, 540px);
+        top: -40vh;
         left: 50%;
 
         img {
@@ -30,7 +32,7 @@
     }
 
     .imgItem03 {
-      width: clamp(300px, 39vw, 734px);
+      width: clamp(290px, 38vw, 734px);
       margin-left: auto;
       margin-top: 364px;
 
@@ -83,7 +85,7 @@
 
           img {
             float: right;
-            margin-top: -60vh;
+            margin-top: -80vh;
           }
         }
       }
