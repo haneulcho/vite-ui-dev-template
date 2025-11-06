@@ -42,7 +42,6 @@
       gap: clamp(6px, 2vw, 18px);
       padding-bottom: clamp(30px, 2vw, 65px);
 
-
       img {
         flex: none;
         width: clamp(42px, 6vw, 91px);
@@ -68,7 +67,7 @@
         top: 0;
         bottom: 0;
 
-        >img {
+        > img {
           animation: bearMotion 1s ease infinite;
           transform-origin: center center;
         }
@@ -76,7 +75,6 @@
 
       .girl-photo {
         transition: opacity 1.5s ease-in-out;
-
 
         &.before {
           opacity: 1;
@@ -96,21 +94,17 @@
         .bear {
           left: 100%;
 
-
           &.leave {
             pointer-events: none;
             opacity: 0;
 
-            >img {
+            > img {
               animation-play-state: paused;
-
             }
           }
         }
 
         .girl-photo {
-
-
           &.before {
             opacity: 0;
           }
@@ -128,7 +122,7 @@
       position: relative;
       margin: auto;
 
-      >a {
+      > a {
         position: relative;
         display: block;
         width: 100%;
@@ -137,7 +131,7 @@
         background-image: url(images/btn-save-girl.png);
         transition: filter 0.25s ease;
 
-        >span {
+        > span {
           @include hide-text;
         }
 
@@ -162,8 +156,7 @@
       }
 
       @include screen("mobile") {
-
-        >a {
+        > a {
           background-image: url(images/btn-save-girl-m.png);
 
           .arrow {

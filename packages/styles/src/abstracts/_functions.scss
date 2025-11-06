@@ -14,16 +14,16 @@
   @return $n / ($n * 0 + 1);
 }
 
-@function vw($val, $base: 360) {
+@function vw($val, $base: 360, $ratio: 1) {
   @if (unit($val) == "rem") {
-    @return (parse-int($val * 10) / $base) * 100vw;
+    @return (parse-int($val * 10) / $base) * 100vw * $ratio;
   } @else {
-    @return (parse-int($val) / $base) * 100vw;
+    @return (parse-int($val) / $base) * 100vw * $ratio;
   }
 }
 
-@function clp($min, $max, $base: 1920) {
-  @return clamp($min, vw($max, $base), $max);
+@function clp($min, $max, $base: 1920, $ratio: 1) {
+  @return clamp($min, vw($max, $base, $ratio), $max);
 }
 
 @function clpm($min, $max, $base: 360) {

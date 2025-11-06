@@ -5,62 +5,106 @@
     $w-m: 1236;
     $h-m: 4200;
 
+    background-color: #fffcf9;
+
     .app-inner {
       max-width: none;
     }
     .app-inner-contents {
       position: relative;
+      width: clamp(686px, 80vw, 1198px);
       max-width: #{$w}px;
-      margin: 0 auto;
+      margin: clp(90px, 108px) auto clp(80px, 125px);
+
+      @include screen("mobile") {
+        width: min(vw(1030px, $w-m), 1030px);
+        margin-top: 93px;
+        margin-bottom: 84px;
+      }
     }
 
     .bear-guide {
       position: relative;
       display: flex;
-      width: min(vw(1198px, $w), 1198px);
-      margin: min(vw(51px, $w), 51px) auto 0;
-      gap: min(vw(24px, $w), 24px);
+      width: 100%;
+      margin: 0 auto;
+      gap: clp(14px, 24px);
+
+      .story-wrap {
+        position: relative;
+        @include flex-row-center;
+      }
+      .story-title {
+        @include flex-only-center;
+        position: absolute;
+        top: clp(-35px, -30px);
+        left: 50%;
+        transform: translate(-50%);
+        text-align: center;
+        font-size: clp(1.25rem, 2rem, $ratio: 1.3);
+        color: #2c201c;
+        font-weight: 300;
+        line-height: 1.2;
+        width: 88%;
+        min-height: clp(64px, 82px);
+        padding: clp(16px, 22px, $ratio: 1.15) clp(0px, 22px, $ratio: 1.15) clp(12px, 20px, $ratio: 1.15);
+        background-color: #fff;
+        box-shadow: 0px 0px 27px 0px rgba(107, 95, 91, 0.1);
+        border-radius: 10px;
+
+        &::after {
+          @include pseudo(clp(48px, 55px), clp(38px, 43px));
+          @include res-bg;
+          z-index: -1;
+          background-image: url(images/sec07-ico-arrow-down.png);
+          bottom: -15px;
+        }
+      }
+
+      &1 {
+        .story-title {
+          min-width: 80.2%;
+        }
+      }
 
       @include screen("mobile") {
         flex-direction: column;
         flex-wrap: wrap;
-        width: min(vw(1030px, $w-m), 1030px);
-        margin-top: min(vw(270px, $w-m), 270px);
         gap: 0;
 
-        .story-wrap {
-          position: relative;
-          .story-title {
-            position: absolute;
-            z-index: 1;
-            left: 50%;
-            transform: translateX(-50%);
-          }
-          .story-image {
-            position: relative;
-            z-index: 0;
+        .story-title {
+          width: auto;
+          height: 60px;
+          min-width: 0;
+          padding: 2px 0 0 0;
+          font-size: clpm(1.35rem, 1.6rem);
+
+          &::after {
+            width: 30px;
+            height: 31px;
+            background-image: url(images/sec07-ico-arrow-down-m.png);
+            bottom: -20px;
           }
         }
 
-        &1 .story-title {
-          top: -18%;
-          width: percent(814px, 1056px);
-          height: percent(283px, 818px);
+        &1 {
+          .story-title {
+            top: -40px;
+            width: min(vw(770px, $w-m), 770px);
+          }
         }
         &2 {
           margin-top: min(vw(144px, $w-m), 144px);
           .story-title {
-            top: -10%;
-            width: percent(913px, 1057px);
-            height: percent(283px, 819px);
+            top: -20px;
+            width: min(vw(870px, $w-m), 870px);
           }
         }
         &3 {
           margin-top: min(vw(190px, $w-m), 190px);
           .story-title {
-            top: -15.6%;
-            width: percent(914px, 1057px);
-            height: percent(317px, 819px);
+            top: -33px;
+            width: min(vw(870px, $w-m), 870px);
           }
         }
       }
@@ -69,26 +113,29 @@
     .bear-deco {
       position: absolute;
       z-index: 2;
-      @include to-percent($h, $w: 116, $top: 834, $left: 1520);
+      width: clp(50px, 116px);
+      right: percent(-84, $w);
+      bottom: -6px;
 
       @include screen("mobile") {
-        @include to-percent-m($h-m, $parent-w: $w-m, $w: 230, $top: 3785, $left: 873);
+        @include to-percent-m($h-m, $parent-w: $w-m, $w: 230, $top: 3832, $left: 965);
+        right: unset;
+      }
+
+      @include screen("tablet") {
+        right: percent(-15, $w);
       }
     }
 
     .photos {
       position: relative;
-      margin-top: min(vw(124px, $w), 124px);
       width: 100%;
+      padding-bottom: clp(25px, 118px);
 
       .swiper-pagination,
       .swiper-button-next,
       .swiper-button-prev {
         display: none !important;
-      }
-
-      @include screen("mobile") {
-        margin-top: min(vw(146px, $w-m), 146px);
       }
     }
 
@@ -100,7 +147,7 @@
       }
 
       .swiper-slide {
-        width: min(vw(226px, $w), 226px);
+        width: clp(140px, 226px);
         &:nth-child(even) {
           margin-top: min(vw(48px, $w), 48px);
         }

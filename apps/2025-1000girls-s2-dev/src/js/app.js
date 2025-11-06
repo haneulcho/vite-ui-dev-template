@@ -39,11 +39,11 @@ const initSwiperSlider = () => {
     pagination: false,
     navigation: false,
     breakpoints: {
-      0: {
-        spaceBetween: 18,
+      720: {
+        spaceBetween: 16,
       },
-      1024: {
-        spaceBetween: 25,
+      1200: {
+        spaceBetween: 14,
       },
     },
   });
@@ -71,7 +71,7 @@ const initSwiperSlider = () => {
       prevEl: '.section8 .swiper-button-prev',
     },
     breakpoints: {
-      768: {
+      720: {
         centeredSlides: true,
         spaceBetween: 16,
       },

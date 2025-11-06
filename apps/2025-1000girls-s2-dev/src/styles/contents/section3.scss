@@ -6,16 +6,12 @@
     $h-m: 5763;
 
     .app-section-title {
-      position: absolute;
-      @include hide-text;
-      @include res-bg;
-      @include to-percent($h, $w: 655, $h: 57, $top: 150, $left: 633);
-      background-image: url(images/sec03-title.png);
-
-      @include screen("mobile") {
-        @include to-percent-m($h-m, $parent-w: $w-m, $w: 982, $h: 86, $top: 180, $left: 127);
-        background-image: url(images/sec03-title-m.png);
-      }
+      margin-top: clp(52px, 150px);
+      font-weight: 700;
+      font-size: clamp(2.62rem, 3vw, 6rem);
+      line-height: 1;
+      text-align: center;
+      color: #2c201c;
     }
 
     .bear {
@@ -26,14 +22,93 @@
       }
     }
 
-    .bear-message {
+    .bear-message-box {
       position: absolute;
-      @include to-percent($h, $w: 507, $top: 1924, $left: 360);
-      @include screen("mobile") {
-        @include to-percent-m($h-m, $parent-w: $w-m, $w: 1050, $top: 4572, $left: 97);
+      @include flex-column;
+      gap: clp(30px, 45px);
+      top: 74.3718592965%;
+      left: 18.75%;
+      z-index: 1;
+
+      @include screen("tablet") {
+        top: 73%;
+        left: 15%;
       }
-      figcaption {
-        @include sr-only;
+
+      .bear-message {
+        @include flex-only-center;
+        position: relative;
+        padding: clp(28px, 55px) clp(25px, 44px) clp(23px, 48px);
+        background-color: #fff;
+        border-radius: 30px;
+        box-shadow: 1.721px 2.457px 14px 0px rgba(150, 133, 27, 0.09);
+        max-width: 507px;
+
+        &::after {
+          @include pseudo(47px, 39px);
+          @include res-bg;
+          z-index: -1;
+          background-image: url(images/sec03-bubble.png);
+          left: clp(8px, 80px);
+          bottom: -2.6rem;
+        }
+
+        @include screen("tablet") {
+          &::after {
+            bottom: -2rem;
+          }
+        }
+
+        p {
+          color: #2c201c;
+          font-size: clp(1.2rem, 2.8rem);
+          font-weight: 300;
+          line-height: 1.2;
+        }
+        strong,
+        em {
+          font-weight: bold;
+        }
+        em {
+          color: #e65219;
+        }
+      }
+
+      .bear-image {
+        width: clp(80px, 190px);
+        padding-left: 10px;
+      }
+
+      @include screen("mobile") {
+        align-items: center;
+        gap: clpm(28px, 30px);
+        @include to-percent-m($h-m, $parent-w: $w-m, $w: 1050, $top: 4560, $left: 97);
+
+        .bear-image {
+          width: 31vw;
+          padding-left: 0;
+        }
+
+        .bear-message {
+          border-radius: 18px;
+          min-width: 280px;
+          padding: 30px 30px 27px;
+          text-align: center;
+          max-width: none;
+
+          p {
+            line-height: 1.294;
+            font-size: clamp(1.485rem, 3vw, 2rem);
+          }
+
+          &::after {
+            @include pseudo(clp(48px, 55px), clp(38px, 43px));
+            left: 50%;
+            background-image: url(images/sec03-bubble.png);
+            bottom: -12px;
+            transform: translateX(-50%);
+          }
+        }
       }
     }
 
