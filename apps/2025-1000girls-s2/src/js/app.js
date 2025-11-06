@@ -77,7 +77,7 @@ const initSwiperSlider = () => {
     centeredSlides: false,
     spaceBetween: 23,
     loop: true,
-    speed: 500,
+    speed: 400,
     touchRatio: 0.2,
     resistanceRatio: 5,
     pagination: {
@@ -92,6 +92,8 @@ const initSwiperSlider = () => {
       720: {
         centeredSlides: true,
         spaceBetween: 16,
+        touchRatio: 0.7,
+        resistance: false,
       },
     },
     on: {
@@ -126,6 +128,9 @@ const initSwiperSlider = () => {
     breakpoints: {
       768: {
         spaceBetween: 16,
+        speed: 400,
+        touchRatio: 0.7,
+        resistance: false,
       },
     },
     on: {
