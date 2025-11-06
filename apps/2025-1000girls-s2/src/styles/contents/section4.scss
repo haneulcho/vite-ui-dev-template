@@ -20,7 +20,6 @@
       font-weight: 700;
       font-size: clamp(2.2rem, 3vw, 5rem);
       line-height: clamp(28px, 3.5vw, 64px);
-      // padding-bottom: clamp(10px, 1.5vw, 20px);
       text-align: center;
       color: #2c201c;
 
@@ -52,11 +51,11 @@
       width: clamp(400px, 60vw, 1000px);
       margin: auto;
       position: relative;
-      margin-bottom: clamp(34px, 2vw, 60px);
+      margin-bottom: clp(40px, 60px);
 
       .bear {
+        @include flex-column-center;
         position: absolute;
-        border: none;
         z-index: 2;
         transition:
           left 1.7s ease-in-out,
@@ -67,9 +66,52 @@
         top: 0;
         bottom: 0;
 
-        > img {
-          animation: bearMotion 1s ease infinite;
-          transform-origin: center center;
+        .btn-bear {
+          @include flex-column-center;
+          margin-top: clp(1px, 3px);
+
+          .bear-image {
+            animation: bearMotion 1s ease infinite;
+            transform-origin: center center;
+          }
+
+          .btn-text {
+            transition: all ease 300ms;
+            margin-top: 5px;
+            padding: clp(3px, 4.5px) clp(10px, 17px) clp(2px, 4px) clp(9px, 16px);
+            border-radius: 50px;
+            border: 3px solid #de6233;
+            color: #de6233;
+            background-color: #fff;
+            text-align: center;
+            font-size: clp(1.6rem, 2.4rem);
+            font-weight: bold;
+            line-height: 1;
+            font-family:
+              Pretendard,
+              Aggravo,
+              Noto Sans KR,
+              Noto Sans,
+              -apple-system,
+              BlinkMacSystemFont,
+              Roboto,
+              "Apple SD Gothic Neo",
+              "Helvetica Neue",
+              Helvetica,
+              Arial,
+              "Malgun Gothic",
+              "맑은 고딕",
+              Dotum,
+              "돋움",
+              sans-serif;
+          }
+
+          &:hover {
+            .btn-text {
+              filter: brightness(1.1) contrast(1.07);
+              transform: translateY(3px);
+            }
+          }
         }
       }
 
@@ -98,9 +140,14 @@
             pointer-events: none;
             opacity: 0;
 
-            > img {
+            .bear-image {
               animation-play-state: paused;
             }
+          }
+
+          .btn-text {
+            opacity: 0;
+            pointer-events: none;
           }
         }
 
@@ -117,8 +164,10 @@
     }
 
     .btn-support {
-      width: clamp(272px, 20vw, 416px);
-      height: clamp(77px, 10vw, 122px);
+      width: clp(272px, 416px);
+      height: clp(77px, 122px);
+      min-width: 320px;
+      min-height: 95px;
       position: relative;
       margin: auto;
 
@@ -182,7 +231,25 @@
         width: 100%;
 
         .bear {
-          margin-left: -5%;
+          margin-left: -5.2%;
+
+          .btn-bear {
+            .btn-text {
+              border-width: 2px;
+            }
+
+            &:hover {
+              .btn-text {
+                transform: translateY(2px);
+              }
+            }
+          }
+        }
+
+        &.active {
+          .bear {
+            left: 95%;
+          }
         }
       }
     }
