@@ -178,7 +178,6 @@
         height: 100%;
         @include res-bg;
         background-image: url(images/btn-save-girl.png);
-        transition: filter 0.25s ease;
 
         > span {
           @include hide-text;
@@ -190,18 +189,11 @@
           margin-top: percent(49, 416);
           margin-left: auto;
           margin-right: percent(66, 416);
-          transition: transform 300ms ease;
           @include res-bg;
           background-image: url(images/btn-save-girl-arrow.png);
         }
 
-        &:hover {
-          filter: brightness(1.04) contrast(1.07);
-
-          .arrow {
-            transform: translateX(10%);
-          }
-        }
+        @include hover-bounce;
       }
 
       @include screen("mobile") {

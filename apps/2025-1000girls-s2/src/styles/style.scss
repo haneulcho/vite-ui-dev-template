@@ -40,6 +40,8 @@ $base-font-system:
 
 @import "app";
 
+@import "components/button";
+
 @import "contents/floating";
 @import "contents/section1";
 @import "contents/section2";
@@ -53,3 +55,4 @@ $base-font-system:
 @import "contents/section10";
 
 @import "app_responsive";
+@import "base/animations";
