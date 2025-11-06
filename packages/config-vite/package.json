@@ -13,6 +13,8 @@
     "vite-plugin-include-html": "^1.0.0"
   },
   "peerDependencies": {
-    "vite": "^6.0.0"
+    "sharp": "^0.34.4",
+    "vite": "^6.0.0",
+    "vite-plugin-image-optimizer": "^2.0.3"
   }
 }

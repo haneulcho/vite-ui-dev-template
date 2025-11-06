@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { defineConfig } from 'vite';
 import includeHtml from 'vite-plugin-include-html';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 import {
   normalizeAppPath,
@@ -153,6 +154,12 @@ export function defineCampaignConfig({
         includeHtml(),
         createCampaignHtmlTransform(transformMode, effectiveAppPath),
         createCampaignCssUrlPrefixer(effectiveAppPath),
+        ViteImageOptimizer({
+          test: /\.(png|jpe?g)$/i,
+          png: {
+            quality: 80,
+          },
+        }),
         ...plugins,
       ],
       // 모노레포 모드에서는 `/repo/app/` 형태가 되도록 base를 설정한다.
