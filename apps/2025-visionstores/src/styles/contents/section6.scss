@@ -11,8 +11,12 @@
       gap: clamp(20px, 3vw, 50px);
 
       .left {
+
+        transition: all .4s;
+
         img {
           position: sticky;
+          transition: all .4s;
           top: 86px;
           width: clamp(300px, 40vw, 691px);
         }

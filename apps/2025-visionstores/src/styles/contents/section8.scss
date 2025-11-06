@@ -1,17 +1,25 @@
 .#{$app-name} {
   .section8 {
-    padding-left: clamp(20px, 7vw, 132px);
-    padding-right: clamp(20px, 7vw, 132px);
-    padding-top: clamp(48px, 7vw, 124px);
-    min-height: clamp(767px, 30vw, 806px);
-    background-image: url(images/sec08-bg.jpg);
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
+    background-color: #b77a97;
+
+    .section-inner {
+      background-image: url(images/sec08-bg.png);
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+      max-width: 1920px;
+      padding-left: clamp(20px, 7vw, 132px);
+      padding-right: clamp(20px, 7vw, 132px);
+      padding-top: clamp(48px, 7vw, 124px);
+      min-height: clamp(767px, 30vw, 806px);
+      margin: auto;
+    }
+
 
     .app-inner {
       text-align: left;
       justify-content: start;
+
     }
 
     .info {
@@ -75,9 +83,11 @@
 
 
     @include screen("mobile") {
-      background-image: none;
-      position: relative;
-      padding: 0;
+      .section-inner {
+        background-image: none;
+        position: relative;
+        padding: 0;
+      }
 
       .app-inner {
 
