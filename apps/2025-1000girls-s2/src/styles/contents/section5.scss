@@ -5,23 +5,29 @@
     $w-m: 1236;
     $h-m: 2122;
 
+    background-color: #fffcf9;
+
+    .app-inner {
+      max-width: none;
+    }
+
     .bear-story {
       position: relative;
-      margin: min(vw(116px, $w), 116px) auto 0;
-      width: min(vw(1070px, $w), 1070px);
+      margin: clp(80px, 116px) auto clp(34px, 58px);
+      width: clamp(580px, 62vw, 1070px);
 
       .swiper-button-next,
       .swiper-button-prev {
         @include res-bg;
         @include hide-text;
         top: 34.4%;
-        width: min(vw(51px, $w), 51px);
-        height: min(vw(51px, $w), 51px);
+        width: clp(35px, 51px);
+        height: clp(35px, 51px);
         overflow: visible;
         transition: transform 300ms ease;
       }
       .swiper-button-prev {
-        left: -6.4%;
+        left: -7.3%;
         background-image: url(images/btn-prev.png);
 
         &:hover {
@@ -29,11 +35,20 @@
         }
       }
       .swiper-button-next {
-        right: -6.4%;
+        right: -7.3%;
         background-image: url(images/btn-next.png);
 
         &:hover {
           transform: translateX(3px);
+        }
+      }
+
+      @include screen("tablet") {
+        .swiper-button-prev {
+          left: -8.5%;
+        }
+        .swiper-button-next {
+          right: -8.5%;
         }
       }
 
@@ -43,9 +58,9 @@
 
         .swiper-button-next,
         .swiper-button-prev {
-          top: 47%;
-          width: vw(124px, $w-m);
-          height: vw(124px, $w-m);
+          top: vw(810px, $w-m);
+          width: clmp(37px, 42px);
+          height: clmp(37px, 42px);
         }
         .swiper-button-prev {
           left: 2.2%;
@@ -60,37 +75,81 @@
 
     .slider-wrapper {
       border-radius: vw(8px);
-      width: min(vw(1070px, $w), 1070px);
+      width: 100%;
 
       .swiper-slide {
         width: 100%;
-        height: min(vw(420px, $w), 420px);
+        // height: min(vw(420px, $w), 420px);
 
         .story-wrap {
           position: relative;
-          @include flex-row;
+          display: flex;
+          flex-flow: row nowrap;
+          // align-items: center;
           justify-content: space-between;
-          gap: min(vw(46px, $w), 46px);
+          // gap: min(vw(54px, $w), 54px);
+          gap: clp(20px, 55px);
           width: 100%;
-          height: 100%;
 
-          img {
+          .image {
             width: percent(602px, 1070px);
-            height: 100%;
+            flex-shrink: 0;
           }
 
           .message {
+            flex: 1;
+            margin-top: clp(30px, 67px);
             > p {
-              @include sr-only;
+              font-size: clp(1.4rem, 2.17rem);
+              // font-size: 2.17rem;
+              color: #2c201c;
+              line-height: 1.429;
+              font-weight: 300;
+              margin-bottom: clp(2.4rem, 3.2rem);
+
+              &:last-child {
+                margin-bottom: 0;
+              }
+
+              em {
+                color: #e65219 !important;
+              }
+              em,
+              strong {
+                font-weight: bold;
+              }
             }
-            @include res-bg;
-            width: percent(420px, 1070px);
-            height: 100%;
           }
 
-          @for $i from 1 through 3 {
-            &.story#{$i} .message {
-              background-image: url(images/sec05-card#{$i}-message.png);
+          @include screen("mobile") {
+            flex-direction: column;
+            gap: 0;
+
+            .image {
+              width: 100%;
+            }
+            .message {
+              margin: 20px 32px 0;
+              > p {
+                font-size: clpm(1.3rem, 1.485rem);
+                margin-bottom: 2rem;
+                line-height: 1.392;
+              }
+            }
+          }
+
+          @include screen("tablet") {
+            align-items: center;
+            .image {
+              width: 50%;
+              min-width: 290px;
+            }
+            .message {
+              margin-top: 0;
+              > p {
+                font-size: 1.3rem;
+                margin-bottom: 2.1rem;
+              }
             }
           }
         }
@@ -99,16 +158,17 @@
       .swiper-pagination {
         position: relative;
         bottom: 0;
-        margin-top: min(vw(33px, $w), 33px);
+        margin-top: clp(22px, 34px);
       }
 
       .swiper-pagination-bullet {
-        border-radius: 30px;
         background: #bfbab6;
         opacity: 1;
-        width: min(vw(35px, $w), 35px);
-        height: min(vw(8px, $w), 8px);
-        margin: 0 min(vw(5px, $w), 5px);
+
+        border-radius: 50px;
+        width: 34px;
+        height: 7px;
+        margin: 0 5px;
         &.swiper-pagination-bullet-active {
           background: #2c201c !important;
         }
@@ -126,14 +186,13 @@
 
         .swiper-pagination {
           bottom: 0;
-          margin-top: min(vw(177px, $w-m), 177px);
+          margin: 50px 0 48px;
         }
 
         .swiper-pagination-bullet {
-          border-radius: 50px;
-          width: vw(122px, $w-m);
-          height: vw(27px, $w-m);
-          margin: 0 vw(15px, $w-m);
+          width: 39px;
+          height: 9px;
+          margin: 0 6px;
         }
       }
     }
