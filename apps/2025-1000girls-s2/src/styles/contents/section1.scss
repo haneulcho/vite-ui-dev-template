@@ -3,6 +3,8 @@
     $sec-height: 960;
     $sec-height-m: 695;
 
+    background-color: #fffcf9;
+
     .app-inner {
       padding: vw(51px, 1920) min(vw(82px, 1920), 82px) 0;
       @include screen("mobile") {
@@ -50,7 +52,6 @@
 
             @include res-bg;
             background-image: url(images/sec01-btn.png);
-            transition: filter 0.25s ease;
             > span {
               @include hide-text;
             }
@@ -60,17 +61,10 @@
               margin-top: percent(55, 489);
               margin-left: auto;
               margin-right: percent(52, 489);
-              transition: transform 300ms ease;
               @include res-bg;
               background-image: url(images/sec01-btn-arrow.png);
             }
-
-            &:hover {
-              filter: brightness(1.04) contrast(1.07);
-              .arrow {
-                transform: translateX(10%);
-              }
-            }
+            @include hover-bounce;
           }
         }
 

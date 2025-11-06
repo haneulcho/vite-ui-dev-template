@@ -74,7 +74,7 @@
     }
 
     .slider-wrapper {
-      border-radius: vw(8px);
+      border-radius: clp(20px, 30px);
       width: 100%;
 
       .swiper-slide {
@@ -169,7 +169,7 @@
         width: 34px;
         height: 7px;
         margin: 0 5px;
-        &.swiper-pagination-bullet-active {
+        &.swiper-pagination-bullet.active {
           background: #2c201c !important;
         }
       }

@@ -1,0 +1,19 @@
+@mixin hover-bounce {
+  transition:
+    transform 300ms ease,
+    filter 0.25s ease;
+
+  .arrow {
+    transition: transform 300ms ease;
+  }
+
+  &:hover {
+    filter: brightness(1.04) contrast(1.07);
+    animation: bounce 0.8s ease-in-out infinite;
+    animation-fill-mode: forwards;
+
+    .arrow {
+      transform: translateX(10%);
+    }
+  }
+}

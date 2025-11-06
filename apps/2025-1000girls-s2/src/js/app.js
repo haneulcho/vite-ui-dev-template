@@ -3,7 +3,9 @@ const initSwiperSlider = () => {
   const section5Swiper = new Swiper('.section5 .slider-wrapper', {
     slidesPerView: 1,
     spaceBetween: 80,
-    speed: 800,
+    speed: 500,
+    touchRatio: 0.7,
+    resistance: false,
     loop: true,
     pagination: {
       el: '.section5 .swiper-pagination',
@@ -21,6 +23,17 @@ const initSwiperSlider = () => {
         spaceBetween: 0,
       },
     },
+    on: {
+      slideChangeTransitionStart: function () {
+        const realIndex = this.realIndex;
+        $('.section5 .slider-wrapper')
+          .find('.swiper-pagination-bullet')
+          .eq(realIndex)
+          .addClass('active')
+          .siblings()
+          .removeClass('active');
+      },
+    },
   });
 
   const section7Swiper = new Swiper('.section7 .slider-wrapper', {
@@ -28,13 +41,16 @@ const initSwiperSlider = () => {
     centeredSlides: true,
     spaceBetween: 25,
     loop: true,
+    resistance: false,
     speed: 7500,
+    resistanceRatio: 2,
     autoplay: {
       delay: 0,
       disableOnInteraction: true,
     },
     freeMode: true,
     freeModeMomentum: false,
+    freeModeSticky: false,
     allowTouchMove: true,
     pagination: false,
     navigation: false,
@@ -61,7 +77,9 @@ const initSwiperSlider = () => {
     centeredSlides: false,
     spaceBetween: 23,
     loop: true,
-    speed: 800,
+    speed: 500,
+    touchRatio: 0.2,
+    resistanceRatio: 5,
     pagination: {
       el: '.section8 .swiper-pagination',
       clickable: true,
@@ -76,6 +94,17 @@ const initSwiperSlider = () => {
         spaceBetween: 16,
       },
     },
+    on: {
+      slideChangeTransitionStart: function () {
+        const realIndex = this.realIndex;
+        $('.section8 .slider-wrapper')
+          .find('.swiper-pagination-bullet')
+          .eq(realIndex)
+          .addClass('active')
+          .siblings()
+          .removeClass('active');
+      },
+    },
   });
 
   const section9Swiper = new Swiper('.section9 .slider-wrapper', {
@@ -83,7 +112,9 @@ const initSwiperSlider = () => {
     centeredSlides: true,
     spaceBetween: 15,
     loop: true,
-    speed: 800,
+    speed: 500,
+    touchRatio: 0.2,
+    resistanceRatio: 5,
     pagination: {
       el: '.section9 .swiper-pagination',
       clickable: true,
@@ -94,7 +125,18 @@ const initSwiperSlider = () => {
     },
     breakpoints: {
       768: {
-        // spaceBetween: '42%',
+        spaceBetween: 16,
+      },
+    },
+    on: {
+      slideChangeTransitionStart: function () {
+        const realIndex = this.realIndex;
+        $('.section9 .slider-wrapper')
+          .find('.swiper-pagination-bullet')
+          .eq(realIndex)
+          .addClass('active')
+          .siblings()
+          .removeClass('active');
       },
     },
   });
@@ -153,14 +195,14 @@ $(document).on('ready', function () {
   });
 
   // 소녀를 구한 위드베어
-  $(document).on('click', '.section4 button.bear', function (e) {
+  $(document).on('click', '.section4 .btn-bear', function (e) {
     e.preventDefault();
     const $this = $(this);
     const delay = $(window).width() < 768 ? 1450 : 1850;
 
-    $this.parent('.girl').addClass('active');
+    $this.parent().parent('.girl').addClass('active');
     setTimeout(() => {
-      $this.addClass('leave');
+      $this.parent('.bear').addClass('leave');
     }, delay);
   });
 
