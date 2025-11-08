@@ -1,7 +1,7 @@
-name: "⭐️ Feature"
-description: "신규 기능 추가"
-title: "⭐️"
-labels: ["⭐️ Feature"]
+name: "🔨 Fix"
+description: "기능 수정"
+title: "🔨"
+labels: ["🔨 Fix", "🐛 Bug"]
 assignees: []
 body:
   - type: input

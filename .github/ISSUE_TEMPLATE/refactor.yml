@@ -1,14 +1,17 @@
-name: "⭐️ Feature"
-description: "신규 기능 추가"
-title: "⭐️"
-labels: ["⭐️ Feature"]
+name: "🛠 Refactor"
+description: "리팩토링"
+title: "🛠"
+labels: ["🛠 Refactor"]
 assignees: []
 body:
-  - type: input
-    id: input_name
+  - type: textarea
+    id: textarea_description
     attributes:
-      label: 🗒️ 작업 설명
-      description: 이 작업에 대한 간단한 설명
+      label: 🗒️ 리팩토링 목적
+      description: 리팩토링에 대한 간단한 설명
+      placeholder: |
+        - 목적은...
+      render: ''
     validations:
       required: true
   - type: textarea
