@@ -1,31 +1,39 @@
 #!/usr/bin/env node
-import { existsSync, rmSync } from 'node:fs';
+import { existsSync, readdirSync, rmSync } from 'node:fs';
 import path from 'node:path';
 
-const raw = process.env.DELETED_APPS || '[]';
-let deletedDirs = [];
+const repoRoot = process.cwd();
+const appsRoot = path.join(repoRoot, 'apps');
+const distRoot = path.join(repoRoot, 'dist');
 
-try {
-  deletedDirs = JSON.parse(raw);
-} catch (error) {
-  console.warn('Failed to parse DELETED_APPS, skipping cleanup.');
+if (!existsSync(distRoot)) {
+  console.log('dist directory does not exist, skipping cleanup.');
   process.exit(0);
 }
 
-if (!Array.isArray(deletedDirs) || deletedDirs.length === 0) {
-  console.log('No deleted apps to clean.');
+function getDirectories(root) {
+  if (!existsSync(root)) return [];
+  return readdirSync(root, { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .map(entry => entry.name);
+}
+
+const appDirs = new Set(
+  getDirectories(appsRoot).filter(dir =>
+    existsSync(path.join(appsRoot, dir, 'package.json'))
+  )
+);
+
+const distDirs = getDirectories(distRoot);
+const staleDirs = distDirs.filter(dir => !appDirs.has(dir)).sort((a, b) => a.localeCompare(b));
+
+if (!staleDirs.length) {
+  console.log('No stale apps found in dist.');
   process.exit(0);
 }
 
-deletedDirs
-  .map(String)
-  .sort()
-  .forEach(dir => {
-    const target = path.join('dist', dir);
-    if (existsSync(target)) {
-      rmSync(target, { recursive: true, force: true });
-      console.log(`Removed ${target}`);
-    } else {
-      console.log(`Skip removal, ${target} not found.`);
-    }
-  });
+staleDirs.forEach(dir => {
+  const target = path.join(distRoot, dir);
+  rmSync(target, { recursive: true, force: true });
+  console.log(`Removed ${target}`);
+});
