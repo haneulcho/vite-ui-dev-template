@@ -75,6 +75,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-monorepo-dist-
 
+      - name: Ensure dist directory exists
+        if: steps.changed-apps.outputs.has_changes == 'true'
+        run: mkdir -p dist
+
+      - name: Remove deleted apps from dist
+        if: steps.changed-apps.outputs.has_changes == 'true' && steps.changed-apps.outputs.deleted_apps != '[]'
+        env:
+          DELETED_APPS: ${{ steps.changed-apps.outputs.deleted_apps }}
+        run: node ./scripts/cleanup-deleted-apps.mjs
+
       - name: Build changed apps
         if: steps.changed-apps.outputs.has_changes == 'true'
         env:
