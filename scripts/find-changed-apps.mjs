@@ -78,12 +78,21 @@ let buildAll = changedFiles.some(file => globalTriggers.some(prefix => file.star
 
 // 개별 앱 디렉토리에서 변경이 발생했는지 추적한다.
 const changedApps = new Set();
+const deletedApps = new Set();
 if (!buildAll) {
   for (const file of changedFiles) {
     if (!file.startsWith('apps/')) continue;
-    const [, maybeApp] = file.split('/');
-    if (maybeApp && appsByDir.has(maybeApp)) {
-      changedApps.add(maybeApp);
+    const [, app] = file.split('/');
+    if (!app) continue;
+
+    if (appsByDir.has(app)) {
+      changedApps.add(app);
+      continue;
+    }
+
+    const deletedAppPath = path.join(appsRoot, app);
+    if (!existsSync(deletedAppPath)) {
+      deletedApps.add(app);
     }
   }
 }
@@ -95,8 +104,8 @@ const targetApps = buildAll
       .map(dir => appsByDir.get(dir))
       .filter(Boolean);
 
-// 실제 빌드 대상이 존재하는지 여부를 기록한다.
-const hasChanges = targetApps.length > 0;
+// 실제 빌드 대상이 존재하거나 삭제된 앱이 있는지 여부를 기록한다.
+const hasChanges = targetApps.length > 0 || deletedApps.size > 0;
 
 // GitHub Actions step outputs 에 기록하기 위해 dir/path/name 정보를 JSON으로 구성한다.
 const appsJson = JSON.stringify(
@@ -105,12 +114,19 @@ const appsJson = JSON.stringify(
   0
 );
 
-console.log(
-  hasChanges ? `Changed apps: ${targetApps.map(app => app.dir).join(', ')}` : 'No apps require a build.'
-);
+const deletedAppsJson = JSON.stringify(Array.from(deletedApps).sort());
+
+if (!hasChanges) {
+  console.log('No apps require a build.');
+} else {
+  const updated = targetApps.length ? `Changed apps: ${targetApps.map(app => app.dir).join(', ')}` : '';
+  const removed = deletedApps.size ? `Deleted apps: ${Array.from(deletedApps).sort().join(', ')}` : '';
+  console.log([updated, removed].filter(Boolean).join(' | '));
+}
 
 // GitHub Actions 환경에서는 GITHUB_OUTPUT에 결과를 써서 이후 step에서 참조 가능하도록 한다.
 if (process.env.GITHUB_OUTPUT) {
   appendFileSync(process.env.GITHUB_OUTPUT, `has_changes=${hasChanges ? 'true' : 'false'}\n`);
   appendFileSync(process.env.GITHUB_OUTPUT, `apps_json=${appsJson}\n`);
+  appendFileSync(process.env.GITHUB_OUTPUT, `deleted_apps_json=${deletedAppsJson}\n`);
 }
