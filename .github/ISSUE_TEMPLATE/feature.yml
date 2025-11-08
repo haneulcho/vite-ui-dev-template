@@ -1,0 +1,33 @@
+---
+name: "⚡️ Feature"
+description: "신규 기능 추가"
+title: ''
+labels: ''
+assignees: ''
+---
+title: ''
+labels: ''
+assignees: ''
+body:
+  - type: input
+    id: input_name
+    attributes:
+      label: 🗒️ 작업 설명
+      description: 이 작업에 대한 간단한 설명
+    validations:
+      required: true
+  - type: textarea
+    id: textarea_work
+    attributes:
+      label: ✅ To Do List
+      description: 이 작업에 필요한 것 목록
+      placeholder: |
+        - [ ] 할 일 1
+        - [ ] 할 일 2
+      value: |
+        - [ ] 할 일 1
+        - [ ] 할 일 2
+        - [ ] ...
+      render: ''
+    validations:
+      required: false
